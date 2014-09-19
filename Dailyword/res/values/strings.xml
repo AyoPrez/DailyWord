@@ -1,7 +1,40 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <string name="app_name">Dailyword</string>
-    <string name="hello_world">Hello world!</string>
-
+    <string name="moment_review">Revisar momentos</string>
+    <string name="button_language">Elige un idioma</string>
+    <string name="button_level">Elige nivel</string>
+    <string name="button_time">Elige el momento</string>
+    <string name="button_accept">Aceptar</string>
+    
+    <!-- Languages -->
+    <string name="Spanish">Español</string>
+    <string name="German">Alemán</string>
+	<string name="English">Inglés</string>
+	<string name="Finish">Finlandés</string>
+	
+	<!-- Levels -->
+	<string name="basic">Básico</string>
+	<string name="easy">Fácil</string>
+	<string name="normal">Normal</string>
+	<string name="hard">Difícil</string>
+	
+	<!-- Time -->
+	<string name="button_time_accept">Aceptar momento</string>
+	
+	<!-- Review -->
+	<string name="contestDescription">Imagen</string>
+	<string name="dialog_title">Eliminar momento</string>
+	<string name="dialog_message">¿Desea eliminar este momento? Si lo hace, dejará de recibir notificaciones a esa hora.</string>
+	<string name="dialog_positive_button">Eliminar</string>
+	<string name="dialog_negative_button">Cancelar</string>
+	<string name="new_moment">Nuevo momento</string>
+	
+	<!-- Word -->
+	<string name="buttonDone">¡La tengo!</string>
+	<string name="buttonLater">Recuerdamela en 20 minutos</string>
+	
+	<!-- Errors -->
+	<string name="error_select">Debe seleccionar idioma, nivel y momento</string>
+	
 </resources>

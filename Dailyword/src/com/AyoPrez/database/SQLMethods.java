@@ -1,12 +1,16 @@
 package com.AyoPrez.database;
 
+import java.util.ArrayList;
+
 import android.content.Context;
 import android.database.Cursor;
 import android.database.CursorIndexOutOfBoundsException;
 import android.database.SQLException;
-import android.database.sqlite.SQLiteConstraintException;
+import android.database.sqlite.SQLiteException;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.AyoPrez.dailyword.Moment;
 
 public class SQLMethods extends OpenAndCloseDatabaseMethods{
 
@@ -22,7 +26,7 @@ public class SQLMethods extends OpenAndCloseDatabaseMethods{
 
 	public void createDatabase(){
 		try{
-			openDatabaseInWritableMode(ctx, "DBDailyWord");
+			openDatabaseInWritableMode(ctx);
 
 			if(isOpenInWriteableMode()){
 
@@ -30,20 +34,26 @@ public class SQLMethods extends OpenAndCloseDatabaseMethods{
 
 				closeDatabase();
 			}else{
-				Log.i("DBError", "Didn't open the Database"); 
+				Log.e("DBError", "Didn't open the Database"); 
 			}
-		}catch(SQLiteConstraintException e){
+		}catch(SQLiteException e){
 			Log.e("SQLError", e.getMessage());
 		}    
 	}
 
-	public void deleteDatabaseRow(String level, String time, String language){
+	public void deleteMomentFromUserDataTable(Moment moment){
 
-		openDatabaseInWritableMode(ctx, "DBDailyWord");
+		openDatabaseInWritableMode(ctx);
 
 		if(isOpenInWriteableMode()){
 			try{
-				getDatabaseInWritableMode().execSQL("DELETE FROM User_Data WHERE Time = '"+ time +"' AND Level = '"+ level +"' AND Language = '"+ language +"' ");
+				getDatabaseInWritableMode().execSQL(
+						"DELETE FROM UserData " +
+						"WHERE Time = '"+ moment.getTime() +"' " +
+						"AND Level = '"+ moment.getLevel() +"' " +
+						"AND Language = '"+ moment.getLanguage() +"' "
+						);
+				
 				//UTILS.Create_Dialog_DontFinishActivity("El momento se eliminó satisfactoriamente", "Aceptar", "Eliminar momento");
 			}catch(SQLException e){
 				Log.e("Error SQL", e.getMessage());
@@ -55,14 +65,17 @@ public class SQLMethods extends OpenAndCloseDatabaseMethods{
 
 	}
 
-	public void setMomentDataIntoDatabase(String Id, String AppLanguage, String Language, String Level, String Time){
+	public void createMomentIntoUserDataTable(Moment moment){
 
-		openDatabaseInWritableMode(ctx, "DBDailyWord");
+		openDatabaseInWritableMode(ctx);
 
 		if(isOpenInWriteableMode()){
 			try{
-				getDatabaseInWritableMode().execSQL("INSERT INTO User_Data (Id, AppLanguage, Language, Level, Time) VALUES ('" + Id + "', '" + AppLanguage + "', '" + Language + "" +
-						"', '" + Level + "', '" + Time + "')");
+				getDatabaseInWritableMode().execSQL(
+						"INSERT INTO UserData (Id, AppLanguage, Language, Level, Time) " +
+						"VALUES ('" + moment.getId() + "', '" + moment.getAppLanguage() + "', '" + moment.getLanguage() + "" +
+						"', '" + moment.getLevel() + "', '" + moment.getTime() + "')"
+						);
 
 				//UTILS.Create_Dialog("El momento ha sido guardado", "Aceptar", "Momento guardado");
 			}catch(SQLException e){
@@ -75,23 +88,29 @@ public class SQLMethods extends OpenAndCloseDatabaseMethods{
 
 	}
 
-	public String[][] getMomentsDataIntoDatabase(){
-		String[][] DB_Data = new String[20][4];
+	public ArrayList<Moment> getMomentsDataFromUserDataTable(){
 
-		openDatabaseInWritableMode(ctx, "DBDailyWord");
+		ArrayList<Moment> arrayListOfMoments = new ArrayList<Moment>();
+				
+		openDatabaseInWritableMode(ctx);
 
 		if(isOpenInWriteableMode()){
 			try{
-				Cursor c = getDatabaseInWritableMode().rawQuery("SELECT Id, Time, Language, Level FROM User_Data", null);
+				Cursor c = getDatabaseInWritableMode().rawQuery("SELECT Id, Time, Language, Level FROM UserData", null);
 				if(c.moveToFirst()){
-					for(int j = 0; j < SQLUTILS.getRowsCount(); j++){
+					for(int j = 0; j < SQLUTILS.getDatabaseRowsCount(); j++){
 						for(int i = 0; i < 4; i++){
-							DB_Data[j][i] = c.getString(i);
+							Moment momentToFill = new Moment();
+							momentToFill.setId(c.getString(i));
+							momentToFill.setLanguage(c.getString(i));
+							momentToFill.setLevel(c.getString(i));
+							momentToFill.setTime(c.getString(i));
+							arrayListOfMoments.add(momentToFill);
 						}
 						c.moveToNext();
 					}
 				}else{
-					Toast.makeText(ctx, "No hay registros", Toast.LENGTH_LONG).show();
+					Toast.makeText(ctx, "Table User_Data is empty", Toast.LENGTH_LONG).show();
 				}
 			}catch(SQLException e){
 				Log.e("Error SQL", e.getMessage());
@@ -103,22 +122,26 @@ public class SQLMethods extends OpenAndCloseDatabaseMethods{
 			Log.i("DBError", "Didn't open the Database"); 
 		}
 
-		return DB_Data;
+		return arrayListOfMoments;
 	}
 
-	public void changeConfValueInDatabase(String id, String Language){
+	public void changeConfValueInDatabase(Moment moment){
 		try{
-			openDatabaseInWritableMode(ctx, "DBDailyWord");
+			openDatabaseInWritableMode(ctx);
 
 			if(isOpenInWriteableMode()){
 
-				getDatabaseInWritableMode().execSQL("UPDATE '"+Language+"' SET Conf = 1 WHERE Id LIKE '"+ id +"'");
+				getDatabaseInWritableMode().execSQL(
+						"UPDATE '"+moment.getLanguage()+"' " +
+						"SET Conf = 1 " +
+						"WHERE Id LIKE '"+ moment.getId() +"'"
+						);
 
 				closeDatabase();
 			}else{
 				Log.i("DBError", "Didn't open the Database"); 
 			}
-		}catch(SQLiteConstraintException e){
+		}catch(SQLiteException e){
 			Log.e("SQLError", e.getMessage());
 		} 
 	}

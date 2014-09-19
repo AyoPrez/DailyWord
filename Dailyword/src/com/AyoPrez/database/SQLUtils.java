@@ -4,10 +4,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.CursorIndexOutOfBoundsException;
 import android.database.SQLException;
-import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-public class SQLUtils {
+public class SQLUtils extends OpenAndCloseDatabaseMethods{
 
 	private Context ctx;
 	
@@ -15,26 +14,22 @@ public class SQLUtils {
 		this.ctx = context;
 	}
 	
-	public int getRowsCount() {
+	public int getDatabaseRowsCount() {
 		int cnt = 0;
 		
-		//Abrimos la base de datos en modo escritura
-	    SQLiteHelper dbh = new SQLiteHelper(ctx, "DBDailyWord", null, 1);
-	
-	    SQLiteDatabase db = dbh.getWritableDatabase();
-	
-	    if(db != null){
+		openDatabaseInWritableMode(ctx);
+			
+	    if(getDatabaseInWritableMode() != null){
 	    	try{
-	    		Cursor c = db.rawQuery("SELECT * FROM User_Data", null);
+	    		Cursor c = getDatabaseInWritableMode().rawQuery("SELECT * FROM User_Data", null);
 	    		cnt = c.getCount();
 	    		c.close();
 	    	}catch(SQLException e){
-	    		//Avisar que ocurrió un error
 	    		Log.e("Error SQL", e.getMessage());
 	    	}catch(CursorIndexOutOfBoundsException ce){
 	    		Log.e("Cursor Error", ce.getMessage());
 	    	}
-	        db.close();
+	        closeDatabase();
 	    }else{
 	    	Log.i("DBError", "Didn't open the Database"); 
 	    }
@@ -42,28 +37,23 @@ public class SQLUtils {
 	}
 
 	public String LastId(){
-		
 		int max = 0;
 		
-		//Abrimos la base de datos en modo escritura
-	    SQLiteHelper dbh = new SQLiteHelper(ctx, "DBDailyWord", null, 1);
+		openDatabaseInWritableMode(ctx);
 	
-	    SQLiteDatabase db = dbh.getWritableDatabase();
-	
-	    if(db != null){
+	    if(getDatabaseInWritableMode() != null){
 	    	try{
-	    		Cursor c = db.rawQuery("SELECT Id FROM User_Data order by Id DESC limit 1", null);
+	    		Cursor c = getDatabaseInWritableMode().rawQuery("SELECT Id FROM User_Data order by Id DESC limit 1", null);
 	    		if (c != null && c.moveToFirst()) {
 	    		    max = c.getInt(0);
 	    		}
 	    		c.close();    		
 	    	}catch(SQLException e){
-	    		//Avisar que ocurrió un error
 	    		Log.e("Error SQL", e.getMessage());
 	    	}catch(CursorIndexOutOfBoundsException ce){
 	    		Log.e("Cursor Error", ce.getMessage());
 	    	}
-	        db.close();
+	        closeDatabase();
 	    }else{
 	    	Log.i("DBError", "Didn't open the Database"); 
 	    }

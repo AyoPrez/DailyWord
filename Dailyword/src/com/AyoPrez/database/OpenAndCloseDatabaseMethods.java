@@ -3,6 +3,8 @@ package com.AyoPrez.database;
 import android.content.Context;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
+import android.util.Log;
 
 public class OpenAndCloseDatabaseMethods {
 
@@ -34,11 +36,11 @@ public class OpenAndCloseDatabaseMethods {
 		this.databaseInReadableMode = databaseInReadableMode;
 	}
 	
-	public void openDatabase(Context ctx, String databaseName) throws SQLException{
+	public void openDatabase(Context ctx) throws SQLException, SQLiteException{
 		try{
-			database = new SQLiteHelper(ctx, databaseName, null, 1);
+			database = new SQLiteHelper(ctx);
 		}catch(SQLException e){
-			
+			Log.e("SQLException", "There is an error en OpenAndCloseDatabaseMethods in line 42");
 		}
 	}
 	
@@ -58,18 +60,18 @@ public class OpenAndCloseDatabaseMethods {
 		}
 	}
 	
-	public void openDatabaseInWritableMode(Context ctx, String databaseName) throws SQLException {
+	public void openDatabaseInWritableMode(Context ctx) throws SQLException, SQLiteException {
 		if(isOpen()){
-			openDatabase(ctx, databaseName);
+			openDatabase(ctx);
 			databaseInWritableMode = database.getWritableDatabase();		
 		}else{
 			databaseInWritableMode = database.getWritableDatabase();
 		}
 	}
 
-	public void openDatabaseInReadableMode(Context ctx, String databaseName) throws SQLException {
+	public void openDatabaseInReadableMode(Context ctx) throws SQLException, SQLiteException {
 		if(isOpen()){
-			openDatabase(ctx, databaseName);
+			openDatabase(ctx);
 			databaseInReadableMode = database.getReadableDatabase();		
 		}else{
 			databaseInReadableMode = database.getReadableDatabase();

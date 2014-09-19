@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RadioGroup
+        android:id="@+id/radioGroup_levels"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" 
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp">
+
+        <RadioButton
+            android:id="@+id/radio_basic"        
+        	android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="10dp"
+	        android:layout_marginBottom="10dp"
+        	android:textColor="#222"
+	        android:textSize="18sp"
+            android:checked="true"
+            android:text="@string/basic" />
+
+        <RadioButton
+            android:id="@+id/radio_easy"
+        	android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="10dp"
+	        android:layout_marginBottom="10dp"
+        	android:textColor="#222"
+	        android:textSize="18sp"
+            android:checked="true"
+            android:text="@string/easy" />
+
+        <RadioButton
+            android:id="@+id/radio_normal"
+        	android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="10dp"
+	        android:layout_marginBottom="10dp"
+        	android:textColor="#222"
+	        android:textSize="18sp"
+            android:checked="true"
+            android:text="@string/normal" />
+        
+        <RadioButton
+            android:id="@+id/radio_hard"
+        	android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="10dp"
+	        android:layout_marginBottom="10dp"
+        	android:textColor="#222"
+	        android:textSize="18sp"
+            android:checked="true"
+            android:text="@string/hard" />
+    </RadioGroup>
+
+</LinearLayout>
