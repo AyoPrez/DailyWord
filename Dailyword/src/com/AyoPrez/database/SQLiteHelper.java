@@ -30,7 +30,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 			"Id DECIMAL(20) NOT NULL," +
 			"Conf DECIMAL(1) NOT NULL" +
 			")";
-	private String sqlCreateUserData = "CREATE TABLE UserData (" +
+	private String sqlCreateUserData = "CREATE TABLE UserMoments (" +
 			"AppLanguage VARCHAR(15) NOT NULL, " +
 			"Language VARCHAR(15) NOT NULL, " +
 			"Level VARCHAR(15) NOT NULL, " +
