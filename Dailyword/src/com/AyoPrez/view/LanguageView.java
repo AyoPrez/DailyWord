@@ -8,6 +8,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.AyoPrez.dailyword.AvailableLanguages;
 import com.AyoPrez.dailyword.R;
 
 public class LanguageView {
@@ -16,7 +17,7 @@ public class LanguageView {
 	private ArrayAdapter<String> Adapter;
 	private ListView Language_List;
 	private String languageChoosed;
-	
+		
 	public String getLanguageChoosed() {
 		return languageChoosed;
 	}
@@ -34,9 +35,8 @@ public class LanguageView {
 		
 		this.Language_List = (ListView)Dialog.findViewById(R.id.LV_Language);
 		
-		final String[] Languages = {ctx.getString(R.string.English), ctx.getString(R.string.Finish), 
-				ctx.getString(R.string.Spanish), ctx.getString(R.string.German)};
-					
+		final String[] Languages = new AvailableLanguages(ctx).getLanguages();
+		
 		this.Adapter = new ArrayAdapter<String>(ctx, android.R.layout.simple_list_item_1, Languages);
 		this.Language_List.setAdapter(Adapter);
 		

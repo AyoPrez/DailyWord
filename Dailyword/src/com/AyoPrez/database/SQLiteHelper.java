@@ -39,16 +39,21 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 			"CONSTRAINT pk_user PRIMARY KEY(Id)" +
 			");";
 	
-	public SQLiteHelper(Context contexto) {
-		super(contexto, DATABASE_NAME, null, DATABASE_VERSION);
+	public SQLiteHelper(Context context) {
+		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 	}
 
+	public SQLiteHelper(Context context, String name, int version){
+		super(context, name, null, version);
+	}
+	
 	@Override
 	public void onCreate(SQLiteDatabase database) {
 		database.execSQL(sqlCreateGerman);
 		database.execSQL(sqlCreateSpanish);
 		database.execSQL(sqlCreateEnglish);
 		database.execSQL(sqlCreateUserData);
+		database.execSQL("sqlCreateAvailableLanguages");
 	}
 
 	@Override

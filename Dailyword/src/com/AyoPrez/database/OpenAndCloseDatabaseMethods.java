@@ -60,20 +60,28 @@ public class OpenAndCloseDatabaseMethods {
 		}
 	}
 	
+	public boolean isOpenInReadableMode(){
+		if(databaseInReadableMode != null){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
 	public void openDatabaseInWritableMode(Context ctx) throws SQLException, SQLiteException {
 		if(isOpen()){
-			openDatabase(ctx);
 			databaseInWritableMode = database.getWritableDatabase();		
 		}else{
+			openDatabase(ctx);
 			databaseInWritableMode = database.getWritableDatabase();
 		}
 	}
 
 	public void openDatabaseInReadableMode(Context ctx) throws SQLException, SQLiteException {
 		if(isOpen()){
-			openDatabase(ctx);
 			databaseInReadableMode = database.getReadableDatabase();		
 		}else{
+			openDatabase(ctx);
 			databaseInReadableMode = database.getReadableDatabase();
 		}
 	}

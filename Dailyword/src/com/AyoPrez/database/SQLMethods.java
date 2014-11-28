@@ -17,7 +17,7 @@ public class SQLMethods extends OpenAndCloseDatabaseMethods{
 	private Context ctx;
 	//private Utils UTILS;
 	private SQLUtils SQLUTILS;
-	
+
 	public SQLMethods(Context context){
 		this.ctx = context;
 		//this.UTILS = new Utils(context);
@@ -49,11 +49,11 @@ public class SQLMethods extends OpenAndCloseDatabaseMethods{
 			try{
 				getDatabaseInWritableMode().execSQL(
 						"DELETE FROM UserData " +
-						"WHERE Time = '"+ moment.getTime() +"' " +
-						"AND Level = '"+ moment.getLevel() +"' " +
-						"AND Language = '"+ moment.getLanguage() +"' "
+								"WHERE Time = '"+ moment.getTime() +"' " +
+								"AND Level = '"+ moment.getLevel() +"' " +
+								"AND Language = '"+ moment.getLanguage() +"' "
 						);
-				
+
 				//UTILS.Create_Dialog_DontFinishActivity("El momento se eliminó satisfactoriamente", "Aceptar", "Eliminar momento");
 			}catch(SQLException e){
 				Log.e("Error SQL", e.getMessage());
@@ -73,8 +73,8 @@ public class SQLMethods extends OpenAndCloseDatabaseMethods{
 			try{
 				getDatabaseInWritableMode().execSQL(
 						"INSERT INTO UserData (Id, AppLanguage, Language, Level, Time) " +
-						"VALUES ('" + moment.getId() + "', '" + moment.getAppLanguage() + "', '" + moment.getLanguage() + "" +
-						"', '" + moment.getLevel() + "', '" + moment.getTime() + "')"
+								"VALUES ('" + moment.getId() + "', '" + moment.getAppLanguage() + "', '" + moment.getLanguage() + "" +
+								"', '" + moment.getLevel() + "', '" + moment.getTime() + "')"
 						);
 
 				//UTILS.Create_Dialog("El momento ha sido guardado", "Aceptar", "Momento guardado");
@@ -91,14 +91,14 @@ public class SQLMethods extends OpenAndCloseDatabaseMethods{
 	public ArrayList<Moment> getMomentsDataFromUserDataTable(){
 
 		ArrayList<Moment> arrayListOfMoments = new ArrayList<Moment>();
-				
+
 		openDatabaseInWritableMode(ctx);
 
 		if(isOpenInWriteableMode()){
 			try{
 				Cursor c = getDatabaseInWritableMode().rawQuery("SELECT Id, Time, Language, Level FROM UserData", null);
 				if(c.moveToFirst()){
-					for(int j = 0; j < SQLUTILS.getDatabaseRowsCount(); j++){
+					for(int j = 0; j < SQLUTILS.getMomentDatabaseRowsCount(); j++){
 						for(int i = 0; i < 4; i++){
 							Moment momentToFill = new Moment();
 							momentToFill.setId(c.getString(i));
@@ -133,8 +133,8 @@ public class SQLMethods extends OpenAndCloseDatabaseMethods{
 
 				getDatabaseInWritableMode().execSQL(
 						"UPDATE '"+moment.getLanguage()+"' " +
-						"SET Conf = 1 " +
-						"WHERE Id LIKE '"+ moment.getId() +"'"
+								"SET Conf = 1 " +
+								"WHERE Id LIKE '"+ moment.getId() +"'"
 						);
 
 				closeDatabase();
