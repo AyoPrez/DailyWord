@@ -3,6 +3,7 @@ package com.AyoPrez.dailyword;
 import java.util.Locale;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
@@ -70,6 +71,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Show current moments in database and the button to create a new one.  
+				new AlertDialog.Builder(mContext).setTitle(R.string.dialog_title).show();
 			}
 			
 		});

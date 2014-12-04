@@ -2,6 +2,7 @@ package com.AyoPrez.view;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -17,7 +18,8 @@ public class LanguageView {
 	private ArrayAdapter<String> Adapter;
 	private ListView Language_List;
 	private String languageChoosed;
-		
+	private final String[] Languages = availableLanguages();
+	
 	public String getLanguageChoosed() {
 		return languageChoosed;
 	}
@@ -28,18 +30,16 @@ public class LanguageView {
 
 	public LanguageView(Context context){
 		this.ctx = context;
-		
+
 		this.Dialog = new Dialog(ctx);
 		this.Dialog.setContentView(R.layout.language_dialog);
 		this.Dialog.setTitle(R.string.button_language);
-		
+
 		this.Language_List = (ListView)Dialog.findViewById(R.id.LV_Language);
-		
-		final String[] Languages = new AvailableLanguages(ctx).getLanguages();
-		
+
 		this.Adapter = new ArrayAdapter<String>(ctx, android.R.layout.simple_list_item_1, Languages);
 		this.Language_List.setAdapter(Adapter);
-		
+
 		this.Language_List.setOnItemClickListener(new OnItemClickListener(){
 
 			@Override
@@ -48,7 +48,17 @@ public class LanguageView {
 				Dialog.dismiss();
 			}
 		});
-		
+
 		Dialog.show();
 	}
+
+	public String[] availableLanguages(){
+		try{
+			return new AvailableLanguages().getLanguages();
+		}catch(Exception e){
+			Log.e("Error in AvailableLanguages", e.getMessage());
+			return null;
+		}
+	}
+
 }

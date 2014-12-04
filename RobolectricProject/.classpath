@@ -3,9 +3,10 @@
 	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Dailyword"/>
-	<classpathentry kind="lib" path="libs/fest-android-1.0.7.jar"/>
 	<classpathentry kind="lib" path="libs/fest-util-1.1.6.jar"/>
 	<classpathentry kind="lib" path="libs/robolectric-2.3-with-dependencies.jar"/>
+	<classpathentry kind="lib" path="libs/fest-android-1.0.8.jar"/>
+	<classpathentry kind="lib" path="libs/fest-assert-core-2.0M10.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="/home/ayo/Escritorio/adt-bundle-linux-x86-20140624/sdk/platforms/android-18/android.jar"/>
 	<classpathentry kind="lib" path="/home/ayo/Escritorio/adt-bundle-linux-x86-20140624/sdk/add-ons/addon-google_apis-google-18/libs/maps.jar"/>
