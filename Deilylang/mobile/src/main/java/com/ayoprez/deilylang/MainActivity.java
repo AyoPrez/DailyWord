@@ -22,7 +22,6 @@ public class MainActivity extends Activity {
     public TextView timerSeconds;
     private Button reviewMomentsButton;
     private Context mContext;
-    private CountdownTimerRequestReceiver countdownService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,22 +34,33 @@ public class MainActivity extends Activity {
         this.timerMinute = (TextView) findViewById(R.id.tv_main_minute);
         this.timerSeconds = (TextView) findViewById(R.id.tv_main_seconds);
         this.reviewMomentsButton = (Button) findViewById(R.id.b_main);
-        this.countdownService = new CountdownTimerRequestReceiver();
 
-        IntentFilter filter = new IntentFilter(CountdownTimerRequestReceiver.PROCESS_RESPONSE);
-        filter.addCategory(Intent.CATEGORY_DEFAULT);
-
-        registerReceiver(countdownService, filter);
-
-        appTimerControls();
+        sendCountdownService();
         momentsButton();
     }
 
-    private void appTimerControls(){
+    @Override
+    protected void onResume() {
+        super.onResume();
+        serviceReceiver();
+    }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(countdownService);
+    }
+
+    private void serviceReceiver(){
+        IntentFilter filter = new IntentFilter("com.AyoPrez.intent.action.PROCESS_RESPONSE");
+        filter.addCategory(Intent.CATEGORY_DEFAULT);
+
+        registerReceiver(countdownService, filter);
+    }
+
+    private void sendCountdownService(){
         Intent intent = new Intent(this, CountdownTimerService.class);
         startService(intent);
-
     }
 
     private void momentsButton(){
@@ -65,10 +75,7 @@ public class MainActivity extends Activity {
         });
     }
 
-
-    public class CountdownTimerRequestReceiver extends BroadcastReceiver {
-
-        public static final String PROCESS_RESPONSE = "com.AyoPrez.intent.action.PROCESS_RESPONSE";
+    private BroadcastReceiver countdownService = new BroadcastReceiver() {
 
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -78,11 +85,11 @@ public class MainActivity extends Activity {
 
             Log.d("MainActivityResponse", "MARHour: " + responseHour);
             Log.d("MainActivityResponse", "MARMinute: " + responseMinutes);
-
+            Log.d("MainActivityResponse", "MARSecond: " + responseSeconds);
 
             timerHour.setText(responseHour);
             timerMinute.setText(responseMinutes);
             timerSeconds.setText(responseSeconds);
         }
-    }
+    };
 }
