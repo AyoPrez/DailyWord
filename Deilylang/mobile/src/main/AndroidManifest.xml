@@ -21,6 +21,11 @@
             android:name="com.ayoprez.services.CountdownTimerService"
             android:exported="false" >
         </service>
+        <service
+            android:name="com.ayoprez.services.NotificationService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
     </application>
 
 </manifest>

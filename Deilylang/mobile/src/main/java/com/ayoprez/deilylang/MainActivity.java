@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -48,23 +47,11 @@ public class MainActivity extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        unregisterReceiver(countdownService);
+        unregisterReceiver(countdownServiceReceiver);
     }
 
-    private void serviceReceiver(){
-        IntentFilter filter = new IntentFilter("com.AyoPrez.intent.action.PROCESS_RESPONSE");
-        filter.addCategory(Intent.CATEGORY_DEFAULT);
-
-        registerReceiver(countdownService, filter);
-    }
-
-    private void sendCountdownService(){
-        Intent intent = new Intent(this, CountdownTimerService.class);
-        startService(intent);
-    }
-
-    private void momentsButton(){
-        reviewMomentsButton.setOnClickListener(new View.OnClickListener(){
+    private void momentsButton() {
+        reviewMomentsButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -75,17 +62,25 @@ public class MainActivity extends Activity {
         });
     }
 
-    private BroadcastReceiver countdownService = new BroadcastReceiver() {
+    private void serviceReceiver(){
+        IntentFilter filter = new IntentFilter("com.AyoPrez.intent.action.PROCESS_RESPONSE");
+        filter.addCategory(Intent.CATEGORY_DEFAULT);
+
+        registerReceiver(countdownServiceReceiver, filter);
+    }
+
+    private void sendCountdownService(){
+        Intent intent = new Intent(this, CountdownTimerService.class);
+        startService(intent);
+    }
+
+    private BroadcastReceiver countdownServiceReceiver = new BroadcastReceiver() {
 
         @Override
         public void onReceive(Context context, Intent intent) {
             String responseHour = intent.getStringExtra(CountdownTimerService.TIMER_HOUR);
             String responseMinutes = intent.getStringExtra(CountdownTimerService.TIMER_MINUTE);
             String responseSeconds = intent.getStringExtra(CountdownTimerService.TIMER_SECONDS);
-
-            Log.d("MainActivityResponse", "MARHour: " + responseHour);
-            Log.d("MainActivityResponse", "MARMinute: " + responseMinutes);
-            Log.d("MainActivityResponse", "MARSecond: " + responseSeconds);
 
             timerHour.setText(responseHour);
             timerMinute.setText(responseMinutes);
