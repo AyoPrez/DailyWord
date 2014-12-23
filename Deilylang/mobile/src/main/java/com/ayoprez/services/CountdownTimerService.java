@@ -24,7 +24,8 @@ public class CountdownTimerService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        return super.onStartCommand(intent, flags, startId);
+        super.onStartCommand(intent, flags, startId);
+        return START_NOT_STICKY;
     }
 
     @Override
@@ -55,11 +56,10 @@ public class CountdownTimerService extends Service {
 
     private void launchNotification() {
         Intent service = new Intent(this, NotificationService.class);
-
         startService(service);
     }
 
-    public CountDownTimer countdownTimer() {
+    private CountDownTimer countdownTimer() {
         return new CountDownTimer(30000, 1000) {
 
             public void onTick(long millisUntilFinished) {

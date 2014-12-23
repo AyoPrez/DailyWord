@@ -55,7 +55,6 @@ public class MainActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-
                 new AlertDialog.Builder(mContext).setTitle(R.string.dialog_title).show();
             }
 
