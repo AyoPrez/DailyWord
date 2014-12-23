@@ -1,45 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/tv_time_indicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ListView
+        android:id="@+id/reviewList"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
         android:layout_gravity="center"
-        android:text="@string/time_indicator"
-        android:textSize="15sp"
-        android:layout_marginTop="70dp" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="90dp" >
-
-        <TextView
-            android:id="@+id/tv_main_hour"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="60sp" />
-
-        <TextView
-            android:id="@+id/tv_main_minute"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="60sp" />
-
-        <TextView
-            android:id="@+id/tv_main_seconds"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="60sp" />
-    </LinearLayout>
+        android:layout_margin="50dp"/>
 
     <Button
         android:id="@+id/b_main"
@@ -50,6 +22,6 @@
         android:layout_marginRight="50dp"
         android:layout_marginTop="30dp"
         android:background="#28D"
-        android:text="@string/moment_review" />
+        android:text="@string/new_moment" />
 
 </LinearLayout>

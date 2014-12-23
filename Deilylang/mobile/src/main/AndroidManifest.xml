@@ -2,11 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ayoprez.deilylang" >
 
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
@@ -17,15 +20,29 @@
             </intent-filter>
         </activity>
 
-        <service
-            android:name="com.ayoprez.services.CountdownTimerService"
-            android:exported="false" >
-        </service>
+        <activity
+            android:name="com.ayoprez.newMoment.NewMomentActivity"
+            android:label="@string/app_name"/>
+
         <service
             android:name="com.ayoprez.services.NotificationService"
             android:enabled="true"
             android:exported="true" >
         </service>
+
+        <receiver
+            android:name=".AlarmReceiver"
+            android:enabled="true"
+            android:exported="true" >
+        </receiver>
+
+        <receiver
+            android:name=".DeviceBootReceiver"
+            android:enabled="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
