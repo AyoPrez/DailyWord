@@ -36,7 +36,7 @@ public class NotificationService extends Service {
 
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(
                 getBaseContext())
-                .setSmallIcon(R.drawable.ic_launcher)
+                .setSmallIcon(R.drawable.icon)
                 .setContentTitle("Finish")
                 .setContentText("Countdown finished");
 

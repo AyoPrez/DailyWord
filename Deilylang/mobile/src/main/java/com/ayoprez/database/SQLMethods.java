@@ -47,8 +47,7 @@ public class SQLMethods {
 		}    
 	}
 	
-	public void Delete_Database_Row(String level, String time, String language){
-		//Abrimos la base de datos en modo escritura
+	public boolean Delete_Database_Row(String level, String time, String language){
         SQLiteHelper dbh = new SQLiteHelper(ctx, "DBDailyWord", null, 1);
  
         SQLiteDatabase db = dbh.getWritableDatabase();
@@ -64,7 +63,7 @@ public class SQLMethods {
         }else{
         	Log.e("DBError", "Didn't open the Database"); 
         }
-
+        return true;
 	}
 
 	public void Save_Data_DB(String Id, String AppLanguage, String Language, String Level, String Time){

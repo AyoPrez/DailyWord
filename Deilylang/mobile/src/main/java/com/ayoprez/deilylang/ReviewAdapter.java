@@ -55,8 +55,7 @@ public class ReviewAdapter extends BaseAdapter {
         }else{
             holder = (ViewHolder) view.getTag();
         }
-        
-       
+
         holder.Time.setText(GiveDotsToTime(R_List.get(position).getTime()));
        	holder.Language.setText(R_List.get(position).getLanguage());
        	holder.Level.setText(R_List.get(position).getLevel());
