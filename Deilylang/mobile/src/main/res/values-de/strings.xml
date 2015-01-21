@@ -37,4 +37,5 @@
 
     <!-- Errors -->
     <string name="error_select">Sie müssen Sprache, Füllstands und Zeit wählen</string>
+    <string name="deleteMomentDialog">Moment löschen</string>
 </resources>

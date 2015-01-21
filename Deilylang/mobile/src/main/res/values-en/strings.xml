@@ -37,4 +37,5 @@
 
     <!-- Errors -->
     <string name="error_select">You should select language, level and moment</string>
+    <string name="deleteMomentDialog">Delete moment</string>
 </resources>

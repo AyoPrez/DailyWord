@@ -7,6 +7,7 @@
     <string name="button_time">Elige el momento</string>
     <string name="time_indicator">Tiempo hasta el próximo momento</string>
     <string name="button_accept">Aceptar</string>
+    <string name="deleteMomentDialog">Borrar momento</string>
 
     <!-- Languages -->
     <string name="Spanish">Español</string>

@@ -1,11 +1,14 @@
 package com.ayoprez.deilylang;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -42,6 +45,14 @@ public class MainActivity extends Activity {
         showReviewList();
 
         momentsButton();
+
+        reviewList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                showAlertDialogToDeleteItem(position);
+                return true;
+            }
+        });
     }
 
     private void momentsButton() {
@@ -69,24 +80,26 @@ public class MainActivity extends Activity {
 
     private void showReviewList(){
         reviewAdapter = new ReviewAdapter(mContext, getDataFromDatabaseToListView());
-
         reviewList.setAdapter(reviewAdapter);
     }
 
-//    private void deleteListItem(){
-//        reviewList.setOnLongClickListener(new View.OnLongClickListener() {
-//            @Override
-//            public boolean onLongClick(View v) {
-//                int positionSelected = reviewList.getSelectedItemPosition();
-//
-//                String languageSelected = getDataFromDatabaseToListView().get(positionSelected).getLanguage();
-//                String timeSelected = getDataFromDatabaseToListView().get(positionSelected).getTime();
-//                String levelSelected = getDataFromDatabaseToListView().get(positionSelected).getLevel();
-//
-//                sqlMethods.Delete_Database_Row(levelSelected, timeSelected, languageSelected);
-//                return false;
-//            }
-//        });
-//    }
+    public void showAlertDialogToDeleteItem(final int selectedItem){
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.deleteMomentDialog)
+                .setMessage("Are you sure you want to delete this moment?")
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        deleteItemFromDatabase(selectedItem);
+                    }
+                }).create().show();
+    }
+
+    private void deleteItemFromDatabase(int selectedItem){
+        String languageSelected = getDataFromDatabaseToListView().get(selectedItem).getLanguage();
+        String timeSelected = getDataFromDatabaseToListView().get(selectedItem).getTime();
+        String levelSelected = getDataFromDatabaseToListView().get(selectedItem).getLevel();
+
+        sqlMethods.Delete_Database_Row(levelSelected, timeSelected, languageSelected);
+    }
 
 }
