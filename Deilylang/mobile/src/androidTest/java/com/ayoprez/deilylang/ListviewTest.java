@@ -1,7 +1,6 @@
 package com.ayoprez.deilylang;
 
 import android.app.AlertDialog;
-import android.content.ContextWrapper;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
@@ -19,6 +18,7 @@ import java.util.ArrayList;
 
 import static android.view.HapticFeedbackConstants.LONG_PRESS;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 /**
@@ -94,7 +94,7 @@ public class ListviewTest extends Robolectric {
 
     @Test
     public void testCorrectCreationAlertDialog(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextWrapper(null));
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle("title").setMessage("message");
         AlertDialog alert = builder.create();
 
@@ -126,7 +126,16 @@ public class ListviewTest extends Robolectric {
     }
 
     @Test
-    public void testDeleteItemFromList(){
+    public void clickingPositiveButtonDismissesDialog() throws Exception {
+        //https://github.com/upsight/playhaven-robolectric/blob/master/src/
+        // test/java/com/xtremelabs/robolectric/shadows/AlertDialogTest.java
 
+        AlertDialog alertDialog = new AlertDialog.Builder(activity)
+                .setPositiveButton("Positive", null).create();
+        alertDialog.show();
+
+        assertTrue(alertDialog.isShowing());
+        alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).performClick();
+        assertFalse(alertDialog.isShowing());
     }
 }

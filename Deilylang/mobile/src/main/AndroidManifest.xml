@@ -2,14 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ayoprez.deilylang" >
 
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
@@ -19,30 +18,28 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name="com.ayoprez.newMoment.NewMomentActivity"
-            android:label="@string/app_name"/>
-
-        <service
-            android:name="com.ayoprez.services.NotificationService"
-            android:enabled="true"
-            android:exported="true" >
-        </service>
+            android:label="@string/app_name" />
 
         <receiver
-            android:name=".AlarmReceiver"
+            android:name="com.ayoprez.notification.AlarmReceiver"
             android:enabled="true"
-            android:exported="true" >
+            android:exported="true"
+            android:process=":remote" >
         </receiver>
-
         <receiver
             android:name=".DeviceBootReceiver"
-            android:enabled="false">
+            android:enabled="false" >
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
+
+        <activity
+            android:name=".WordScreen"
+            android:label="@string/title_activity_word_screen" >
+        </activity>
     </application>
 
 </manifest>

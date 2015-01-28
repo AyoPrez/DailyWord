@@ -55,7 +55,7 @@ public class SQLMethods {
         if(db != null){
         	try{
         		db.execSQL("DELETE FROM User_Data WHERE Time = '"+ time +"' AND Level = '"+ level +"' AND Language = '"+ language +"' ");
-        		UTILS.Create_Dialog_DontFinishActivity("El momento se eliminó satisfactoriamente", "Aceptar", "Eliminar momento");
+        		UTILS.Create_Dialog_DoNotFinishActivity("El momento se eliminó satisfactoriamente", "Aceptar", "Eliminar momento");
         	}catch(SQLException e){
         		Log.e("Error SQL", e.getMessage());
         	}
@@ -77,8 +77,6 @@ public class SQLMethods {
         	try{
         		db.execSQL("INSERT INTO User_Data (Id, AppLanguage, Language, Level, Time) VALUES ('" + Id + "', '" + AppLanguage + "', '" + Language + "" +
         			"', '" + Level + "', '" + Time + "')");
-        		
-        		UTILS.Create_Dialog("El momento ha sido guardado", "Aceptar", "Momento guardado");
         	}catch(SQLException e){
         		Log.e("Error SQL", e.getMessage());
         	}
@@ -123,7 +121,7 @@ public class SQLMethods {
 	    return DB_Data;
 	}
 	
-	public void ChangeDBConfValue(String id, String Language){
+	public boolean ChangeDBConfValue(String id, String Language){
 		try{
 			//Abrimos la base de datos en modo escritura
 	        SQLiteHelper dbh = new SQLiteHelper(ctx, "DBDailyWord", null, 1);
@@ -136,13 +134,44 @@ public class SQLMethods {
 	        	db.execSQL("UPDATE '"+Language+"' SET Conf = 1 WHERE Id LIKE '"+ id +"'");
 	 
 	            //Cerramos la base de datos
-	            db.close(); 
+	            db.close();
+                return true;
 	        }else{
 	        	Log.i("DBError", "Didn't open the Database");
-	        	//Hacer aquí que avise por medio de un dialog o un Toast. 
+                return false;
 	        }
 		}catch(SQLiteConstraintException e){
 			Log.e("SQLError", e.getMessage());
+            return false;
 		} 
 	}
+
+    public String[] getWordFromTables(){
+        String[] words = new String[2];
+
+        try{
+            //Abrimos la base de datos en modo escritura
+            SQLiteHelper dbh = new SQLiteHelper(ctx, "DBDailyWord", null, 1);
+
+            SQLiteDatabase db = dbh.getWritableDatabase();
+
+            //Si hemos abierto correctamente la base de datos
+            if(db != null){
+
+                words[0] = "Hola";
+                words[1] = "Hello";
+
+                //Cerramos la base de datos
+                db.close();
+
+            }else{
+                Log.i("DBError", "Didn't open the Database");
+
+            }
+        }catch(SQLiteConstraintException e){
+            Log.e("SQLError", e.getMessage());
+
+        }
+        return words;
+    }
 }

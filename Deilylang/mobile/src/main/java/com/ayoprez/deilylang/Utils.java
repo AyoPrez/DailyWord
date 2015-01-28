@@ -33,7 +33,7 @@ public class Utils {
 		alertDialogBuilder.show();
 	}
 	
-	public void Create_Dialog_DontFinishActivity(String message, String button_title, String dialog_title){
+	public void Create_Dialog_DoNotFinishActivity(String message, String button_title, String dialog_title){
 		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ctx);
 		alertDialogBuilder.setTitle(dialog_title);
 		alertDialogBuilder.setMessage(message);

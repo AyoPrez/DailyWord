@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.Toast;
 
 import com.ayoprez.deilylang.R;
+import com.ayoprez.notification.StartAndCancelAlarmManager;
 import com.ayoprez.deilylang.Utils;
 
 import com.ayoprez.database.SQLMethods;
@@ -29,10 +30,15 @@ public class Accept {
 				&& !Time.equals(ctx.getString(R.string.button_time))){
 			SQLMETHODS.Save_Data_DB(SQLUTILS.LastId(), AppLanguage, Language, Level, UTILS.TakeOutTimeDots(Time));
 			
-			//Aquí se guardará en la base de datos y además en las notificaciones.
-			
-			//new NotificationsCenter(ctx).CalendarIntent(UTILS.TakeHourFromTime(Time), UTILS.TakeMinuteFromTime(Time));
-			
+			if(new StartAndCancelAlarmManager(ctx).startAlarmManager(Time)){
+                UTILS.Create_Dialog(ctx.getString(R.string.successSavingMoment),
+                        ctx.getString(R.string.buttonAcceptDialog),
+                        ctx.getString(R.string.successSavingDialogTitle));
+            }else{
+                UTILS.Create_Dialog(ctx.getString(R.string.errorSavingMoment),
+                        ctx.getString(R.string.buttonAcceptDialog),
+                        ctx.getString(R.string.errorSavingDialogTitle));
+            }
 		}else{
 			Toast.makeText(ctx, ctx.getString(R.string.error_select), Toast.LENGTH_LONG).show();			
 		}

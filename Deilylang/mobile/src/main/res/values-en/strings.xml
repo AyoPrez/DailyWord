@@ -7,6 +7,10 @@
     <string name="button_time">Choose a moment</string>
     <string name="time_indicator">Time until next moment</string>
     <string name="button_accept">Done!</string>
+    <string name="deleteMomentDialog">Delete moment</string>
+    <string name="successSavingMoment">The moment have been saved successfully</string>
+    <string name="buttonAcceptDialog">Ok</string>
+    <string name="successSavingDialogTitle">Moment saved</string>
 
     <!-- Languages -->
     <string name="Spanish">Spanish</string>
@@ -37,5 +41,7 @@
 
     <!-- Errors -->
     <string name="error_select">You should select language, level and moment</string>
-    <string name="deleteMomentDialog">Delete moment</string>
+    <string name="errorSavingMoment">There was an error and the moment could not be saved</string>
+    <string name="errorSavingDialogTitle">There was an error</string>
+
 </resources>

@@ -15,6 +15,7 @@ import android.widget.ListView;
 import com.ayoprez.database.SQLMethods;
 import com.ayoprez.database.SQLUtils;
 import com.ayoprez.newMoment.NewMomentActivity;
+import com.ayoprez.notification.StartAndCancelAlarmManager;
 
 import java.util.ArrayList;
 
@@ -46,6 +47,10 @@ public class MainActivity extends Activity {
 
         momentsButton();
 
+        itemLongClick();
+    }
+
+    private void itemLongClick(){
         reviewList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -62,8 +67,8 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 Intent newMomentIntent = new Intent(mContext, NewMomentActivity.class);
                 startActivity(newMomentIntent);
+                ((Activity)mContext).finish();
             }
-
         });
     }
 
@@ -85,11 +90,13 @@ public class MainActivity extends Activity {
 
     public void showAlertDialogToDeleteItem(final int selectedItem){
         new AlertDialog.Builder(this)
-                .setTitle(R.string.deleteMomentDialog)
-                .setMessage("Are you sure you want to delete this moment?")
+                .setTitle(R.string.deleteMomentDialogTitle)
+                .setMessage(R.string.deleteMomentDialog)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         deleteItemFromDatabase(selectedItem);
+                        new StartAndCancelAlarmManager(mContext).cancelAlarmManager();
+                        showReviewList();
                     }
                 }).create().show();
     }
@@ -101,5 +108,4 @@ public class MainActivity extends Activity {
 
         sqlMethods.Delete_Database_Row(levelSelected, timeSelected, languageSelected);
     }
-
 }

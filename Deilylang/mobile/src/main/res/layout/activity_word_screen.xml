@@ -1,0 +1,79 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".WordScreen">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_weight="0.3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageButton
+            android:id="@+id/imageButton_WordScreen_1"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:background="@android:drawable/ic_lock_silent_mode_off" />
+
+        <TextView
+            android:id="@+id/textView_WordScreen_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+
+  />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_weight="0.3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical">
+
+        <ImageButton
+            android:id="@+id/imageButton_WordScreen_2"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:background="@android:drawable/ic_lock_silent_mode_off" />
+
+        <TextView
+            android:id="@+id/textView_WordScreen_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+
+            android:layout_gravity="center_vertical" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_weight="0.2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical">
+
+
+        <Button
+            android:id="@+id/button_WordScreen_"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/buttonDone" />
+
+        <Button
+            android:id="@+id/button_WordScreen_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/buttonLater"/>
+    </LinearLayout>
+</LinearLayout>
