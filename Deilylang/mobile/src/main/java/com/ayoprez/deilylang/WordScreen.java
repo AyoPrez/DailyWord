@@ -27,14 +27,16 @@ public class WordScreen extends Activity {
 
         this.mContext = this;
 
+        Bundle bundle = getIntent().getExtras();
+
+        wordsFromTables = bundle.getStringArray("words");
+
         ImageButton imageButton1WordScreen = (ImageButton) findViewById(R.id.imageButton_WordScreen_1);
         ImageButton imageButton2WordScreen = (ImageButton) findViewById(R.id.imageButton_WordScreen_2);
         TextView word1WordScreen = (TextView) findViewById(R.id.textView_WordScreen_1);
         TextView word2WordScreen = (TextView) findViewById(R.id.textView_WordScreen_2);
         Button button1WordScreen = (Button) findViewById(R.id.button_WordScreen_);
         Button button2WordScreen = (Button) findViewById(R.id.button_WordScreen_2);
-
-        wordsFromTables = new SQLMethods(mContext).getWordFromTables();
 
         imageButton1WordScreen.setOnClickListener(listenerWordScreenImageButton1);
         imageButton2WordScreen.setOnClickListener(listenerWordScreenImageButton2);
