@@ -4,6 +4,8 @@ import android.content.Context;
 
 import java.util.List;
 
+import de.greenrobot.dao.query.QueryBuilder;
+import de.greenrobot.dao.query.WhereCondition;
 import deilyword.UserMoments;
 import deilyword.UserMomentsDao;
 
@@ -15,6 +17,26 @@ public class UserMomentsRepository {
 
     public static void insertOrUpdate(Context context, UserMoments userMoments) {
         getUserMomentsDao(context).insertOrReplace(userMoments);
+    }
+
+    public long getIdFromData(Context context, UserMoments userMoments){
+        QueryBuilder qb = getUserMomentsDao(context).queryBuilder();
+        qb.where(new WhereCondition.StringCondition("Time = '"+ userMoments.getTime() +"' " +
+                "AND Level = '"+ userMoments.getLevel() +"' " +
+                "AND Language = '"+ userMoments.getLanguage() +"' "));
+
+        List<UserMoments> idList = qb.list();
+        return idList.get(0).getId();
+    }
+
+    public long getLastId(Context context){
+        long lastId = getUserMomentsDao(context).loadAll().get(getRowsCount(context) - 1).getId();
+        return lastId + 1;
+    }
+
+    public int getRowsCount(Context context){
+        int totalSize = getUserMomentsDao(context).loadAll().size();
+        return totalSize;
     }
 
     public static void clearMoments(Context context) {

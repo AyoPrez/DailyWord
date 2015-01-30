@@ -7,17 +7,18 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import deilyword.UserMoments;
 
 public class ReviewAdapter extends BaseAdapter {
 
 	// Declare Variables
     private LayoutInflater inflater;
-    private List<UserData> dataFromListView = null;
+    private List<UserMoments> dataFromListView = null;
     private Context ctx;
  
-    public ReviewAdapter(Context context, ArrayList<UserData> getDataFromDatabaseToListView) {
+    public ReviewAdapter(Context context, List<UserMoments> getDataFromDatabaseToListView) {
         this.dataFromListView = getDataFromDatabaseToListView;
         this.ctx = context;
         this.inflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

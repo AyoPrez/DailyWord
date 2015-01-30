@@ -4,20 +4,20 @@ public class UserData {
     private String Level;
   	private String Language;
   	private String Time;
-  	private String Id;
+  	private long Id;
  
-    public UserData(String Id, String Level, String Language, String Time) {
+    public UserData(long Id, String Level, String Language, String Time) {
     	this.Id = Id;
         this.Level = Level;
         this.Language = Language;
         this.Time = Time;
     }
     
-    public String getId(){
+    public long getId(){
     	return this.Id;
     }
     
-    public void setId(String id){
+    public void setId(long id){
     	this.Id = id;
     }
 

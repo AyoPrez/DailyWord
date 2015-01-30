@@ -8,11 +8,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.ayoprez.database.SQLMethods;
 
 import java.util.Locale;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
 
 public class WordScreen extends Activity {
 
@@ -20,10 +21,32 @@ public class WordScreen extends Activity {
     private TextToSpeech textToSpeech;
     private String[] wordsFromTables;
 
+    @InjectView(R.id.imageButton_WordScreen_1)
+    ImageButton mImageButton1WordScreen;
+    @InjectView(R.id.textView_WordScreen_1)
+    TextView mWord1WordScreen;
+    @InjectView(R.id.imageButton_WordScreen_2)
+    ImageButton mImageButton2WordScreen;
+    @InjectView(R.id.textView_WordScreen_2)
+    TextView mWord2WordScreen;
+    @InjectView(R.id.button_WordScreen_)
+    Button mButton1WordScreen;
+    @InjectView(R.id.button_WordScreen_2)
+    Button mButton2WordScreen;
+
+    @OnClick(R.id.button_WordScreen_) void listenerWordScreenButtonDone(){
+//        if (new SQLMethods(mContext).ChangeDBConfValue("1", "English")) {
+//            Toast.makeText(mContext, "Changed succesfully", Toast.LENGTH_LONG).show();
+//        } else {
+//            Toast.makeText(mContext, "Fail", Toast.LENGTH_LONG).show();
+//        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_word_screen);
+        ButterKnife.inject(this);
 
         this.mContext = this;
 
@@ -31,44 +54,37 @@ public class WordScreen extends Activity {
 
         wordsFromTables = bundle.getStringArray("words");
 
-        ImageButton imageButton1WordScreen = (ImageButton) findViewById(R.id.imageButton_WordScreen_1);
-        ImageButton imageButton2WordScreen = (ImageButton) findViewById(R.id.imageButton_WordScreen_2);
-        TextView word1WordScreen = (TextView) findViewById(R.id.textView_WordScreen_1);
-        TextView word2WordScreen = (TextView) findViewById(R.id.textView_WordScreen_2);
-        Button button1WordScreen = (Button) findViewById(R.id.button_WordScreen_);
-        Button button2WordScreen = (Button) findViewById(R.id.button_WordScreen_2);
+        mImageButton1WordScreen.setOnClickListener(listenerWordScreenImageButton1);
+        mImageButton2WordScreen.setOnClickListener(listenerWordScreenImageButton2);
 
-        imageButton1WordScreen.setOnClickListener(listenerWordScreenImageButton1);
-        imageButton2WordScreen.setOnClickListener(listenerWordScreenImageButton2);
+        mWord1WordScreen.setText(wordsFromTables[0]);
+        mWord2WordScreen.setText(wordsFromTables[1]);
 
-        word1WordScreen.setText(wordsFromTables[0]);
-        word2WordScreen.setText(wordsFromTables[1]);
-
-        button1WordScreen.setOnClickListener(listenerWordScreenButtonDone);
-        button2WordScreen.setOnClickListener(listenerWordScreenButtonMoreMinutes);
+//        mButton1WordScreen.setOnClickListener(listenerWordScreenButtonDone);
+//        mButton2WordScreen.setOnClickListener(listenerWordScreenButtonMoreMinutes);
     }
 
-    private View.OnClickListener listenerWordScreenButtonDone = new View.OnClickListener(){
+//    private View.OnClickListener listenerWordScreenButtonDone = new View.OnClickListener() {
+//
+//        @Override
+//        public void onClick(View v) {
+//            if (new SQLMethods(mContext).ChangeDBConfValue("1", "English")) {
+//                Toast.makeText(mContext, "Changed succesfully", Toast.LENGTH_LONG).show();
+//            } else {
+//                Toast.makeText(mContext, "Fail", Toast.LENGTH_LONG).show();
+//            }
+//        }
+//    };
+
+    private View.OnClickListener listenerWordScreenButtonMoreMinutes = new View.OnClickListener() {
 
         @Override
         public void onClick(View v) {
-            if(new SQLMethods(mContext).ChangeDBConfValue("1", "English")){
-                Toast.makeText(mContext, "Changed succesfully", Toast.LENGTH_LONG).show();
-            }else{
-                Toast.makeText(mContext, "Fail", Toast.LENGTH_LONG).show();
-            }
-        }
-    };
-
-    private View.OnClickListener listenerWordScreenButtonMoreMinutes = new View.OnClickListener(){
-
-        @Override
-        public void onClick(View v) {
 
         }
     };
 
-    private View.OnClickListener listenerWordScreenImageButton1 = new View.OnClickListener(){
+    private View.OnClickListener listenerWordScreenImageButton1 = new View.OnClickListener() {
 
         @Override
         public void onClick(View v) {
@@ -84,7 +100,7 @@ public class WordScreen extends Activity {
         }
     };
 
-    private View.OnClickListener listenerWordScreenImageButton2 = new View.OnClickListener(){
+    private View.OnClickListener listenerWordScreenImageButton2 = new View.OnClickListener() {
 
         @Override
         public void onClick(View v) {

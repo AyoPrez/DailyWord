@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
-import com.ayoprez.database.SQLMethods;
 import com.ayoprez.deilylang.R;
 import com.ayoprez.deilylang.WordScreen;
 
@@ -19,7 +18,7 @@ public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         try {
-            launchNotification(context, new SQLMethods(context).getWordFromTables());
+            //launchNotification(context, new SQLMethods(context).getWordFromTables());
         } catch (Exception e) {
             Log.e("NotificationException", e.getMessage());
             e.printStackTrace();

@@ -17,6 +17,7 @@ public class CreateDatabase{
         setupDatabase(context);
     }
 
+    //Take a look at this
     private void setupDatabase(Context context) {
         DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(context, "deilylang", null);
         SQLiteDatabase db = helper.getWritableDatabase();
