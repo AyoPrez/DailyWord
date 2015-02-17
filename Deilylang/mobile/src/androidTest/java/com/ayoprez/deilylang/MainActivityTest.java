@@ -48,6 +48,11 @@ public class MainActivityTest extends Robolectric {
     }
 
     @Test
+    public void testLayoutOnCreate() {
+        assertEquals(R.id.mainActivityLayout, shadowOf(activity).getContentView().getId());
+    }
+
+    @Test
     public void checkActivityIsNotNull() throws Exception{
         assertNotNull(activity);
     }
