@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">Deilylang</string>
     <string name="moment_review">Revisar momentos</string>
     <string name="button_language">Elige un idioma</string>
@@ -7,6 +8,11 @@
     <string name="button_time">Elige el momento</string>
     <string name="time_indicator">Tiempo hasta el próximo momento</string>
     <string name="button_accept">Aceptar</string>
+    <string name="deleteMomentDialogTitle">Borrar momento</string>
+    <string name="deleteMomentDialog">¿Estas seguro que quieres borrar este momento?</string>
+    <string name="successSavingMoment">El momento ha sido guardado satisfactoriamente</string>
+    <string name="buttonAcceptDialog">Aceptar</string>
+    <string name="successSavingDialogTitle">Momento guardado</string>
 
     <!-- Languages -->
     <string name="Spanish">Español</string>
@@ -37,5 +43,10 @@
 
     <!-- Errors -->
     <string name="error_select">Debe seleccionar idioma, nivel y momento</string>
+    <string name="errorSavingMoment">Ha habido un error y no se ha podido guardar el momento</string>
+    <string name="errorSavingDialogTitle">Hubo un error</string>
+    <string name="title_activity_word_screen">WordScreen</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
 
 </resources>

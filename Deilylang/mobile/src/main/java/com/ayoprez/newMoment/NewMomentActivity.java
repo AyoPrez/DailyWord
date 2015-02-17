@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-import com.ayoprez.database.SQLMethods;
 import com.ayoprez.deilylang.R;
 
 import java.util.Locale;
@@ -19,7 +18,6 @@ public class NewMomentActivity extends Activity{
 	private String AppLanguage = Locale.getDefault().getDisplayLanguage().toString();
 
     private Context context;
-	private SQLMethods SQLMETHODS;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +25,7 @@ public class NewMomentActivity extends Activity{
 		setContentView(R.layout.newmoment_activity);
 
         this.context = this;
-		this.SQLMETHODS = new SQLMethods(ctx);
 
-		SQLMETHODS.Create_Data();
-		
 		B_Language = (Button) findViewById(R.id.b_language);
 		B_Level = (Button) findViewById(R.id.b_level);
 		B_Time = (Button) findViewById(R.id.b_time);

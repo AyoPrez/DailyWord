@@ -39,7 +39,12 @@ public class MainActivityTest extends Robolectric {
 
         reviewList = (ListView) activity.findViewById(R.id.reviewList);
 
-        reviewList.setAdapter(new ReviewAdapter(activity, activity.getDataFromDatabaseToListView()));
+        reviewList.setAdapter(new ReviewAdapter(activity, activity.getDataFromDatabaseToListView(activity)));
+    }
+
+    @Test
+    public void testLayoutOnCreate() {
+        assertEquals(R.id.mainActivityLayout, shadowOf(activity).getContentView().getId());
     }
 
     @Test
@@ -58,9 +63,30 @@ public class MainActivityTest extends Robolectric {
     }
 
     @Test
+    @Config(qualifiers = "es")
+    public void testTextFromButtonSpanish() throws Exception {
+        String appNameStr = activity.getResources().getString(R.string.new_moment);
+        assertEquals(appNameStr, "Nuevo momento");
+    }
+
+    @Test
+    @Config(qualifiers = "en")
+    public void testTextFromButtonEnglish() throws Exception {
+        String appNameStr = activity.getResources().getString(R.string.new_moment);
+        assertEquals(appNameStr, "New Moment");
+    }
+
+    @Test
+    @Config(qualifiers = "de")
+    public void testTextFromButtonGerman() throws Exception {
+        String appNameStr = activity.getResources().getString(R.string.new_moment);
+        assertEquals(appNameStr, "Neue Moment");
+    }
+
+    @Test
     public void shouldStartActivityWhenButtonIsClicked() throws Exception{
         pressMeButton.performClick();
-        Intent intent = Robolectric.shadowOf(activity).peekNextStartedActivity();
+        Intent intent = Robolectric.shadowOf(activity).getNextStartedActivity();
         assertEquals(NewMomentActivity.class.getCanonicalName(), intent.getComponent().getClassName());
     }
 

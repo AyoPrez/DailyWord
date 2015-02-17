@@ -20,7 +20,7 @@ public class Level {
 		
 		this.Dialog = new Dialog(ctx);
 		this.Dialog.setContentView(R.layout.level_dialog);
-		//this.Dialog.setTitle(R.id.b_level);
+		this.Dialog.setTitle(R.string.button_level);
 		
 		final RadioGroup Levels = (RadioGroup) Dialog.findViewById(R.id.radioGroup_levels);
 		Levels.clearCheck();		

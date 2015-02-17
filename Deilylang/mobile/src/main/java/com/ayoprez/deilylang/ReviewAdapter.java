@@ -7,18 +7,19 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import deilyword.UserMoments;
 
 public class ReviewAdapter extends BaseAdapter {
 
 	// Declare Variables
     private LayoutInflater inflater;
-    private List<UserData> R_List = null;
+    private List<UserMoments> dataFromListView = null;
     private Context ctx;
  
-    public ReviewAdapter(Context context, ArrayList<UserData> reviewList) {
-        this.R_List = reviewList;
+    public ReviewAdapter(Context context, List<UserMoments> getDataFromDatabaseToListView) {
+        this.dataFromListView = getDataFromDatabaseToListView;
         this.ctx = context;
         this.inflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -27,14 +28,13 @@ public class ReviewAdapter extends BaseAdapter {
         TextView Time;
         TextView Language;
         TextView Level;
-        TextView NewMoment;
     }
     
     @Override
     public int getCount() {
-        return R_List.size();
+        return dataFromListView.size();
     }
-     
+
     @Override
     public long getItemId(int position) {
         return position;
@@ -56,10 +56,10 @@ public class ReviewAdapter extends BaseAdapter {
             holder = (ViewHolder) view.getTag();
         }
 
-        holder.Time.setText(GiveDotsToTime(R_List.get(position).getTime()));
-       	holder.Language.setText(R_List.get(position).getLanguage());
-       	holder.Level.setText(R_List.get(position).getLevel());
-             
+        holder.Time.setText(GiveDotsToTime(dataFromListView.get(position).getTime()));
+       	holder.Language.setText(dataFromListView.get(position).getLanguage());
+       	holder.Level.setText(dataFromListView.get(position).getLevel());
+
         return view;
     }
     
@@ -69,7 +69,7 @@ public class ReviewAdapter extends BaseAdapter {
 
 	@Override
 	public Object getItem(int position) {
-		return R_List.get(position);
-	}     
+		return dataFromListView.get(position);
+	}
 
 }
