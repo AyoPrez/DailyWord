@@ -30,8 +30,14 @@ public class UserMomentsRepository {
     }
 
     public long getLastId(Context context){
-        long lastId = getUserMomentsDao(context).loadAll().get(getRowsCount(context) - 1).getId();
-        return lastId + 1;
+        List<UserMoments> userMomentsList = getUserMomentsDao(context).loadAll();
+
+        if(userMomentsList.size() == 0){
+            return 0;
+        }else{
+            long lastId = getUserMomentsDao(context).loadAll().get(getRowsCount(context) - 1).getId();
+            return lastId + 1;
+        }
     }
 
     public int getRowsCount(Context context){

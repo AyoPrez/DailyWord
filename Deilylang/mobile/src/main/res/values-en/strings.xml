@@ -43,5 +43,6 @@
     <string name="error_select">You should select language, level and moment</string>
     <string name="errorSavingMoment">There was an error and the moment could not be saved</string>
     <string name="errorSavingDialogTitle">There was an error</string>
+    <string name="errorDeletingMoment" />
 
 </resources>

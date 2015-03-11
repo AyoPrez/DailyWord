@@ -10,8 +10,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
-import org.robolectric.RobolectricTestRunner;
-import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowAlertDialog;
 
 import java.util.ArrayList;
@@ -26,8 +24,7 @@ import static org.junit.Assert.assertTrue;
 /**
  * Created by Ayoze on 16/01/15.
  */
-@Config(emulateSdk = 18)
-@RunWith(RobolectricTestRunner.class)
+@RunWith(CustomRobolectric.class)
 public class ListviewTest extends Robolectric {
 
     private MainActivity activity;

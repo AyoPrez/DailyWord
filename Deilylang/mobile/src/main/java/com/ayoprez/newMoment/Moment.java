@@ -19,7 +19,7 @@ public class Moment {
 	
 	public Moment(Context context){	
 		this.ctx = context;
-		this.UTILS = new Utils(context);
+		this.UTILS = new Utils();
 		
 		this.Dialog = new Dialog(context);
 		this.Dialog.setContentView(R.layout.time_dialog);

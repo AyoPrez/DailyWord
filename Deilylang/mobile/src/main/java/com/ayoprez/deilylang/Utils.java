@@ -10,13 +10,7 @@ import android.util.Log;
 
 public class Utils {
 
-	private Context ctx;
-	
-	public Utils(Context context){
-		this.ctx = context;
-	}
-	
-	public void Create_Dialog(String message, String button_title, String dialog_title){
+	public void Create_Dialog(final Context ctx, String message, String button_title, String dialog_title){
 		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ctx);
 		alertDialogBuilder.setTitle(dialog_title);
 		alertDialogBuilder.setMessage(message);
@@ -33,7 +27,7 @@ public class Utils {
 		alertDialogBuilder.show();
 	}
 	
-	public void Create_Dialog_DoNotFinishActivity(String message, String button_title, String dialog_title){
+	public void Create_Dialog_DoNotFinishActivity(final Context ctx, String message, String button_title, String dialog_title){
 		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ctx);
 		alertDialogBuilder.setTitle(dialog_title);
 		alertDialogBuilder.setMessage(message);

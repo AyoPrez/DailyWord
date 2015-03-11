@@ -9,20 +9,22 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
-import org.robolectric.RobolectricTestRunner;
-import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowAlarmManager;
 
 import java.util.Date;
-import static junit.framework.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
-import static org.hamcrest.MatcherAssert.*;
+
+import static junit.framework.Assert.assertEquals;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.CoreMatchers.nullValue;
+import static org.hamcrest.CoreMatchers.sameInstance;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
  * Created by root on 23/12/14.
  */
-@Config(emulateSdk = 18)
-@RunWith(RobolectricTestRunner.class)
+
+@RunWith(CustomRobolectric.class)
 public class AlarmManagerTest {
 
     private MainActivity mainActivity;

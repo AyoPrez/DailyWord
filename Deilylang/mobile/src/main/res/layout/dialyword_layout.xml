@@ -33,7 +33,7 @@
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:contentDescription="@string/contestDescription"
-        android:src="@drawable/icon" />
+        android:src="@drawable/deilylang_icon" />
     
 	<TextView
         android:id="@+id/tv_WordTranslate"
@@ -65,7 +65,7 @@
         android:layout_gravity="center"
         android:layout_marginBottom="40dp"
         android:contentDescription="@string/contestDescription"
-        android:src="@drawable/icon" />
+        android:src="@drawable/deilylang_icon" />
     
         <Button
             android:id="@+id/b_done"

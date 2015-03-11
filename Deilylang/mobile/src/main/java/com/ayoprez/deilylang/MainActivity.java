@@ -6,8 +6,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.ayoprez.database.CreateDatabase;
 import com.ayoprez.database.UserMomentsRepository;
@@ -61,14 +63,23 @@ public class MainActivity extends Activity {
     }
 
     public void showAlertDialogToDeleteItem(final Context mContext, final int selectedItem) {
+        UserMomentsRepository userMomentsRepository = new UserMomentsRepository();
+        List<UserMoments> userMoments = getDataFromDatabaseToListView(mContext);
+        final int momentId = (int)userMomentsRepository.getIdFromData(mContext, userMoments.get(selectedItem));
+
         new AlertDialog.Builder(this)
                 .setTitle(R.string.deleteMomentDialogTitle)
                 .setMessage(R.string.deleteMomentDialog)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        deleteItemFromDatabase(mContext, selectedItem);
-                        new StartAndCancelAlarmManager(mContext).cancelAlarmManager();
-                        showReviewList(mContext);
+                        try {
+                            deleteItemFromDatabase(mContext, selectedItem);
+                            new StartAndCancelAlarmManager(mContext, momentId).cancelAlarmManager();
+                            Log.e("MomentId", "" + momentId);
+                            showReviewList(mContext);
+                        } catch (Exception e) {
+                            Toast.makeText(mContext, getString(R.string.errorDeletingMoment), Toast.LENGTH_LONG).show();
+                        }
                     }
                 }).create().show();
     }
@@ -85,5 +96,4 @@ public class MainActivity extends Activity {
 
         return new UserMomentsRepository().getIdFromData(context, userMoments);
     }
-
 }

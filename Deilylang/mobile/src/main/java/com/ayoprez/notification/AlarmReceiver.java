@@ -15,10 +15,12 @@ import com.ayoprez.deilylang.WordScreen;
 
 public class AlarmReceiver extends BroadcastReceiver {
 
+    String[] words = {"Hola", "Hello"};
+
     @Override
     public void onReceive(Context context, Intent intent) {
         try {
-            //launchNotification(context, new SQLMethods(context).getWordFromTables());
+            launchNotification(context, words);
         } catch (Exception e) {
             Log.e("NotificationException", e.getMessage());
             e.printStackTrace();
@@ -29,9 +31,11 @@ public class AlarmReceiver extends BroadcastReceiver {
         NotificationManager nManager = (NotificationManager)
                 context.getSystemService(Context.NOTIFICATION_SERVICE);
 
+        Log.e("Notification", "Notification up");
+
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(
                 context)
-                .setSmallIcon(android.R.drawable.btn_star)
+                .setSmallIcon(R.drawable.deilylang_notification_icon)
                 .setContentTitle(context.getString(R.string.app_name))
                 .setContentText(words[0] + " -> " + words[1]);
 

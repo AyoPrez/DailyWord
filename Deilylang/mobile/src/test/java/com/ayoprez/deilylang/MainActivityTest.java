@@ -13,7 +13,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
-import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 import org.robolectric.util.ActivityController;
 
@@ -23,8 +22,7 @@ import static org.junit.Assert.assertNotNull;
 /**
  * <a href="http://d.android.com/tools/testing/testing_android.html">Testing Fundamentals</a>
  */
-@Config(emulateSdk = 18)
-@RunWith(RobolectricTestRunner.class)
+@RunWith(CustomRobolectric.class)
 public class MainActivityTest extends Robolectric {
 
     private MainActivity activity;
@@ -40,11 +38,6 @@ public class MainActivityTest extends Robolectric {
         reviewList = (ListView) activity.findViewById(R.id.reviewList);
 
         reviewList.setAdapter(new ReviewAdapter(activity, activity.getDataFromDatabaseToListView(activity)));
-    }
-
-    @Test
-    public void testLayoutOnCreate() {
-        assertEquals(R.id.mainActivityLayout, shadowOf(activity).getContentView().getId());
     }
 
     @Test

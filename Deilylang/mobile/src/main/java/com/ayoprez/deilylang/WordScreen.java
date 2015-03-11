@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.ayoprez.notification.StartAndCancelAlarmManager;
+
 import java.util.Locale;
 
 import butterknife.ButterKnife;
@@ -30,9 +32,9 @@ public class WordScreen extends Activity {
     @InjectView(R.id.textView_WordScreen_2)
     TextView mWord2WordScreen;
     @InjectView(R.id.button_WordScreen_)
-    Button mButton1WordScreen;
+    Button mButtonSaveWord;
     @InjectView(R.id.button_WordScreen_2)
-    Button mButton2WordScreen;
+    Button mButtonRemainLater;
 
     @OnClick(R.id.button_WordScreen_) void listenerWordScreenButtonDone(){
 //        if (new SQLMethods(mContext).ChangeDBConfValue("1", "English")) {
@@ -61,7 +63,7 @@ public class WordScreen extends Activity {
         mWord2WordScreen.setText(wordsFromTables[1]);
 
 //        mButton1WordScreen.setOnClickListener(listenerWordScreenButtonDone);
-//        mButton2WordScreen.setOnClickListener(listenerWordScreenButtonMoreMinutes);
+        mButtonRemainLater.setOnClickListener(listenerWordScreenButtonMoreMinutes);
     }
 
 //    private View.OnClickListener listenerWordScreenButtonDone = new View.OnClickListener() {
@@ -80,7 +82,15 @@ public class WordScreen extends Activity {
 
         @Override
         public void onClick(View v) {
-
+            if(new StartAndCancelAlarmManager(mContext, 0).startAlarmManager20MinutesLater()){
+                new Utils().Create_Dialog(mContext, mContext.getString(R.string.successSavingMoment),
+                        mContext.getString(R.string.buttonAcceptDialog),
+                        mContext.getString(R.string.successSavingDialogTitle));
+            }else{
+                new Utils().Create_Dialog(mContext, mContext.getString(R.string.errorSavingMoment),
+                        mContext.getString(R.string.buttonAcceptDialog),
+                        mContext.getString(R.string.errorSavingDialogTitle));
+            }
         }
     };
 
