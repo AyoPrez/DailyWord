@@ -1,14 +1,16 @@
 package com.ayoprez.deilylang;
 
+import android.app.Activity;
+
 import org.junit.runners.model.InitializationError;
 import org.robolectric.AndroidManifest;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.SdkConfig;
 import org.robolectric.SdkEnvironment;
 import org.robolectric.annotation.Config;
+import org.robolectric.res.Fs;
 import org.robolectric.shadows.ShadowMenuInflater;
 
-import java.io.File;
 import java.util.Properties;
 
 public class CustomRobolectric extends RobolectricTestRunner {
@@ -19,16 +21,28 @@ public class CustomRobolectric extends RobolectricTestRunner {
 
     @Override
     protected AndroidManifest getAppManifest(Config config) {
-        String path = "src/main/AndroidManifest.xml";
+        String manifestProperty = "./mobile/src/main/AndroidManifest.xml";
+        String resProperty = "./mobile/src/main/res";
+        return new AndroidManifest(Fs.fileFromPath(manifestProperty), Fs.fileFromPath(resProperty)) {
+            @Override
+            public int getTargetSdkVersion() {
+                return 18;
+            }
 
-        // android studio has a different execution root for tests than pure gradle
-        // so we avoid here manual effort to get them running inside android studio
-        if (!new File(path).exists()) {
-            path = "app/" + path;
-        }
-
-        config = overwriteConfig(config, "manifest", path);
-        return super.getAppManifest(config);
+            @Override
+            public String getThemeRef(Class<? extends Activity> activityClass) {
+                return "@style/RoboAppTheme";
+            }
+        };
+//
+//        // android studio has a different execution root for tests than pure gradle
+//        // so we avoid here manual effort to get them running inside android studio
+//        if (!new File(manifestProperty).exists()) {
+//            manifestProperty = manifestProperty;
+//        }
+//
+//        config = overwriteConfig(config, "manifest", manifestProperty);
+//        return super.getAppManifest(config);
     }
 
     protected Config.Implementation overwriteConfig(

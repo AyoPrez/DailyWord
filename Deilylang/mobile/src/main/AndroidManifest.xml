@@ -3,6 +3,7 @@
     package="com.ayoprez.deilylang" >
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -30,7 +31,7 @@
         </receiver>
         <receiver
             android:name="com.ayoprez.notification.DeviceBootReceiver"
-            android:enabled="false" >
+            android:enabled="true" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>

@@ -98,7 +98,6 @@ public class MainActivityTest extends Robolectric {
         ActivityController activityController = new ActivityController(activity);
         activityController.saveInstanceState(savedInstanceState).pause().stop().destroy();
 
-
         Activity restoredActivity = Robolectric.buildActivity(MainActivity.class).create(savedInstanceState)
                 .start().restoreInstanceState(savedInstanceState).resume().visible().get();
 

@@ -2,6 +2,8 @@ package com.ayoprez.notification;
 
 import android.app.AlarmManager;
 
+import com.ayoprez.deilylang.Utils;
+
 import java.util.Calendar;
 
 /**
@@ -9,7 +11,11 @@ import java.util.Calendar;
  */
 public class TimeCalculator {
 
-    public long getTimeFromNowUntilUserChoiceTime(String time){
+    public long getTimeFromNowUntilUserChoiceTime(String time) throws Exception{
+
+        if(time.length() != 5){
+            time = new Utils().PutInTimeDots(time);
+        }
 
         int hour = Integer.valueOf(time.substring(0, 2).toString());
         int minutes = Integer.valueOf(time.substring(3, 5).toString());

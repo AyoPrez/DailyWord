@@ -48,6 +48,14 @@ public class Utils {
 		int n = s.indexOf(':');
 		return s.substring(0, n) + s.substring(n + 1);
 	}
+
+    public String PutInTimeDots(String s) throws Exception{
+        if(s.length() == 4) {
+            return s.substring(0, 2) + ":" + s.substring(2, 4);
+        } else {
+            throw new Exception();
+        }
+    }
 	
 	public int TakeHourFromTime(String time){
 		String hour = time.substring(0, 2);

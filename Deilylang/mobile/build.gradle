@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.ayoprez.deilylang"
-        minSdkVersion 9
+        minSdkVersion 14
         targetSdkVersion 21
         versionCode 1
         versionName "1.0"
@@ -34,6 +34,8 @@ android {
     }
 }
 
+apply plugin: 'org.robolectric'
+
 dependencies {
 
     wearApp project(':wear')
@@ -47,12 +49,11 @@ dependencies {
     compile 'com.android.support:support-v4:21.0.+'
 
     // ================== TESTING LIBRARIES ======================
-
+    testCompile 'junit:junit:4.12'
     testCompile('org.robolectric:robolectric:2.4') {
         exclude group: 'commons-logging', module: 'commons-logging'
         exclude group: 'org.apache.httpcomponents', module: 'httpclient'
     }
     testCompile 'org.bouncycastle:bcprov-jdk15on:1.50'
-    testCompile 'junit:junit:4.12'
     testCompile "org.mockito:mockito-core:1.9.5"
 }

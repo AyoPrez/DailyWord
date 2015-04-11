@@ -88,6 +88,10 @@ public class MainActivity extends Activity {
         new UserMomentsRepository().deleteMomentWithId(context, getIdToDelete(context, selectedItem));
     }
 
+    public ListView getListView(){
+        return mReviewList;
+    }
+
     private long getIdToDelete(Context context, int selectedItem){
         UserMoments userMoments = new UserMoments();
         userMoments.setLanguage(getDataFromDatabaseToListView(context).get(selectedItem).getLanguage());

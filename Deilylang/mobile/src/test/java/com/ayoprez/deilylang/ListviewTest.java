@@ -108,21 +108,15 @@ public class ListviewTest extends Robolectric {
         ListAdapter adapter = reviewList.getAdapter();
         View itemView = adapter.getView(itemSelected, null, reviewList);
         listener.onItemLongClick(reviewList, itemView, itemSelected, adapter.getItemId(itemSelected));
+        assertTrue(reviewList.performHapticFeedback(LONG_PRESS));
         return reviewList.performHapticFeedback(LONG_PRESS);
     }
 
     @Test
     public void testLongClickOnListElement() {
-        assertTrue(makeItemLongClick());
-    }
-
-    @Test
-    public void testShowAlertDialog(){
-        makeItemLongClick();
-
-        AlertDialog alert = ShadowAlertDialog.getLatestAlertDialog();
-        ShadowAlertDialog sAlert = shadowOf(alert);
-        assertEquals(sAlert.getTitle().toString(),activity.getString(R.string.deleteMomentDialog));
+        ListView listView = (ListView) activity.getListView();
+        assertTrue(Robolectric.shadowOf(listView).performHapticFeedback(LONG_PRESS));
+        //assertTrue(makeItemLongClick());
     }
 
     @Test

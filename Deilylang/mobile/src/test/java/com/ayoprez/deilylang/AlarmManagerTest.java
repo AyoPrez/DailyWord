@@ -25,6 +25,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
  */
 
 @RunWith(CustomRobolectric.class)
+//@Config(manifest = "/mobile/src/main/AndroidManifest.xml", emulateSdk = 18, reportSdk = 18)
 public class AlarmManagerTest {
 
     private MainActivity mainActivity;

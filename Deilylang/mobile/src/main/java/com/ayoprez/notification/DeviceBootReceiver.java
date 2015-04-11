@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 import com.ayoprez.database.UserMomentsRepository;
 
@@ -17,27 +18,41 @@ public class DeviceBootReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         if (intent.getAction().equals("android.intent.action.BOOT_COMPLETED")) {
+           reSchedule(context);
+        }else{
+            Log.e("", "It is not a reboot intent");
+        }
+    }
 
-            Intent alarmIntent = new Intent(context, AlarmReceiver.class);
+    public void reSchedule(Context context){
+        Intent alarmIntent = new Intent(context, AlarmReceiver.class);
+        AlarmManager manager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, alarmIntent, 0);
+        List<UserMoments> dataFromDatabase = new UserMomentsRepository().getAllMoments(context);
+        int total = new UserMomentsRepository().getRowsCount(context);
 
-            AlarmManager manager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        String time;
+        PendingIntent pendingIntent;
 
-            List<UserMoments> dataFromDatabase = new UserMomentsRepository().getAllMoments(context);
-            int total = new UserMomentsRepository().getRowsCount(context);
+        for(int i = 0; i < total; i++){
+            try {
+                time = dataFromDatabase.get(i).getTime();
+                long id = dataFromDatabase.get(i).getId();
+                pendingIntent = PendingIntent.getBroadcast(context, (int)id, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-            for(int i = 0; i < total; i++){
-                try {
-                    manager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(),
-                            System.currentTimeMillis() +
-                                    new TimeCalculator().getTimeFromNowUntilUserChoiceTime(dataFromDatabase.get(i).getTime()),
-                            pendingIntent);
-                }catch(Exception e){
+                manager.setRepeating(
+                        AlarmManager.RTC_WAKEUP,
+                        System.currentTimeMillis() +
+                                new TimeCalculator().getTimeFromNowUntilUserChoiceTime(time),
+                        AlarmManager.INTERVAL_DAY,
+                        pendingIntent);
 
-                }
+                time = null;
+                pendingIntent = null;
+            }catch(Exception e){
+                //Crashlytics
+                Log.e("RescheduleException", "Error: " + e.getMessage());
             }
-
         }
     }
 }
