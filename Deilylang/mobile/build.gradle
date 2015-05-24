@@ -1,9 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        release {
+            keyAlias 'ayoprez'
+            keyPassword 'Doramas96'
+            storeFile file('/home/ayo/Proyectos/dailyWord/Deilylang/certification/mykey.jks')
+            storePassword 'Doramas96'
+        }
+    }
     compileSdkVersion 21
     buildToolsVersion "21.1.2"
-
     defaultConfig {
         applicationId "com.ayoprez.deilylang"
         minSdkVersion 14
@@ -11,7 +18,33 @@ android {
         versionCode 1
         versionName "1.0"
     }
-
+    productFlavors {
+        deilylang {
+            applicationId "com.ayoprez.deilylang"
+            versionCode 1
+            versionName "1.0"
+        }
+        deilypedia {
+            //-Aplicación/ extensión de Deilylang que cada día, a la hora que elija el usuario, muestre una página de la Wikipedia,
+            // en el idioma que quiera, y con la temática que haya elegido previamente.
+            applicationId "com.ayoprez.deilypedia"
+            versionCode 1
+            versionName "1.0"
+        }
+        deilyquate {
+            //-Aplicación/ extensión de Deilylang que cada día, a la hora que elija el usuario, muestre una frase de ánimo,
+            // o una frase celebre, o un refrán, en el idioma que elija.
+            applicationId "com.ayoprez.deilyquote"
+            versionCode 1
+            versionName "1.0"
+        }
+        deilyvideo {
+            //-Aplicación que te recomiende un vídeo de YouTube(o un juego, o cualquier otra cosa) a diario según lo que elija el usuario.
+            applicationId "com.ayoprez.deilyvideo"
+            versionCode 1
+            versionName "1.0"
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -19,7 +52,6 @@ android {
             testCoverageEnabled = false
         }
     }
-
     sourceSets {
         main {
             manifest.srcFile 'src/main/AndroidManifest.xml'
@@ -28,7 +60,6 @@ android {
         }
         androidTest.setRoot('src/androidTest')
     }
-
     lintOptions {
         disable 'InvalidPackage'
     }
@@ -37,17 +68,16 @@ android {
 apply plugin: 'org.robolectric'
 
 dependencies {
-
     wearApp project(':wear')
-
     // ================== LIBRARIES ======================
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.google.android.gms:play-services:6.5.87'
+    compile 'com.google.android.gms:play-services:7.3.+'
     compile 'de.greenrobot:greendao:1.3.7'
     compile 'com.jakewharton:butterknife:6.1.0'
-    compile 'com.android.support:appcompat-v7:+'
-    compile 'com.android.support:support-v4:21.0.+'
-
+    compile 'com.android.support:appcompat-v7:22.1.+'
+    compile 'com.android.support:support-v4:22.1.+'
+    compile 'com.squareup.retrofit:retrofit:1.9.0'
+    compile 'de.greenrobot:eventbus:2.4.0'
     // ================== TESTING LIBRARIES ======================
     testCompile 'junit:junit:4.12'
     testCompile('org.robolectric:robolectric:2.4') {
@@ -55,5 +85,5 @@ dependencies {
         exclude group: 'org.apache.httpcomponents', module: 'httpclient'
     }
     testCompile 'org.bouncycastle:bcprov-jdk15on:1.50'
-    testCompile "org.mockito:mockito-core:1.9.5"
+    testCompile 'org.mockito:mockito-core:1.9.5'
 }

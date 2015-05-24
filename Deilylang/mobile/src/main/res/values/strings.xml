@@ -14,6 +14,14 @@
     <string name="buttonAcceptDialog">Aceptar</string>
     <string name="successSavingDialogTitle">Momento guardado</string>
 
+    <!-- Login activity texts-->
+    <string name="Login_MailHint">Correo electrónico</string>
+    <string name="Login_PassHint">Contraseña</string>
+    <string name="Login_AppButton">Entrar</string>
+    <string name="Login_FacebookButton">Facebook</string>
+    <string name="Login_TwitterButton">Twitter</string>
+    <string name="Login_GoogleButton">Google</string>
+
     <!-- Languages -->
     <string name="Spanish">Español</string>
     <string name="German">Alemán</string>

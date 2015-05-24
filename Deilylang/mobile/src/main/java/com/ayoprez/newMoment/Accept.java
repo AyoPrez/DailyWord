@@ -22,7 +22,7 @@ public class Accept {
 		this.UTILS = new Utils();
 	}
 	
-	public void Accept_Dialog(String AppLanguage, String Language, String Level, String Time){
+	public void Accept_Dialog(String AppLanguage, String Language, final String Level, String Time){
 		UserMomentsRepository userMomentsRepository = new UserMomentsRepository();
 
 		if(!Language.equals(context.getString(R.string.button_language)) && !Level.equals(context.getString(R.string.button_level))
@@ -35,8 +35,8 @@ public class Accept {
                     Locale.getDefault().getISO3Language());
 
             userMomentsRepository.insertOrUpdate(context, userMoments);
-			
-			if(new StartAndCancelAlarmManager(context, (int)userMomentsRepository.getLastId(context) - 1).startAlarmManager(Time)){
+
+			if(new StartAndCancelAlarmManager(context, userMoments).startAlarmManager(Time)){
                 UTILS.Create_Dialog(context, context.getString(R.string.successSavingMoment),
                         context.getString(R.string.buttonAcceptDialog),
                         context.getString(R.string.successSavingDialogTitle));

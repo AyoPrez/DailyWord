@@ -1,56 +1,32 @@
 
 package com.ayoprez.notification;
 
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
-import com.ayoprez.deilylang.R;
-import com.ayoprez.deilylang.WordScreen;
+import com.ayoprez.restfulservice.GetWords;
 
-public class AlarmReceiver extends BroadcastReceiver {
+public class AlarmReceiver extends BroadcastReceiver{
 
-    String[] words = {"Hola", "Hello"};
+    public Context context;
 
     @Override
     public void onReceive(Context context, Intent intent) {
+        this.context = context;
         try {
-            launchNotification(context, words);
+            getWords(context, intent);
         } catch (Exception e) {
-            Log.e("NotificationException", e.getMessage());
+            Log.e("NotificationException", "Error: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
-    private void launchNotification(Context context, String[] words) throws Exception{
-        NotificationManager nManager = (NotificationManager)
-                context.getSystemService(Context.NOTIFICATION_SERVICE);
-
-        Log.e("Notification", "Notification up");
-
-        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(
-                context)
-                .setSmallIcon(R.drawable.deilylang_notification_icon)
-                .setContentTitle(context.getString(R.string.app_name))
-                .setContentText(words[0] + " -> " + words[1]);
-
-        Intent targetIntent = new Intent(context, WordScreen.class);
-
-        Bundle bundle = new Bundle();
-        bundle.putStringArray("words", words);
-        targetIntent.putExtras(bundle);
-
-        PendingIntent contentIntent = PendingIntent.getActivity(context, 0, targetIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
-
-        notificationBuilder.setContentIntent(contentIntent);
-        notificationBuilder.setAutoCancel(true);
-
-        nManager.notify(123, notificationBuilder.build());
+    private void getWords(Context context, Intent intent)throws Exception{
+        String level = intent.getStringExtra("level");
+        String languageLearning = intent.getStringExtra("languageLearning");
+        String languageDevice = intent.getStringExtra("languageDevice");
+        new GetWords(context).sendWordRequest(level, languageDevice, languageLearning);
     }
 }

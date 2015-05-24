@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ayoprez.notification.StartAndCancelAlarmManager;
 
@@ -22,15 +23,20 @@ public class WordScreen extends Activity {
     private Context mContext;
     private TextToSpeech textToSpeech;
     private String[] wordsFromTables;
+    private String[] typesFromTables;
 
     @InjectView(R.id.imageButton_WordScreen_1)
     ImageButton mImageButton1WordScreen;
     @InjectView(R.id.textView_WordScreen_1)
     TextView mWord1WordScreen;
+    @InjectView(R.id.textView_Type_1)
+    TextView mType1WordScreen;
     @InjectView(R.id.imageButton_WordScreen_2)
     ImageButton mImageButton2WordScreen;
     @InjectView(R.id.textView_WordScreen_2)
     TextView mWord2WordScreen;
+    @InjectView(R.id.textView_Type_2)
+    TextView mType2WordScreen;
     @InjectView(R.id.button_WordScreen_)
     Button mButtonSaveWord;
     @InjectView(R.id.button_WordScreen_2)
@@ -42,6 +48,19 @@ public class WordScreen extends Activity {
 //        } else {
 //            Toast.makeText(mContext, "Fail", Toast.LENGTH_LONG).show();
 //        }
+        Toast.makeText(this, "Que no, pringao", Toast.LENGTH_LONG).show();
+    }
+
+    @OnClick(R.id.button_WordScreen_2) void buttonRemindMeLater(){
+        if(new StartAndCancelAlarmManager(mContext, null).startAlarmManager20MinutesLater()){
+            new Utils().Create_Dialog(mContext, mContext.getString(R.string.successSavingMoment),
+                    mContext.getString(R.string.buttonAcceptDialog),
+                    mContext.getString(R.string.successSavingDialogTitle));
+        }else{
+            new Utils().Create_Dialog(mContext, mContext.getString(R.string.errorSavingMoment),
+                    mContext.getString(R.string.buttonAcceptDialog),
+                    mContext.getString(R.string.errorSavingDialogTitle));
+        }
     }
 
     @Override
@@ -55,6 +74,7 @@ public class WordScreen extends Activity {
         Bundle bundle = getIntent().getExtras();
 
         wordsFromTables = bundle.getStringArray("words");
+        typesFromTables = bundle.getStringArray("types");
 
         mImageButton1WordScreen.setOnClickListener(listenerWordScreenImageButton1);
         mImageButton2WordScreen.setOnClickListener(listenerWordScreenImageButton2);
@@ -62,37 +82,9 @@ public class WordScreen extends Activity {
         mWord1WordScreen.setText(wordsFromTables[0]);
         mWord2WordScreen.setText(wordsFromTables[1]);
 
-//        mButton1WordScreen.setOnClickListener(listenerWordScreenButtonDone);
-        mButtonRemainLater.setOnClickListener(listenerWordScreenButtonMoreMinutes);
+        mType1WordScreen.setText(typesFromTables[0]);
+        mType2WordScreen.setText(typesFromTables[1]);
     }
-
-//    private View.OnClickListener listenerWordScreenButtonDone = new View.OnClickListener() {
-//
-//        @Override
-//        public void onClick(View v) {
-//            if (new SQLMethods(mContext).ChangeDBConfValue("1", "English")) {
-//                Toast.makeText(mContext, "Changed succesfully", Toast.LENGTH_LONG).show();
-//            } else {
-//                Toast.makeText(mContext, "Fail", Toast.LENGTH_LONG).show();
-//            }
-//        }
-//    };
-
-    private View.OnClickListener listenerWordScreenButtonMoreMinutes = new View.OnClickListener() {
-
-        @Override
-        public void onClick(View v) {
-            if(new StartAndCancelAlarmManager(mContext, 0).startAlarmManager20MinutesLater()){
-                new Utils().Create_Dialog(mContext, mContext.getString(R.string.successSavingMoment),
-                        mContext.getString(R.string.buttonAcceptDialog),
-                        mContext.getString(R.string.successSavingDialogTitle));
-            }else{
-                new Utils().Create_Dialog(mContext, mContext.getString(R.string.errorSavingMoment),
-                        mContext.getString(R.string.buttonAcceptDialog),
-                        mContext.getString(R.string.errorSavingDialogTitle));
-            }
-        }
-    };
 
     private View.OnClickListener listenerWordScreenImageButton1 = new View.OnClickListener() {
 
@@ -101,8 +93,8 @@ public class WordScreen extends Activity {
             textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
                 @Override
                 public void onInit(int status) {
-                    if (status != TextToSpeech.ERROR) {
-                        textToSpeech.setLanguage(new Locale("es"));
+                    if (status == TextToSpeech.SUCCESS) {
+                        textToSpeech.setLanguage(new Locale(Locale.getDefault().getDisplayLanguage()));
                         textToSpeech.speak(wordsFromTables[0], TextToSpeech.QUEUE_FLUSH, null);
                     }
                 }
@@ -117,8 +109,14 @@ public class WordScreen extends Activity {
             textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
                 @Override
                 public void onInit(int status) {
-                    if (status != TextToSpeech.ERROR) {
-                        textToSpeech.setLanguage(Locale.UK);
+                    Locale languageNew;
+                    if(Locale.getDefault().getDisplayLanguage() == "english"){ //Cambiar esto. Echar una pensada
+                        languageNew = new Locale("es");
+                    }else{
+                        languageNew = Locale.UK;
+                    }
+                    if (status == TextToSpeech.SUCCESS) {
+                        textToSpeech.setLanguage(languageNew);
                         textToSpeech.speak(wordsFromTables[1], TextToSpeech.QUEUE_FLUSH, null);
                     }
                 }

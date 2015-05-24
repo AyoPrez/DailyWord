@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:src="@drawable/deilylang_icon"
+        android:layout_margin="10dp"
+        android:layout_gravity="center_horizontal" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@+id/login_mail"
+        android:hint="@string/Login_MailHint"
+        android:layout_margin="10dp"
+        android:layout_gravity="center_horizontal" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:hint="@string/Login_PassHint"
+        android:id="@+id/login_pass"
+        android:layout_margin="10dp"
+        android:layout_gravity="center_horizontal" />
+
+    <!-- Falta botón de registro de usuarios -->
+    <!-- Que sea expansible. Sólo se mostrarán los botones y al pulsar en este se mostrarán las barras para email y pass-->
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="@string/Login_AppButton"
+        android:id="@+id/app_loginButton"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="@string/Login_FacebookButton"
+        android:id="@+id/facebook_loginButton"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="@string/Login_TwitterButton"
+        android:id="@+id/twitter_loginButton"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="@string/Login_GoogleButton"
+        android:id="@+id/google_loginButton"
+        android:layout_gravity="center_horizontal" />
+</LinearLayout>

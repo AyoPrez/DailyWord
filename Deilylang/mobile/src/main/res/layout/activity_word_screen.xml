@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/secondary_text_default_material_dark"
     android:orientation="vertical"
     tools:context=".WordScreen">
 
@@ -9,24 +10,40 @@
         android:orientation="horizontal"
         android:layout_weight="0.3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+        android:layout_height="match_parent"
+        android:layout_margin="10dp">
 
         <ImageButton
             android:id="@+id/imageButton_WordScreen_1"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="10dp"
+            android:layout_gravity="center_vertical"
             android:background="@android:drawable/ic_lock_silent_mode_off" />
 
-        <TextView
-            android:id="@+id/textView_WordScreen_1"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Large Text"
+            android:layout_margin="10dp"
+            android:layout_gravity="center_vertical">
 
-  />
+            <TextView
+                android:id="@+id/textView_WordScreen_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Large Text"/>
+
+            <TextView
+                android:id="@+id/textView_Type_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="50dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Large Text" />
+            </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -34,46 +51,67 @@
         android:layout_weight="0.3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center_vertical">
+        android:layout_gravity="center_vertical"
+        android:layout_margin="10dp">
 
         <ImageButton
             android:id="@+id/imageButton_WordScreen_2"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="10dp"
             android:background="@android:drawable/ic_lock_silent_mode_off" />
 
-        <TextView
-            android:id="@+id/textView_WordScreen_2"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Large Text"
+            android:layout_margin="10dp"
+            android:layout_gravity="center_vertical">
 
-            android:layout_gravity="center_vertical" />
+            <TextView
+                android:id="@+id/textView_WordScreen_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Large Text"
+                android:layout_gravity="center_vertical" />
 
-
+            <TextView
+                android:id="@+id/textView_Type_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="50dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Large Text" />
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_weight="0.2"
+        android:layout_weight="0.3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical">
 
-
         <Button
             android:id="@+id/button_WordScreen_"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:background="@drawable/wordscreen_button"
             android:text="@string/buttonDone" />
 
         <Button
             android:id="@+id/button_WordScreen_2"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:background="@drawable/wordscreen_button"
             android:text="@string/buttonLater"/>
     </LinearLayout>
+
 </LinearLayout>

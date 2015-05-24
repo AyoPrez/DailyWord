@@ -56,6 +56,7 @@ public class AlarmManagerTest {
         ShadowAlarmManager.ScheduledAlarm scheduledAlarm = shadowAlarmManager.getNextScheduledAlarm();
         assertThat(scheduledAlarm, notNullValue());
     }
+
     @Test
     public void setShouldReplaceDuplicates() {
         alarmManager.set(AlarmManager.ELAPSED_REALTIME, 0, PendingIntent.getActivity(mainActivity, 0,
@@ -64,6 +65,7 @@ public class AlarmManagerTest {
                 new Intent(mainActivity, mainActivity.getClass()), 0));
         assertEquals(1, shadowAlarmManager.getScheduledAlarms().size());
     }
+
     @Test
     public void setRepeatingShouldReplaceDuplicates() {
         alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME, 0, AlarmManager.INTERVAL_HOUR,

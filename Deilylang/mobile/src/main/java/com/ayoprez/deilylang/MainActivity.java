@@ -64,7 +64,7 @@ public class MainActivity extends Activity {
 
     public void showAlertDialogToDeleteItem(final Context mContext, final int selectedItem) {
         UserMomentsRepository userMomentsRepository = new UserMomentsRepository();
-        List<UserMoments> userMoments = getDataFromDatabaseToListView(mContext);
+        final List<UserMoments> userMoments = getDataFromDatabaseToListView(mContext);
         final int momentId = (int)userMomentsRepository.getIdFromData(mContext, userMoments.get(selectedItem));
 
         new AlertDialog.Builder(this)
@@ -74,7 +74,8 @@ public class MainActivity extends Activity {
                     public void onClick(DialogInterface dialog, int which) {
                         try {
                             deleteItemFromDatabase(mContext, selectedItem);
-                            new StartAndCancelAlarmManager(mContext, momentId).cancelAlarmManager();
+//                            new StartAndCancelAlarmManager(mContext, momentId, userMoments.get(selectedItem).getLevel()).cancelAlarmManager();
+                            new StartAndCancelAlarmManager(mContext, userMoments.get(0)).cancelAlarmManager();
                             Log.e("MomentId", "" + momentId);
                             showReviewList(mContext);
                         } catch (Exception e) {
