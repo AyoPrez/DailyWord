@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.ayoprez.wordscreen.WordScreen;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

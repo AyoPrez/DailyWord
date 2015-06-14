@@ -14,6 +14,11 @@
     <string name="buttonAcceptDialog">Aceptar</string>
     <string name="successSavingDialogTitle">Momento guardado</string>
 
+    <!-- Menu -->
+    <string name="action_login">Iniciar sesión</string>
+    <string name="action_settings">Opciones</string>
+    <string name="action_logout">Cerrar sesión</string>
+
     <!-- Login activity texts-->
     <string name="Login_MailHint">Correo electrónico</string>
     <string name="Login_PassHint">Contraseña</string>
@@ -21,12 +26,21 @@
     <string name="Login_FacebookButton">Facebook</string>
     <string name="Login_TwitterButton">Twitter</string>
     <string name="Login_GoogleButton">Google</string>
+    <string name="Login_Continue">Continuar sin iniciar sesión</string>
 
     <!-- Languages -->
     <string name="Spanish">Español</string>
     <string name="German">Alemán</string>
     <string name="English">Inglés</string>
     <string name="Finish">Finlandés</string>
+
+    <string-array name="pref_languages">
+        <item>Español</item>
+        <item>Alemán</item>
+        <item>Inglés</item>
+        <item>Finlandés</item>
+    </string-array>
+    <string name="language">Lenguajes</string>
 
     <!-- Levels -->
     <string name="basic">Básico</string>
@@ -48,14 +62,13 @@
     <!-- Word -->
     <string name="buttonDone">¡La tengo!</string>
     <string name="buttonLater">Recuerdamela en 20 minutos</string>
+    <string name="bad_translation">Reportar mala traducción</string>
 
     <!-- Errors -->
     <string name="error_select">Debe seleccionar idioma, nivel y momento</string>
     <string name="errorSavingMoment">Ha habido un error y no se ha podido guardar el momento</string>
     <string name="errorSavingDialogTitle">Hubo un error</string>
     <string name="title_activity_word_screen">WordScreen</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
     <string name="errorDeletingMoment" />
 
 </resources>

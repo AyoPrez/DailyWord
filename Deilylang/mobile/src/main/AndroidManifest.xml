@@ -20,7 +20,19 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="com.ayoprez.deilylang.Preferences"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.ayoprez.login.LoginActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.ayoprez.userProfile.ProfileScreen"
+            android:label="@string/app_name" />
+        <activity
             android:name="com.ayoprez.newMoment.NewMomentActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.ayoprez.savedWords.SavedWordsScreen"
             android:label="@string/app_name" />
 
         <receiver
@@ -38,7 +50,7 @@
         </receiver>
 
         <activity
-            android:name=".WordScreen"
+            android:name="com.ayoprez.wordscreen.WordScreen"
             android:label="@string/title_activity_word_screen" >
         </activity>
     </application>

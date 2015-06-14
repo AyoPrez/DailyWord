@@ -9,6 +9,20 @@
     <string name="button_accept">Fertig!</string>
     <string name="deleteMomentDialog">Moment löschen</string>
 
+    <!-- Menu -->
+    <string name="action_login">--------</string>
+    <string name="action_settings">--------</string>
+    <string name="action_logout">----------</string>
+
+    <!-- Login activity texts-->
+    <string name="Login_MailHint">-----------</string>
+    <string name="Login_PassHint">-------------</string>
+    <string name="Login_AppButton">---------</string>
+    <string name="Login_FacebookButton">Facebook</string>
+    <string name="Login_TwitterButton">Twitter</string>
+    <string name="Login_GoogleButton">Google</string>
+    <string name="Login_Continue">-------------</string>
+
     <!-- Languages -->
     <string name="Spanish">Spanisch</string>
     <string name="German">Deutsch</string>
@@ -35,6 +49,7 @@
     <!-- Word -->
     <string name="buttonDone">Ich habe es!</string>
     <string name="buttonLater">Erinnere mich in 20 Minuten</string>
+    <string name="bad_translation">-----------------------------</string>
 
     <!-- Errors -->
     <string name="error_select">Sie müssen Sprache, Füllstands und Zeit wählen</string>

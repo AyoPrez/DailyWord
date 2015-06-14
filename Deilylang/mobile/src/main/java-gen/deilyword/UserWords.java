@@ -8,7 +8,9 @@ public class UserWords {
 
     private Long id;
     private Integer IdWord;
-    private String language;
+    private String LanguageNew;
+    private String LanguageDevice;
+    private String Level;
 
     public UserWords() {
     }
@@ -17,10 +19,12 @@ public class UserWords {
         this.id = id;
     }
 
-    public UserWords(Long id, Integer IdWord, String language) {
+    public UserWords(Long id, Integer IdWord, String LanguageNew, String LanguageDevice, String Level) {
         this.id = id;
         this.IdWord = IdWord;
-        this.language = language;
+        this.LanguageNew = LanguageNew;
+        this.LanguageDevice = LanguageDevice;
+        this.Level = Level;
     }
 
     public Long getId() {
@@ -39,12 +43,28 @@ public class UserWords {
         this.IdWord = IdWord;
     }
 
-    public String getLanguage() {
-        return language;
+    public String getLanguageNew() {
+        return LanguageNew;
     }
 
-    public void setLanguage(String language) {
-        this.language = language;
+    public void setLanguageNew(String LanguageNew) {
+        this.LanguageNew = LanguageNew;
+    }
+
+    public String getLanguageDevice() {
+        return LanguageDevice;
+    }
+
+    public void setLanguageDevice(String LanguageDevice) {
+        this.LanguageDevice = LanguageDevice;
+    }
+
+    public String getLevel() {
+        return Level;
+    }
+
+    public void setLevel(String Level) {
+        this.Level = Level;
     }
 
 }

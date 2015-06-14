@@ -114,4 +114,13 @@
             android:text="@string/buttonLater"/>
     </LinearLayout>
 
+    <Button
+        android:id="@+id/button_report_WordScreen"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:textSize="10dp"
+        android:text="@string/bad_translation"/>
+
 </LinearLayout>

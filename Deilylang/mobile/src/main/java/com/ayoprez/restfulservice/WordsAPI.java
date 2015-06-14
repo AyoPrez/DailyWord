@@ -1,6 +1,7 @@
 package com.ayoprez.restfulservice;
 
 import com.ayoprez.deilylang.WordFromDatabase;
+import com.ayoprez.savedWords.SavedWords;
 
 import retrofit.Callback;
 import retrofit.http.GET;
@@ -15,4 +16,7 @@ public interface WordsAPI {
                   @Path("Language1") String LanguageMobile,
                   @Path("Language2") String LanguageNew ,
                   Callback<WordFromDatabase> response);
+
+    @GET("/English/{Id}/{Level}")
+    void getSavedWords(@Path("Id") int Id, @Path("Level") String Level, Callback<SavedWords> response);
 }

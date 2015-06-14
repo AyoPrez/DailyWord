@@ -11,7 +11,7 @@ import android.util.Log;
 
 import com.ayoprez.deilylang.R;
 import com.ayoprez.deilylang.WordFromDatabase;
-import com.ayoprez.deilylang.WordScreen;
+import com.ayoprez.wordscreen.WordScreen;
 
 import java.util.Random;
 
@@ -45,8 +45,12 @@ public class LaunchNotification extends Application{
         Intent targetIntent = new Intent(context, WordScreen.class);
 
         Bundle bundle = new Bundle();
+
+        bundle.putInt("wordId", words.getId());
         bundle.putStringArray("words", words.getWord());
         bundle.putStringArray("types", words.getType());
+        bundle.putString("level", words.getLevel());
+
         targetIntent.putExtras(bundle);
 
 //Cambiar número pending

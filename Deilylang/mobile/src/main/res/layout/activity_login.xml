@@ -62,4 +62,11 @@
         android:text="@string/Login_GoogleButton"
         android:id="@+id/google_loginButton"
         android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="@string/Login_Continue"
+        android:id="@+id/login_continue"
+        android:layout_gravity="center_horizontal" />
 </LinearLayout>

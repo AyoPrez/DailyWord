@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="preferences"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ListPreference
+        android:key="language"
+        android:title="@string/language"
+        android:entries="@array/pref_languages"
+        android:entryValues="@array/pref_languages"
+        android:summary="@string/language" />
+
+    <!-- Cambiar idioma -->
+
+    <!-- About (Información de la aplicación, version)-->
+
+    <!-- Información legal -->
+
+    <!-- Contacto -->
+
+</PreferenceScreen>
