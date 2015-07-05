@@ -27,7 +27,6 @@
     <string name="Spanish">Spanisch</string>
     <string name="German">Deutsch</string>
     <string name="English">Englisch</string>
-    <string name="Finish">Finnisch</string>
 
     <!-- Levels -->
     <string name="basic">Basic</string>
@@ -54,5 +53,27 @@
     <!-- Errors -->
     <string name="error_select">Sie müssen Sprache, Füllstands und Zeit wählen</string>
     <string name="errorDeletingMoment" />
+
+    <!-- Preferences -->
+
+    <string-array name="pref_languages">
+        <item>Spanisch</item>
+        <item>Deutsch</item>
+        <item>Englisch</item>
+    </string-array>
+    <string name="language_category_title">Sprachen</string>
+    <string name="subpreference_language">Ändern Sie die Sprache der App</string>
+    <string name="language">Sprache ändern</string>
+
+    <string name="about_title">Über die App</string>
+    <string name="version">Version</string>
+    <string name="info">Info</string>
+    <string name="info_message">App liebevoll gemacht durch AyoPrez.
+                                Für weitere Informationen, besuchen Sie die Website</string>
+    <string name="versionName">1.0</string>
+
+    <string name="legal_title">Rechtliche und Kontakt</string>
+    <string name="terms">Geschäftsbedingungen</string>
+    <string name="contact">Kontakt</string>
 
 </resources>

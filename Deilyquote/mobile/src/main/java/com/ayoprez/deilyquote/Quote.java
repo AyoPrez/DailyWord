@@ -1,4 +1,4 @@
-package com.ayoprez.deilylang;
+package com.ayoprez.deilyquote;
 
 /**
  * Created by AyoPrez on 10/05/15.

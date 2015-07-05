@@ -1,5 +1,6 @@
 package com.ayoprez.savedWords;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
@@ -10,6 +11,7 @@ import com.ayoprez.deilylang.R;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
  * Created by AyoPrez on 24/05/15.
@@ -36,4 +38,8 @@ public class SavedWordsScreen extends FragmentActivity {
         tabHost.addTab(tabHost.newTabSpec("tab4").setIndicator("Hard"), TabHard.class, null);
     }
 
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
 }

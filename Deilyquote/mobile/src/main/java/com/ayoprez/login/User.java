@@ -12,11 +12,6 @@ public class User {
 
     public User(){}
 
-    public User (String name, String mail){
-        this.Name = name;
-        this.Mail = mail;
-    }
-
     public User(int id, String name, String mail, String pass){
         this.Id = id;
         this.Name = name;
@@ -30,10 +25,10 @@ public class User {
         this.Pass = pass;
     }
 
-//    public User(String mail, String pass){
-//        this.Mail = mail;
-//        this.Pass = pass;
-//    }
+    public User(String mail, String pass){
+        this.Mail = mail;
+        this.Pass = pass;
+    }
 
     public int getId() {
         return Id;

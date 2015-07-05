@@ -11,6 +11,8 @@ import com.ayoprez.deilylang.R;
 
 import java.util.Locale;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 public class NewMomentActivity extends Activity{
 
 	private Button B_Language, B_Level, B_Time, B_Accept;
@@ -76,5 +78,10 @@ public class NewMomentActivity extends Activity{
 	public void Time_Text(String Text){
 		B_Time.setText(Text);
 	}
-			
+
+	@Override
+	protected void attachBaseContext(Context newBase) {
+		super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+	}
+
 }

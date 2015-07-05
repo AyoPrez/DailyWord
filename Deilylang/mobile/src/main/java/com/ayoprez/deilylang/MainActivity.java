@@ -20,7 +20,11 @@ import com.ayoprez.login.LoginActivity;
 import com.ayoprez.login.SessionManager;
 import com.ayoprez.newMoment.NewMomentActivity;
 import com.ayoprez.notification.StartAndCancelAlarmManager;
+import com.ayoprez.preferences.Preferences;
 import com.ayoprez.userProfile.ProfileScreen;
+import com.crashlytics.android.Crashlytics;
+import com.twitter.sdk.android.Twitter;
+import com.twitter.sdk.android.core.TwitterAuthConfig;
 
 import java.util.List;
 
@@ -29,8 +33,15 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 import butterknife.OnItemLongClick;
 import deilyword.UserMoments;
+import io.fabric.sdk.android.Fabric;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AppCompatActivity {
+
+    // Note: Your consumer key and secret should be obfuscated in your source code before shipping.
+    private static final String TWITTER_KEY = "ca9fZBuy7LLrMEfaK9mP4VCab";
+    private static final String TWITTER_SECRET = "1gJO7L847SiDrFoI6qiohSMipxJPKSRJA2TjHtIdcjr5nVYo8p";
+
 
     @InjectView(R.id.reviewList) ListView mReviewList;
 
@@ -59,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
+        Fabric.with(this, new Crashlytics(), new Twitter(authConfig));
         setContentView(R.layout.activity_main);
         ButterKnife.inject(this);
 
@@ -160,5 +173,10 @@ public class MainActivity extends AppCompatActivity {
                 return true;
         }
         return true;
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

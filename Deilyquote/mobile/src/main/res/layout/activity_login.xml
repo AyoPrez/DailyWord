@@ -7,10 +7,10 @@
 
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
         android:id="@+id/imageView"
-        android:src="@drawable/deilylang_icon"
+        android:src="@drawable/deilyquote_icon"
         android:layout_marginTop="80dp"
         android:layout_marginBottom="30dp"
         android:layout_gravity="center_horizontal" />
@@ -23,6 +23,14 @@
         android:textColor="@color/white"
         android:textSize="17sp"
         android:layout_gravity="center_horizontal" />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/sign_in_button"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_margin="8dp"
+        android:textSize="17sp"
+        android:layout_gravity="center_horizontal"/>
 
     <com.twitter.sdk.android.core.identity.TwitterLoginButton
         android:id="@+id/twitter_login_button"

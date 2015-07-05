@@ -1,7 +1,5 @@
 package com.ayoprez.userProfile;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -9,13 +7,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.ayoprez.deilylang.R;
+import com.ayoprez.deilyquote.R;
 import com.ayoprez.login.SessionManager;
-import com.ayoprez.savedWords.SavedWordsScreen;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
  * Created by AyoPrez on 31/05/15.
@@ -26,8 +22,8 @@ public class ProfileScreen extends AppCompatActivity{
     private SessionManager sessionManager;
 
     @OnClick(R.id.b_save) void mSavedButton(){
-        Intent savedIntent = new Intent(this, SavedWordsScreen.class);
-        startActivity(savedIntent);
+//        Intent savedIntent = new Intent(this, SavedWordsScreen.class);
+//        startActivity(savedIntent);
         //Idea: Que esta pantalla sea un deplegable desde un lado o desde abajo
     }
 
@@ -69,11 +65,5 @@ public class ProfileScreen extends AppCompatActivity{
                 return true;
         }
         return true;
-    }
-
-    //Custom font
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

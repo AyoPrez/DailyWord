@@ -20,27 +20,15 @@
     <string name="action_logout">Cerrar sesión</string>
 
     <!-- Login activity texts-->
-    <string name="Login_MailHint">Correo electrónico</string>
-    <string name="Login_PassHint">Contraseña</string>
-    <string name="Login_AppButton">Entrar</string>
-    <string name="Login_FacebookButton">Facebook</string>
-    <string name="Login_TwitterButton">Twitter</string>
-    <string name="Login_GoogleButton">Google</string>
     <string name="Login_Continue">Continuar sin iniciar sesión</string>
+    <string name="t_key">kO7Xg8iBpgpQFyHm9MPg1UfLr</string>
+    <string name="t_secret">7W9GQ662sHPcf4G5HK5xpa4mO3eSXD5GzL3wtycsrQEM4uhopk</string>
+    <string name="f_key">697126877059363</string>
 
     <!-- Languages -->
     <string name="Spanish">Español</string>
     <string name="German">Alemán</string>
     <string name="English">Inglés</string>
-    <string name="Finish">Finlandés</string>
-
-    <string-array name="pref_languages">
-        <item>Español</item>
-        <item>Alemán</item>
-        <item>Inglés</item>
-        <item>Finlandés</item>
-    </string-array>
-    <string name="language">Lenguajes</string>
 
     <!-- Levels -->
     <string name="basic">Básico</string>
@@ -70,5 +58,28 @@
     <string name="errorSavingDialogTitle">Hubo un error</string>
     <string name="title_activity_word_screen">WordScreen</string>
     <string name="errorDeletingMoment" />
+
+    <!-- Preferences -->
+    <string-array name="pref_languages">
+        <item>Español</item>
+        <item>Alemán</item>
+        <item>Inglés</item>
+    </string-array>
+    <string name="language_category_title">Idiomas</string>
+    <string name="subpreference_language">Cambia el idioma de la aplicación</string>
+    <string name="language">Cambiar idioma</string>
+
+    <string name="about_title">Sobre la aplicación</string>
+    <string name="version">Versión</string>
+    <string name="info">Info</string>
+    <string name="info_message">Aplicación realizada con cariño por AyoPrez. \n\n
+                                Para más información, acuda a la web </string>
+    <string name="versionName">1.0</string>
+
+    <string name="legal_title">Términos de uso y contacto</string>
+    <string name="terms">Términos y condiciones</string>
+    <string name="contact">Contacto</string>
+    <string name="contact_message">Si desea ponerse en contacto conmigo puede hacerlo desde la sección de contacto de mi web. </string>
+    <string name="legal_text"></string>
 
 </resources>

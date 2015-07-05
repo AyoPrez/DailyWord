@@ -60,4 +60,25 @@
     <string name="errorSavingDialogTitle">There was an error</string>
     <string name="errorDeletingMoment" />
 
+    <!-- Preferences -->
+    <string-array name="pref_languages">
+        <item>Spanish</item>
+        <item>German</item>
+        <item>English</item>
+    </string-array>
+    <string name="language_category_title">Languages</string>
+    <string name="subpreference_language">Change the language of the app</string>
+    <string name="language">Change languages</string>
+
+    <string name="about_title">About the app</string>
+    <string name="version">Version</string>
+    <string name="info">Info</string>
+    <string name="info_message">App made fondly by AyoPrez. \n\n
+                                For more information, visit the website http://www.ayoprez.com</string>
+    <string name="versionName">1.0</string>
+
+    <string name="legal_title">Legal and contact</string>
+    <string name="terms">Terms and conditions</string>
+    <string name="contact">Contact</string>
+
 </resources>
