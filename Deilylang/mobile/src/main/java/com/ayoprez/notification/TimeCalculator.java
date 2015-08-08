@@ -38,7 +38,7 @@ public class TimeCalculator {
 
         Calendar c = Calendar.getInstance();
         c.set(Calendar.HOUR, c.get(Calendar.HOUR));
-        c.set(Calendar.MINUTE, c.get(Calendar.MINUTE) + 2);
+        c.set(Calendar.MINUTE, c.get(Calendar.MINUTE) + 20);
         c.set(Calendar.SECOND, 0);
         c.set(Calendar.MILLISECOND, 0);
         return c.getTimeInMillis();

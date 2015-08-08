@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Deilylang</string>
+    <string name="app_name">DeilyLang</string>
     <string name="moment_review">Review moments</string>
     <string name="button_language">Choose a language</string>
     <string name="button_level">Choose a level</string>
@@ -21,7 +21,6 @@
     <string name="Spanish">Spanish</string>
     <string name="German">German</string>
     <string name="English">English</string>
-    <string name="Finish">Finnish</string>
 
     <!-- Login activity texts-->
     <string name="Login_MailHint">Email</string>
@@ -31,6 +30,13 @@
     <string name="Login_TwitterButton">Twitter</string>
     <string name="Login_GoogleButton">Google</string>
     <string name="Login_Continue">Continue without login</string>
+    <string name="register">Sign up!</string>
+
+    <!-- Register screen texts-->
+    <string name="name">Name: </string>
+    <string name="mail">E-Mail: </string>
+    <string name="pass">Password: </string>
+    <string name="pass2">Repeat password: </string>
 
     <!-- Levels -->
     <string name="basic">Basic</string>
@@ -49,10 +55,23 @@
     <string name="dialog_negative_button">Cancel</string>
     <string name="new_moment">New Moment</string>
 
+    <!-- Saved words -->
+    <string name="savedWords_button">Words already known</string>
+
     <!-- Word -->
     <string name="buttonDone">I got it! </string>
     <string name="buttonLater">Remind me in 20 minutes</string>
     <string name="bad_translation">Report bad translation</string>
+    <string name="doneDialog">Perfect. You already got it. Now you know this word.</string>
+    <string name="laterDialog">I will remind you this word in a while so that you memorize it.</string>
+
+    <!-- Report bad translation mail-->
+    <string name="Subject">Translation report</string>
+    <string name="Body">The word </string>
+    <string name="Body2"> do not match with the word </string>
+    <string name="Body3">. Can you please check this translation?</string>
+    <string name="Title">Send mail report</string>
+    <string name="Error">There are no email clients installed</string>
 
     <!-- Errors -->
     <string name="error_select">You should select language, level and moment</string>
@@ -80,5 +99,17 @@
     <string name="legal_title">Legal and contact</string>
     <string name="terms">Terms and conditions</string>
     <string name="contact">Contact</string>
+    <string name="made_in">Made en Germany</string>
+    <string name="more_of_Ayoprez">More apps of AyoPrez</string>
+    <string name="developer">Developer</string>
+    <string name="feedback">Send some feedback</string>
+    <string name="rateAtGoogle">Rate the app</string>
+    <string name="rateError">Could not open the Play Store, please install it and try again.</string>
+    <string name="appName_shc">Speech help cards</string>
+    <string name="appName_deilyquote">DeilyQuote</string>
+    <string name="feedback_mail_subject">Feedback SHC</string>
+    <string name="feedback_mail_dialog_title">Send feedback</string>
+    <string name="feedback_mail_error">There are no email clients installed</string>
+
 
 </resources>

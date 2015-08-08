@@ -5,7 +5,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.ayoprez.newMoment.NewMomentActivity">
-    
+
+    <include layout="@layout/toolbar"/>
+
     <Button
         android:id="@+id/b_language"
         android:background="#0A7"

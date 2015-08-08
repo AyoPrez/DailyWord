@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Deilylang</string>
+    <string name="app_name">DeilyLang</string>
     <string name="moment_review">Revisar momentos</string>
     <string name="button_language">Elige un idioma</string>
     <string name="button_level">Elige nivel</string>
@@ -24,6 +24,13 @@
     <string name="t_key">kO7Xg8iBpgpQFyHm9MPg1UfLr</string>
     <string name="t_secret">7W9GQ662sHPcf4G5HK5xpa4mO3eSXD5GzL3wtycsrQEM4uhopk</string>
     <string name="f_key">697126877059363</string>
+    <string name="register">¡Regístrate!</string>
+
+    <!-- Register screen texts-->
+    <string name="name">Nombre: </string>
+    <string name="mail">Correo electrónico: </string>
+    <string name="pass">Contraseña: </string>
+    <string name="pass2">Repetir contraseña: </string>
 
     <!-- Languages -->
     <string name="Spanish">Español</string>
@@ -47,10 +54,23 @@
     <string name="dialog_negative_button">Cancelar</string>
     <string name="new_moment">Nuevo momento</string>
 
+    <!-- Saved words -->
+    <string name="savedWords_button">Palabras ya conocidas</string>
+
     <!-- Word -->
     <string name="buttonDone">¡La tengo!</string>
-    <string name="buttonLater">Recuerdamela en 20 minutos</string>
+    <string name="buttonLater">Recuérdamela en 20 minutos</string>
     <string name="bad_translation">Reportar mala traducción</string>
+    <string name="doneDialog">Perfecto. Ya la tienes. Ahora conoces esta palabra.</string>
+    <string name="laterDialog">Te recordaré esta palabra en un rato para que la memorices.</string>
+
+    <!-- Report bad translation mail-->
+    <string name="Subject">Reporte de traducción</string>
+    <string name="Body">La palabra </string>
+    <string name="Body2"> no coincide con la palabra </string>
+    <string name="Body3">. ¿Podría revisar la traducción?</string>
+    <string name="Title">Enviar correo de reporte</string>
+    <string name="Error">No tiene clientes de correo instalados</string>
 
     <!-- Errors -->
     <string name="error_select">Debe seleccionar idioma, nivel y momento</string>
@@ -79,7 +99,19 @@
     <string name="legal_title">Términos de uso y contacto</string>
     <string name="terms">Términos y condiciones</string>
     <string name="contact">Contacto</string>
-    <string name="contact_message">Si desea ponerse en contacto conmigo puede hacerlo desde la sección de contacto de mi web. </string>
-    <string name="legal_text"></string>
+    <string name="feedback">Envia algo de feedback</string>
+    <string name="made_in">Hecho en Alemania</string>
+    <string name="more_of_Ayoprez">Más apps de AyoPrez</string>
+    <string name="developer">Desarrollador</string>
+    <string name="rateAtGoogle">Evalúa la app</string>
+    <string name="rateError">No fue posible abrir la tienda de aplicaciones. Por favor, instalala y vuelve a intentarlo.</string>
+    <string name="feedback_mail_subject">Feedback SHC</string>
+    <string name="feedback_mail_dialog_title">Envía feedback</string>
+    <string name="feedback_mail_error">No hay clientes de correo electrónico instalados</string>
+    <string name="marketId">com.ayoprez.deilylang</string>
+    <string name="SHCId">com.ayoprez.speechhelpcards</string>
+    <string name="QuoteId">com.ayoprez.deilyquote</string>
+    <string name="appName_shc">Speech help cards</string>
+    <string name="appName_deilyquote">DeilyQuote</string>
 
 </resources>

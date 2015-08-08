@@ -9,6 +9,7 @@
     <color name="google">#4285f4</color>
     <color name="google_plus">#dd4b39</color>
     <color name="no_login">@color/ColorPrimaryDark</color>
+    <color name="login">@color/ColorPrimaryVeryDark</color>
 
     <color name="white">#FFF</color>
     <color name="black">#000</color>

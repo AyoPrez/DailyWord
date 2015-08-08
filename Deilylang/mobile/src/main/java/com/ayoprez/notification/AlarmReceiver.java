@@ -27,6 +27,14 @@ public class AlarmReceiver extends BroadcastReceiver{
         String level = intent.getStringExtra("level");
         String languageLearning = intent.getStringExtra("languageLearning");
         String languageDevice = intent.getStringExtra("languageDevice");
-        new GetWords(context).sendWordRequest(level, languageDevice, languageLearning);
+        int id = intent.getIntExtra("id", 0);
+
+        if(languageLearning.equals("eng")){
+            new GetWords(context).sendEnglishWordRequest(level, id, languageDevice);
+        }else{
+            if(languageLearning.equals("spa")){
+                new GetWords(context).sendSpanishWordRequest(level, id, languageDevice);
+            }
+        }
     }
 }

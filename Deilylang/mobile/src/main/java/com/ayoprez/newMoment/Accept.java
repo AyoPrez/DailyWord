@@ -8,8 +8,6 @@ import com.ayoprez.deilylang.R;
 import com.ayoprez.deilylang.Utils;
 import com.ayoprez.notification.StartAndCancelAlarmManager;
 
-import java.util.Locale;
-
 import deilyword.UserMoments;
 
 public class Accept {
@@ -32,7 +30,7 @@ public class Accept {
                     Language,
                     Level,
                     UTILS.TakeOutTimeDots(Time),
-                    Locale.getDefault().getISO3Language());
+                    AppLanguage);
 
             userMomentsRepository.insertOrUpdate(context, userMoments);
 

@@ -10,6 +10,9 @@ import android.widget.ListView;
 
 import com.ayoprez.deilylang.R;
 
+import java.util.ArrayList;
+import java.util.Locale;
+
 public class Language {
 
 	private Dialog Dialog;
@@ -26,8 +29,27 @@ public class Language {
 		this.Dialog.setTitle(R.string.button_language);
 		
 		this.Language_List = (ListView)Dialog.findViewById(R.id.LV_Language);
-		
-		final String[] Languages = {ctx.getString(R.string.English), ctx.getString(R.string.Finish), ctx.getString(R.string.Spanish), ctx.getString(R.string.German)};
+
+
+        //TODO improve this
+
+        String localLanguage = Locale.getDefault().getISO3Language();
+
+        final ArrayList<String> Languages = new ArrayList<>();
+
+        if(localLanguage.equals("spa")){
+            Languages.add(ctx.getString(R.string.English));
+            Languages.add(ctx.getString(R.string.German));
+        }else{
+            if(localLanguage.equals("deu")){
+                Languages.add(ctx.getString(R.string.English));
+                Languages.add(ctx.getString(R.string.Spanish));
+            }else{
+                Languages.add(ctx.getString(R.string.Spanish));
+                Languages.add(ctx.getString(R.string.German));
+            }
+        }
+
 					
 		this.Adapter = new ArrayAdapter<String>(ctx, android.R.layout.simple_list_item_1, Languages);
 		this.Language_List.setAdapter(Adapter);
@@ -36,7 +58,7 @@ public class Language {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				((NewMomentActivity)ctx).Language_Text(Languages[position]);
+				((NewMomentActivity)ctx).Language_Text(Languages.get(position));
 				Dialog.dismiss();
 			}
 		});

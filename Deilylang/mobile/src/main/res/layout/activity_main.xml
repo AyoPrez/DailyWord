@@ -31,4 +31,11 @@
         android:background="#28D"
         android:text="@string/new_moment" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New notification"
+        android:id="@+id/buttonn"
+        android:layout_gravity="center_horizontal" />
+
 </LinearLayout>

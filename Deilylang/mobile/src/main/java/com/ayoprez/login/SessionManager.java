@@ -4,6 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
+import com.facebook.AccessToken;
+import com.facebook.FacebookSdk;
+import com.twitter.sdk.android.Twitter;
+
 import java.util.HashMap;
 
 /**
@@ -21,15 +25,20 @@ public class SessionManager {
     private static final String IS_LOGIN = "IsLoggedIn";
     public static final String KEY_NAME = "name";
     public static final String KEY_EMAIL = "email";
+    public static final String KEY_ID = "id";
 
     public SessionManager(Context context){
         this.context = context;
         pref = context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
         editor = pref.edit();
+        if(!FacebookSdk.isInitialized()){
+            FacebookSdk.sdkInitialize(context);
+        }
     }
 
-    public void createLoginSession(String name, String email){
+    public void createLoginSession(String name, String email, String id){
         editor.putBoolean(IS_LOGIN, true);
+        editor.putString(KEY_ID, id);
         editor.putString(KEY_NAME, name);
         editor.putString(KEY_EMAIL, email);
         editor.commit();
@@ -40,6 +49,7 @@ public class SessionManager {
 
         user.put(KEY_NAME, pref.getString(KEY_NAME, pref.getString(KEY_NAME, null)));
         user.put(KEY_EMAIL, pref.getString(KEY_EMAIL, pref.getString(KEY_EMAIL, null)));
+        user.put(KEY_ID, pref.getString(KEY_ID, pref.getString(KEY_ID, null)));
 
         return user;
     }
@@ -57,6 +67,16 @@ public class SessionManager {
     public void logoutUser(){
         editor.clear();
         editor.commit();
+
+        //Logout Facebook
+        if(AccessToken.getCurrentAccessToken() != null){
+            new FacebookLogin(context).logoutFacebook();
+        }
+
+        //Logout Twitter
+        if(Twitter.getSessionManager().getActiveSession() != null){
+            new TwitterLogin(context).logoutTwitter();
+        }
 
         Intent i = new Intent(context, LoginActivity.class);
 

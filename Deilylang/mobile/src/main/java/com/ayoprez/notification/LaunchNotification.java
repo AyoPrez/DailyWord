@@ -16,6 +16,7 @@ import com.ayoprez.wordscreen.WordScreen;
 import java.util.Random;
 
 import de.greenrobot.event.EventBus;
+import deilyword.UserMoments;
 import retrofit.RetrofitError;
 
 /**
@@ -24,17 +25,20 @@ import retrofit.RetrofitError;
 public class LaunchNotification extends Application{
 
     private Context context;
+    private UserMoments userMoments;
 
     public LaunchNotification(Context context){
         this.context = context;
+        this.userMoments = new UserMoments();
         EventBus.getDefault().register(this);
     }
 
-    private void launchNotification(Context context, WordFromDatabase words) throws Exception{
+    public void launchNotification(Context context, WordFromDatabase words) throws Exception{
         NotificationManager nManager = (NotificationManager)
                 context.getSystemService(Context.NOTIFICATION_SERVICE);
 
         Log.e("Notification", "Notification up");
+        Log.e("DeilyLang", "Notification: " + words.getId());
 
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(
                 context)
@@ -50,24 +54,26 @@ public class LaunchNotification extends Application{
         bundle.putStringArray("words", words.getWord());
         bundle.putStringArray("types", words.getType());
         bundle.putString("level", words.getLevel());
+        bundle.putStringArray("languages", words.getLanguages());
 
         targetIntent.putExtras(bundle);
 
-//Cambiar número pending
-        PendingIntent contentIntent = PendingIntent.getActivity(context, getRandomId(), targetIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
+        int requestId = getRandomId();
+        PendingIntent contentIntent = PendingIntent.getActivity(context, requestId, targetIntent,
+                PendingIntent.FLAG_ONE_SHOT);
 
         notificationBuilder.setContentIntent(contentIntent);
         notificationBuilder.setAutoCancel(true);
 
-        nManager.notify(123, notificationBuilder.build());
+        nManager.notify(requestId, notificationBuilder.build());
     }
 
     public int getRandomId(){
-        return new Random().nextInt(1000);
+        return new Random().nextInt(10000);
     }
 
     public void onEvent(WordFromDatabase words){
+        Log.e("DeilyLang", "Launch onEvent: " + words.getId());
         try {
             launchNotification(context, words);
         }catch (Exception e){
@@ -76,6 +82,12 @@ public class LaunchNotification extends Application{
                     e.getStackTrace().toString() + "Error: " + e);
             //Crashlytics
         }
+
+        unregisterEvent();
+    }
+
+    private void unregisterEvent(){
+        EventBus.getDefault().unregister(this);
     }
 
     public void onEvent(RetrofitError error){ //Cambiar de sitio

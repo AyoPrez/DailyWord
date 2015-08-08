@@ -6,7 +6,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.util.Log;
+import android.util.TypedValue;
 
 public class Utils {
 
@@ -20,22 +22,28 @@ public class Utils {
 			public void onClick(DialogInterface dialog, int which) {
 				Intent i = new Intent(ctx, MainActivity.class);
 				ctx.startActivity(i);
+
 				((Activity)ctx).finish();
 			}
 		});
-						
 		alertDialogBuilder.show();
 	}
-	
+
 	public void Create_Dialog_DoNotFinishActivity(final Context ctx, String message, String button_title, String dialog_title){
 		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ctx);
 		alertDialogBuilder.setTitle(dialog_title);
 		alertDialogBuilder.setMessage(message);
 		alertDialogBuilder.setPositiveButton(button_title, null);
-						
+
 		alertDialogBuilder.show();
 	}
-	
+
+	public float convertDPToPX(Context context, int dp){
+		Resources r = context.getResources();
+		float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 14, r.getDisplayMetrics());
+		return px;
+	}
+
 	public String WithZero(int i){
 		if(i < 10 && i >= 0){
 			return 0+String.valueOf(i);
@@ -68,5 +76,28 @@ public class Utils {
 		Log.d("Minute", minute);
 		return Integer.valueOf(minute);
 	}
-	
+
+    /**
+     * Change when more languages are included.
+     * **/
+	public String translateLanguagesToISO(String language){
+
+        String lang = language.toLowerCase();
+        String ISO3 = null;
+
+        if(lang.equals("inglés") || lang.equals("englisch") || lang.equals("english")){
+            ISO3 = "eng";
+        }else{
+            if(lang.equals("español") || lang.equals("spanisch") || lang.equals("spanish")){
+                ISO3 = "spa";
+            }else{
+                if(lang.equals("alemán") || lang.equals("deutsch") || lang.equals("german")){
+                    ISO3 = "deu";
+                }
+            }
+        }
+        return ISO3;
+    }
+
+
 }

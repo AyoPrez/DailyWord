@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Deilylang</string>
+    <string name="app_name">DeilyLang</string>
     <string name="moment_review">Bewertung Momente</string>
     <string name="button_language">Wählen Sie eine Sprache</string>
     <string name="button_level">Wählen Sie eine Ebene</string>

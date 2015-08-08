@@ -1,24 +1,27 @@
 package com.ayoprez.newMoment;
 
-import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+import com.ayoprez.deilylang.MainActivity;
 import com.ayoprez.deilylang.R;
 
 import java.util.Locale;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class NewMomentActivity extends Activity{
+public class NewMomentActivity extends AppCompatActivity{
 
 	private Button B_Language, B_Level, B_Time, B_Accept;
 	private Context ctx = this;
-	private String AppLanguage = Locale.getDefault().getDisplayLanguage().toString();
-
+	private String AppLanguage = Locale.getDefault().getISO3Language();
+    private Toolbar toolbar;
     private Context context;
 
 	@Override
@@ -27,6 +30,8 @@ public class NewMomentActivity extends Activity{
 		setContentView(R.layout.newmoment_activity);
 
         this.context = this;
+
+        initToolbar();
 
 		B_Language = (Button) findViewById(R.id.b_language);
 		B_Level = (Button) findViewById(R.id.b_level);
@@ -66,6 +71,21 @@ public class NewMomentActivity extends Activity{
 		});
 
 	}
+
+    private void initToolbar(){
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
 
 	public void Language_Text(String Text){
 		B_Language.setText(Text);

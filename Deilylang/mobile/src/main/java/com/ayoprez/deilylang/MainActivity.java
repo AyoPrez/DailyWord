@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -19,6 +20,7 @@ import com.ayoprez.database.UserMomentsRepository;
 import com.ayoprez.login.LoginActivity;
 import com.ayoprez.login.SessionManager;
 import com.ayoprez.newMoment.NewMomentActivity;
+import com.ayoprez.notification.LaunchNotification;
 import com.ayoprez.notification.StartAndCancelAlarmManager;
 import com.ayoprez.preferences.Preferences;
 import com.ayoprez.userProfile.ProfileScreen;
@@ -54,6 +56,20 @@ public class MainActivity extends AppCompatActivity {
     @OnItemLongClick(R.id.reviewList) boolean longItem(int position){
         showAlertDialogToDeleteItem(this, position);
         return true;
+    }
+
+    //Tests
+    String[] words = {"Palabra", "Word"};
+    String[] types = {"Sustantivo", "Noun"};
+    String[] languages = {"Spanish", "English"};
+
+    @OnClick(R.id.buttonn) void newNotification(){
+        try {
+            new LaunchNotification(this).launchNotification(this, new WordFromDatabase(1, words, "basic", types, languages));
+        } catch (Exception e) {
+            Log.e("DeilyLangError", "NotificationButton");
+            e.printStackTrace();
+        }
     }
 
     private ReviewAdapter mReviewAdapter;
@@ -104,8 +120,9 @@ public class MainActivity extends AppCompatActivity {
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         try {
+                            new StartAndCancelAlarmManager(mContext, userMoments.get(selectedItem)).cancelAlarmManager();
                             deleteItemFromDatabase(mContext, selectedItem);
-                            new StartAndCancelAlarmManager(mContext, userMoments.get(0)).cancelAlarmManager();
+
                             showReviewList(mContext);
                         } catch (Exception e) {
                             Toast.makeText(mContext, getString(R.string.errorDeletingMoment), Toast.LENGTH_LONG).show();

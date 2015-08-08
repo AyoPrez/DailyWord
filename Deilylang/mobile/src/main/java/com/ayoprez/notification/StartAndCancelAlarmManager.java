@@ -5,8 +5,10 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 
+import com.ayoprez.deilylang.Utils;
+import com.ayoprez.login.SessionManager;
+
 import java.util.Locale;
-import java.util.Random;
 
 import deilyword.UserMoments;
 
@@ -19,15 +21,25 @@ public class StartAndCancelAlarmManager extends TimeCalculator{
     private AlarmManager alarmManager;
 
     public StartAndCancelAlarmManager(Context context, UserMoments userMoments){
-        Intent alarmIntent = new Intent(context, AlarmReceiver.class);
-        alarmIntent.putExtra("level", userMoments.getLevel());
-        alarmIntent.putExtra("languageLearning", userMoments.getLanguage());
-        alarmIntent.putExtra("languageDevice", Locale.getDefault().getDisplayLanguage());
+        Intent alarmIntent = startIntent(context, userMoments);
 
-        int requestId = (int) (userMoments.getId() - 1);
-//        int requestId = getRandomId();
+        int requestId = (int) (userMoments.getId() - 0);
         pendingIntent = PendingIntent.getBroadcast(context, requestId, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+    }
+
+    private Intent startIntent(Context context, UserMoments userMoments){
+        Intent alarmIntent = new Intent(context, AlarmReceiver.class);
+        alarmIntent.putExtra("level", userMoments.getLevel());
+        alarmIntent.putExtra("languageLearning", new Utils().translateLanguagesToISO(userMoments.getLanguage()));
+        alarmIntent.putExtra("languageDevice", Locale.getDefault().getDisplayLanguage());
+
+        if(new SessionManager(context).getUserDetails().get("id") != null){
+            alarmIntent.putExtra("id", Integer.valueOf(new SessionManager(context).getUserDetails().get("id")));
+        }else{
+            alarmIntent.putExtra("id", 0);
+        }
+        return alarmIntent;
     }
 
     public boolean startAlarmManager(String time) {
@@ -42,22 +54,8 @@ public class StartAndCancelAlarmManager extends TimeCalculator{
         return true;
     }
 
-    public int getRandomId(){
-        return new Random().nextInt(1000);
-    }
-
-    public boolean startAlarmManager20MinutesLater() {
-        try {
-            alarmManager.set(AlarmManager.RTC_WAKEUP,
-                    getMillisFromNowTo20MinutesLater(),
-                    pendingIntent);
-        }catch(Exception e){
-            return false;
-        }
-        return true;
-    }
-
     public void cancelAlarmManager() throws Exception{
+
         pendingIntent.cancel();
         alarmManager.cancel(pendingIntent);
     }

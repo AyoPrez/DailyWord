@@ -2,4 +2,20 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="savedWordSize">15sp</dimen>
+    <dimen name="toolbar_spinner_textSize">20sp</dimen>
+
+    <!-- Preferences-->
+    <dimen name="height_madeIn">70dp</dimen>
+    <dimen name="width_madeIn">100dp</dimen>
+    <dimen name="margin_madeIn">20dp</dimen>
+    <dimen name="textSize_madeIn">15dp</dimen>
+
+    <dimen name="width_moreApp_icon">100dp</dimen>
+    <dimen name="height_moreApp_icon">100dp</dimen>
+    <dimen name="margin_moreApp_icon">20dp</dimen>
+    <dimen name="textSize_moreApp_appname">20sp</dimen>
+    <dimen name="legal_titles_margin">10dp</dimen>
+    <dimen name="legal_content_lines_spacing">2dp</dimen>
 </resources>

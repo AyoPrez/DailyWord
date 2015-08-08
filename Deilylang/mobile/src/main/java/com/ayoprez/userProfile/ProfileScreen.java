@@ -8,7 +8,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
+import com.ayoprez.deilylang.MainActivity;
 import com.ayoprez.deilylang.R;
 import com.ayoprez.login.SessionManager;
 import com.ayoprez.savedWords.SavedWordsScreen;
@@ -26,11 +28,11 @@ public class ProfileScreen extends AppCompatActivity{
     private SessionManager sessionManager;
 
     @OnClick(R.id.b_save) void mSavedButton(){
+
         Intent savedIntent = new Intent(this, SavedWordsScreen.class);
         startActivity(savedIntent);
         //Idea: Que esta pantalla sea un deplegable desde un lado o desde abajo
     }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +40,29 @@ public class ProfileScreen extends AppCompatActivity{
         setContentView(R.layout.profile_layout);
         ButterKnife.inject(this);
 
+        initToolbar();
+
+        sessionManager = new SessionManager(this);
+    }
+
+    private void initToolbar(){
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        sessionManager = new SessionManager(this);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                backToMainIntent();
+            }
+        });
+    }
+
+    private void backToMainIntent(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     @Override

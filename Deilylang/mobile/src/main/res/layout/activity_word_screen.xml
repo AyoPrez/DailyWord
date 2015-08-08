@@ -19,7 +19,7 @@
             android:layout_height="80dp"
             android:layout_margin="10dp"
             android:layout_gravity="center_vertical"
-            android:background="@android:drawable/ic_lock_silent_mode_off" />
+            android:background="@drawable/ic_volume_up_black_48dp" />
 
         <LinearLayout
             android:orientation="vertical"
@@ -41,7 +41,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="50dp"
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_marginTop="10dp"
+                android:textStyle="italic"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Large Text" />
             </LinearLayout>
     </LinearLayout>
@@ -60,7 +62,7 @@
             android:layout_height="80dp"
             android:layout_gravity="center_vertical"
             android:layout_margin="10dp"
-            android:background="@android:drawable/ic_lock_silent_mode_off" />
+            android:background="@drawable/ic_volume_up_black_48dp" />
 
         <LinearLayout
             android:orientation="vertical"
@@ -83,7 +85,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="50dp"
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_marginTop="10dp"
+                android:textStyle="italic"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Large Text" />
         </LinearLayout>
     </LinearLayout>
@@ -91,6 +95,7 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_weight="0.3"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical">
@@ -101,7 +106,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="10dp"
-            android:background="@drawable/wordscreen_button"
+            android:padding="10dp"
+            android:background="#A05"
             android:text="@string/buttonDone" />
 
         <Button
@@ -109,18 +115,20 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:padding="10dp"
             android:layout_margin="10dp"
-            android:background="@drawable/wordscreen_button"
+            android:background="#7A0"
             android:text="@string/buttonLater"/>
     </LinearLayout>
 
     <Button
         android:id="@+id/button_report_WordScreen"
-        android:layout_width="100dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_gravity="right|bottom"
         android:layout_margin="10dp"
         android:textSize="10dp"
+        android:background="@null"
         android:text="@string/bad_translation"/>
 
 </LinearLayout>

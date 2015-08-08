@@ -6,6 +6,8 @@ import android.util.Log;
 import com.ayoprez.notification.LaunchNotification;
 import com.ayoprez.savedWords.SavedWords;
 
+import java.util.ArrayList;
+
 import de.greenrobot.event.EventBus;
 import retrofit.Callback;
 import retrofit.RestAdapter;
@@ -17,8 +19,7 @@ import retrofit.client.Response;
  */
 public class GetSavedWords {
 
-    public static final String ENDPOINT = "http://deilylang.com/index.php/";
-//    public static final String ENDPOINT = "http://localhost/deilylang-temp/index.php";
+    public static final String ENDPOINT = "http://deilylang.com/api/index.php/";
 
     private WordsAPI wordsAPI;
     private Context context;
@@ -34,13 +35,32 @@ public class GetSavedWords {
         wordsAPI = restAdapter.create(WordsAPI.class);
     }
 
-    public void sendWordRequest(int id, final String level){
+    public void sendEnglishUserWordsRequest(int id, final String languageMobile){
         new LaunchNotification(context);
 
-        wordsAPI.getSavedWords(id, level, new Callback<SavedWords>() {
+        wordsAPI.getSavedEnglishWords(id, languageMobile,new Callback<ArrayList<SavedWords>>() {
 
             @Override
-            public void success(SavedWords words, Response response) {
+            public void success(ArrayList<SavedWords> words, Response response) {
+                EventBus.getDefault().post(words);
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Log.e("RequestError", "Error: " + error.getMessage());
+                //Crashlytics
+                EventBus.getDefault().post(error);
+            }
+        });
+    }
+
+    public void sendSpanishUserWordsRequest(int id, final String languageMobile){
+        new LaunchNotification(context);
+
+        wordsAPI.getSavedSpanishWords(id, languageMobile, new Callback<ArrayList<SavedWords>>() {
+
+            @Override
+            public void success(ArrayList<SavedWords> words, Response response) {
                 EventBus.getDefault().post(words);
             }
 

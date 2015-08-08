@@ -10,6 +10,8 @@ import android.widget.TimePicker;
 import com.ayoprez.deilylang.R;
 import com.ayoprez.deilylang.Utils;
 
+import java.util.Calendar;
+
 public class Moment {
 
 	private Context ctx;
@@ -27,7 +29,8 @@ public class Moment {
 		
 		Timey_Wimey = (TimePicker) Dialog.findViewById(R.id.tP_time);
 		Timey_Wimey.setIs24HourView(true);
-				
+		Timey_Wimey.setCurrentHour(Calendar.getInstance().get(Calendar.HOUR_OF_DAY));
+
 		Button B_Time_Dialog = (Button) Dialog.findViewById(R.id.b_time_dialog);
 		B_Time_Dialog.setOnClickListener(new OnClickListener(){
 
