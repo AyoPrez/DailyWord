@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.widget.Toast;
 
 import com.ayoprez.deilylang.R;
+import com.ayoprez.restfulservice.GetUser;
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
@@ -82,14 +83,15 @@ public class TwitterLogin {
         getLoginActivity().twitterLoginButton.setCallback(new Callback<TwitterSession>() {
             @Override
             public void success(Result<TwitterSession> result) {
-                user = new User(result.data.getUserName(), "pass");
+                user = new User(result.data.getUserName(), String.valueOf(result.data.getUserId()));
 
-                //TODO Change this to put the session methods as father, to extend
-                getLoginActivity().startSession(context, user);
+                new GetUser(context).sendUserDataRequest(user.getSocial_Id(), user.getName());
+                loginTwitter(result.data);
             }
 
             @Override
             public void failure(TwitterException exception) {
+                //TODO cambiar esto
                 Toast.makeText(context, "Come off Twitter! " + exception.getMessage(), Toast.LENGTH_LONG).show();
             }
         });

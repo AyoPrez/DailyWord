@@ -6,6 +6,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.ayoprez.deilylang.R;
+import com.ayoprez.restfulservice.GetUser;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -96,11 +97,9 @@ public class FacebookLogin {
                 Log.v("LoginActivity", response.toString());
                 try {
                     //and fill them here like so.
-                    user = new User(object.getString("name"), object.getString("email"));
+                    user = new User(object.getString("name"), object.getString("id"));
 
-                    //TODO Change this to put the session methods as father, to extend
-                    getLoginActivity().startSession(context, user);
-                    Log.e("DeilyLang", "Name: " + user.getMail());
+                    new GetUser(context).sendUserDataRequest(user.getSocial_Id(), user.getName());
 
                 } catch (JSONException e) {
                     e.printStackTrace();

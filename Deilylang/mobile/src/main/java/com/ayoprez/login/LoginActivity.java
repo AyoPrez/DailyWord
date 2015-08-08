@@ -53,7 +53,7 @@ public class LoginActivity extends Activity {
     }
 
     public void startSession(Context applicationContext, User user){
-        new SessionManager(applicationContext).createLoginSession(user.getName(), user.getMail(), String.valueOf(user.getId()));
+        new SessionManager(applicationContext).createLoginSession(user.getName(), String.valueOf(user.getId_U()));
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
