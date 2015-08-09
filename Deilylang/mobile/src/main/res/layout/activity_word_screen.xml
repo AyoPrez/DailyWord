@@ -102,7 +102,7 @@
 
         <Button
             android:id="@+id/button_WordScreen_"
-            android:layout_width="200dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="10dp"
@@ -112,7 +112,7 @@
 
         <Button
             android:id="@+id/button_WordScreen_2"
-            android:layout_width="200dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:padding="10dp"

@@ -59,13 +59,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Tests
-    String[] words = {"Palabra", "Word"};
-    String[] types = {"Sustantivo", "Noun"};
-    String[] languages = {"Spanish", "English"};
+    String[] words = {"Word", "Palabra"};
+    String[] types = {"Noun", "Sustantivo"};
+    String[] languages = {"English", "Spanish"};
+    int wordId = 90;
 
     @OnClick(R.id.buttonn) void newNotification(){
         try {
-            new LaunchNotification(this).launchNotification(this, new WordFromDatabase(1, words, "basic", types, languages));
+            new LaunchNotification(this).launchNotification(this, new WordFromDatabase(wordId, words, "basic", types, languages));
         } catch (Exception e) {
             Log.e("DeilyLangError", "NotificationButton");
             e.printStackTrace();

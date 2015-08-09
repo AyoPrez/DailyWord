@@ -22,7 +22,7 @@ import io.fabric.sdk.android.Fabric;
  */
 public class TwitterLogin {
 
-
+    private String TYPE_ID = "t";
     private Context context;
     private User user;
 
@@ -85,7 +85,7 @@ public class TwitterLogin {
             public void success(Result<TwitterSession> result) {
                 user = new User(result.data.getUserName(), String.valueOf(result.data.getUserId()));
 
-                new GetUser(context).sendUserDataRequest(user.getSocial_Id(), user.getName());
+                new GetUser(context).sendUserDataRequest(user.getSocial_Id(), TYPE_ID, user.getName());
                 loginTwitter(result.data);
             }
 

@@ -4,6 +4,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 import com.ayoprez.deilylang.Utils;
 import com.ayoprez.login.SessionManager;
@@ -19,9 +20,14 @@ public class StartAndCancelAlarmManager extends TimeCalculator{
 
     private PendingIntent pendingIntent;
     private AlarmManager alarmManager;
+    private SessionManager sessionManager;
+    private String id_U;
 
     public StartAndCancelAlarmManager(Context context, UserMoments userMoments){
         Intent alarmIntent = startIntent(context, userMoments);
+
+        this.sessionManager = new SessionManager(context);
+        id_U = sessionManager.getUserDetails().get("id");
 
         int requestId = (int) (userMoments.getId() - 0);
         pendingIntent = PendingIntent.getBroadcast(context, requestId, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -34,8 +40,9 @@ public class StartAndCancelAlarmManager extends TimeCalculator{
         alarmIntent.putExtra("languageLearning", new Utils().translateLanguagesToISO(userMoments.getLanguage()));
         alarmIntent.putExtra("languageDevice", Locale.getDefault().getDisplayLanguage());
 
-        if(new SessionManager(context).getUserDetails().get("id") != null){
-            alarmIntent.putExtra("id", Integer.valueOf(new SessionManager(context).getUserDetails().get("id")));
+        if(id_U != null){
+            Log.e("DeilyLang", "(Should be 1)Id_U: " + id_U + ", e integer: " + Integer.valueOf(id_U));
+            alarmIntent.putExtra("id", Integer.valueOf(id_U));
         }else{
             alarmIntent.putExtra("id", 0);
         }

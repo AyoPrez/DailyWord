@@ -1,11 +1,11 @@
 package com.ayoprez.wordscreen;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +18,7 @@ import com.ayoprez.deilylang.Utils;
 import com.ayoprez.deilylang.WordFromDatabase;
 import com.ayoprez.login.SessionManager;
 import com.ayoprez.notification.ShortTimeStartAndCancel;
+import com.ayoprez.restfulservice.SetWords;
 
 import java.util.Locale;
 
@@ -26,7 +27,7 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class WordScreen extends Activity {
+public class WordScreen extends AppCompatActivity {
 
     private Context mContext;
     private TextToSpeech textToSpeech;
@@ -63,9 +64,15 @@ public class WordScreen extends Activity {
 
     @OnClick(R.id.button_WordScreen_) void buttonDone(){
         Integer wordId = bundle.getInt(WORDS_ID_KEY);
-        String languageNew = "english";
-        String languageDevice = Locale.getDefault().getDisplayLanguage();
+        String languageNew = bundle.getStringArray(LANGUAGES_ARRAY_KEY)[0];
+        String languageDevice = bundle.getStringArray(LANGUAGES_ARRAY_KEY)[1];
         String level = bundle.getString("level");
+        int id_user = Integer.valueOf(new SessionManager(mContext).getUserDetails().get("id"));
+
+        Log.e("DeilyLang", "Id_User: " + id_user + ", Id_Word: " + wordId +
+                ", LanguageNew: " + languageNew + ", LanguageUser: " + languageDevice);
+
+        new SetWords(this).sendUserWord(id_user, wordId, languageDevice, languageNew);
 
         //Poner que se cierre si se ha guardado la palabra
     }

@@ -29,6 +29,7 @@ import java.util.List;
  */
 public class FacebookLogin {
 
+    private String TYPE_ID = "f";
     private LoginButton facebookLoginButton;
     private Context context;
     public CallbackManager callbackManager;
@@ -99,7 +100,7 @@ public class FacebookLogin {
                     //and fill them here like so.
                     user = new User(object.getString("name"), object.getString("id"));
 
-                    new GetUser(context).sendUserDataRequest(user.getSocial_Id(), user.getName());
+                    new GetUser(context).sendUserDataRequest(user.getSocial_Id(), TYPE_ID, user.getName());
 
                 } catch (JSONException e) {
                     e.printStackTrace();
