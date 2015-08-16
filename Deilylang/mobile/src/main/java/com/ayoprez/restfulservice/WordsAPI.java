@@ -25,13 +25,15 @@ public interface WordsAPI {
                     @Path("U_Language") String LanguageMobile,
                     Callback<WordFromDatabase> response);
 
+    //////////////////////////////////////////////////////////////////////////SavesWords//////////////////////////////////
+
     @GET("/English/{Id}/{U_Language}")
     void getSavedEnglishWords(@Path("Id") int Id,
-                       @Path("U_Language") String LanguageMobile,
-                       Callback<ArrayList<SavedWords>> response);
+                              @Path("U_Language") String LanguageMobile,
+                              Callback<ArrayList<SavedWords>> response);
 
     @GET("/Spanish/{Id}/{U_Language}")
     void getSavedSpanishWords(@Path("Id") int Id,
-                       @Path("U_Language") String LanguageMobile,
-                       Callback<ArrayList<SavedWords>> response);
+                              @Path("U_Language") String LanguageMobile,
+                              Callback<ArrayList<SavedWords>> response);
 }

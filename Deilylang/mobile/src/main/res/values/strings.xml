@@ -26,12 +26,6 @@
     <string name="f_key">697126877059363</string>
     <string name="register">¡Regístrate!</string>
 
-    <!-- Register screen texts-->
-    <string name="name">Nombre: </string>
-    <string name="mail">Correo electrónico: </string>
-    <string name="pass">Contraseña: </string>
-    <string name="pass2">Repetir contraseña: </string>
-
     <!-- Languages -->
     <string name="Spanish">Español</string>
     <string name="German">Alemán</string>
@@ -57,12 +51,13 @@
     <!-- Saved words -->
     <string name="savedWords_button">Palabras ya conocidas</string>
 
-    <!-- Word -->
+    <!-- WordScreen -->
     <string name="buttonDone">¡La tengo!</string>
     <string name="buttonLater">Recuérdamela en 20 minutos</string>
     <string name="bad_translation">Reportar mala traducción</string>
     <string name="doneDialog">Perfecto. Ya la tienes. Ahora conoces esta palabra.</string>
     <string name="laterDialog">Te recordaré esta palabra en un rato para que la memorices.</string>
+    <string name="doneDialogTitle">Palabra guardada</string>
 
     <!-- Report bad translation mail-->
     <string name="Subject">Reporte de traducción</string>

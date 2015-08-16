@@ -17,14 +17,18 @@ import java.util.Locale;
 /**
  * Created by AyoPrez on 1/08/15.
  */
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder>{
+public class SavedWordsRecyclerViewAdapter extends RecyclerView.Adapter<SavedWordsRecyclerViewAdapter.ViewHolder>{
 
-    private ArrayList<SavedWords> savedWordsList;
+    private ArrayList<String> savedWordsList = new ArrayList<>();
+    private ArrayList<String> savedTypesList = new ArrayList<>();
+    private String language;
     private TextToSpeech textToSpeech;
     private Context context;
 
-    public RecyclerAdapter(Context context, ArrayList<SavedWords> savedWords){
+    public SavedWordsRecyclerViewAdapter(Context context, ArrayList<String> savedWords, ArrayList<String> savedTypes, String language){
         this.savedWordsList = savedWords;
+        this.savedTypesList = savedTypes;
+        this.language = language;
         this.context = context;
     }
 
@@ -37,19 +41,21 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int i) {
-        viewHolder.savedWord.setText(savedWordsList.get(i).getWord());
-        viewHolder.savedType.setText(savedWordsList.get(i).getType());
-        viewHolder.savedSpeaker.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                textToSpeech = new TextToSpeech(context, new TextToSpeech.OnInitListener() {
-                    @Override
-                    public void onInit(int status) {
-                        talkSpeech(status, defineLocales(savedWordsList.get(i).getLanguage()), savedWordsList.get(i).getWord());
-                    }
-                });
-            }
-        });
+        if(savedWordsList.size() > 0 && savedWordsList != null && savedTypesList != null) {
+            viewHolder.savedWord.setText(savedWordsList.get(i));
+            viewHolder.savedType.setText(savedTypesList.get(i));
+            viewHolder.savedSpeaker.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    textToSpeech = new TextToSpeech(context, new TextToSpeech.OnInitListener() {
+                        @Override
+                        public void onInit(int status) {
+                            talkSpeech(status, defineLocales(language), savedWordsList.get(i));
+                        }
+                    });
+                }
+            });
+        }
     }
 
     private void talkSpeech(int status, Locale language, String speech){
@@ -60,7 +66,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     }
 
     private Locale defineLocales(String language){
-
         Locale languageWords = null;
 
         if(language.toLowerCase().equals("english")){
@@ -96,7 +101,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         public ViewHolder(View itemView) {
             super(itemView);
             savedWord = (TextView) itemView.findViewById(R.id.textView_savedWord);
-            savedType = (TextView) itemView.findViewById(R.id.textView_savedWordsList);
+            savedType = (TextView) itemView.findViewById(R.id.textView_savedWord_type);
             savedSpeaker = (ImageButton) itemView.findViewById(R.id.imageButton_savedWord_speaker);
         }
     }

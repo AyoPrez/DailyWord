@@ -2,7 +2,9 @@ package com.ayoprez.restfulservice;
 
 import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
+
+import com.ayoprez.deilylang.R;
+import com.ayoprez.deilylang.Utils;
 
 import de.greenrobot.event.EventBus;
 import retrofit.Callback;
@@ -32,14 +34,13 @@ public class SetWords {
 
     public void sendUserWord(final int id_u, final int id_word, final String languageMobile, final String languageNew){
 
-        userAPI.postUserWord(id_u, id_word, languageMobile, languageNew, new Callback<SaveWordResult>() {
+        userAPI.postUserWord(id_u, id_word, languageMobile, languageNew, new Callback<Integer>() {
 
             @Override
-            public void success(SaveWordResult bool, Response response) {
+            public void success(Integer bool, Response response) {
 
-                if (bool.getRes()) {
-                    Log.e("DeilyLang", "Show dialog");
-                    Toast.makeText(context, "Show Dialog", Toast.LENGTH_LONG).show();
+                if (bool == 1) {
+                    getConfirmedDialog();
                 } else {
                     //Crashlitics
                     Log.e("DeilyLang", "Error: GetWords = null");
@@ -53,5 +54,9 @@ public class SetWords {
                 EventBus.getDefault().post(error);
             }
         });
+    }
+
+    public void getConfirmedDialog(){
+        new Utils().Create_Dialog(context, context.getString(R.string.doneDialog), context.getString(R.string.buttonAcceptDialog), context.getString(R.string.doneDialogTitle));
     }
 }

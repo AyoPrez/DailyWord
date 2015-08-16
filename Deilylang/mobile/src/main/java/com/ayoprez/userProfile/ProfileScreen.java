@@ -28,7 +28,6 @@ public class ProfileScreen extends AppCompatActivity{
     private SessionManager sessionManager;
 
     @OnClick(R.id.b_save) void mSavedButton(){
-
         Intent savedIntent = new Intent(this, SavedWordsScreen.class);
         startActivity(savedIntent);
         //Idea: Que esta pantalla sea un deplegable desde un lado o desde abajo
