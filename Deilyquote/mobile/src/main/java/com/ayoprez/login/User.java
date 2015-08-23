@@ -5,37 +5,39 @@ package com.ayoprez.login;
  */
 public class User {
 
-    private int Id;
+    private int Id_U;
     private String Name;
-    private String Mail;
-    private String Pass;
+    private String Social_Id;
 
     public User(){}
 
-    public User(int id, String name, String mail, String pass){
-        this.Id = id;
+    public User(int Id_U, String Social_Id){
+        this.Id_U = Id_U;
+        this.Social_Id = Social_Id;
+    }
+
+//    public User(int Id_U, String name, String Social_Id){
+//        this.Id = Id_U;
+//        this.Name = name;
+//        this.Social_Id = Social_Id;
+//    }
+
+    public User(String name, int id_U){
+        this.Id_U = id_U;
         this.Name = name;
-        this.Mail = mail;
-        this.Pass = pass;
     }
 
-    public User(int id, String mail, String pass){
-        this.Id = id;
-        this.Mail = mail;
-        this.Pass = pass;
+    public User(String name, String Social_Id){
+        this.Name = name;
+        this.Social_Id = Social_Id;
     }
 
-    public User(String mail, String pass){
-        this.Mail = mail;
-        this.Pass = pass;
+    public int getId_U() {
+        return Id_U;
     }
 
-    public int getId() {
-        return Id;
-    }
-
-    public void setId(int id) {
-        Id = id;
+    public void setId_U(int id_U) {
+        Id_U = id_U;
     }
 
     public String getName() {
@@ -46,19 +48,11 @@ public class User {
         Name = name;
     }
 
-    public String getMail() {
-        return Mail;
+    public String getSocial_Id() {
+        return Social_Id;
     }
 
-    public void setMail(String mail) {
-        Mail = mail;
-    }
-
-    public String getPass() {
-        return Pass;
-    }
-
-    public void setPass(String pass) {
-        Pass = pass;
+    public void setSocial_Id(String social_Id) {
+        Social_Id = social_Id;
     }
 }

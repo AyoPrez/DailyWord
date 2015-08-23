@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/language_dialog_row_padding">
+
+    <ImageView
+        android:id="@+id/iV_flag_newMoment"
+        android:layout_width="@dimen/image_flag_width"
+        android:layout_height="@dimen/image_flag_height"
+        android:layout_marginLeft="@dimen/flag_margin"
+        android:layout_marginRight="@dimen/flag_margin"/>
+
+    <TextView
+        android:id="@+id/tV_language_newMoment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:layout_marginLeft="@dimen/text_margin"
+        android:layout_marginRight="@dimen/text_margin"
+        android:layout_gravity="center_vertical"/>
+</LinearLayout>

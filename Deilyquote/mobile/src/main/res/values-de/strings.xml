@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DeilyQuote</string>
+    <string name="moment_review">Bewertung Momente</string>
+    <string name="button_language">Wählen Sie eine Sprache</string>
+    <string name="button_topic">Wählen Sie eine Topic</string>
+    <string name="button_time">Wählen Sie einen Moment</string>
+    <string name="button_accept">Fertig!</string>
+    <string name="deleteMomentDialog">Bist du sicher, du wollst diesen Moment löschen?</string>
+    <string name="deleteMomentDialogTitle">Moment löschen</string>
+    <string name="successSavingMoment">Der Moment haben erfolgreich gespeichert.</string>
+    <string name="buttonAcceptDialog">Ok</string>
+    <string name="successSavingDialogTitle">Moment gespeichert</string>
+
+    <!-- Menu -->
+    <string name="action_login">Log in</string>
+    <string name="action_settings">Einstellungen</string>
+    <string name="action_logout">Log out</string>
+
+    <!-- Languages -->
+    <string name="Spanish">Spanisch</string>
+    <string name="German">Deutsch</string>
+    <string name="English">Englisch</string>
+    <string name="French">Französisch</string>
+    <string name="Italian">Italienisch</string>
+
+    <!-- Topics -->
+    <string name="topic1"></string>
+    <string name="topic2"></string>
+    <string name="topic3"></string>
+    <string name="topic4"></string>
+    <string name="topic5"></string>
+    <string name="topic6"></string>
+    <string name="topic7"></string>
+    <string name="topic8"></string>
+    <string name="topic9"></string>
+    <string name="topic10"></string>
+
+    <!-- Login activity texts-->
+    <string name="Login_FacebookButton">Facebook</string>
+    <string name="Login_TwitterButton">Twitter</string>
+    <string name="Login_GoogleButton">Google</string>
+    <string name="Login_Continue">-----------------------</string>
+
+    <!-- Time -->
+    <string name="button_time_accept">Akzeptieren den Moment</string>
+
+    <!-- Review -->
+    <string name="contestDescription">Bild</string>
+    <string name="dialog_title">Moment Löschen</string>
+    <string name="dialog_message">Löschen Sie diesen Moment? Wenn Sie dies tun, erhalten Sie keine Meldungen zu diesem Zeit.</string>
+    <string name="dialog_positive_button">Löschen</string>
+    <string name="dialog_negative_button">Stonieren</string>
+    <string name="new_moment">Neue Moment</string>
+
+    <!-- Quote -->
+    <string name="notification_text">Öffnen, um ein neues Zitat zu entdecken</string>
+    <string name="buttonSave">Ich mag es! Speichern es</string>
+    <string name="buttonShare">Teilen</string>
+
+    <!-- Errors -->
+    <string name="error_select">Sie müssen Sprache, Füllstands und Zeit wählen</string>
+    <string name="errorSavingMoment">Es gab einen Fehler, und der Moment, konnte nicht gespeichert werden.</string>
+    <string name="errorSavingDialogTitle">Es gab einen Fehle</string>
+    <string name="title_activity_word_screen">QuoteScreen</string>
+    <string name="errorDeletingMoment" />
+
+    <!-- Preferences -->
+    <string-array name="pref_languages">
+        <item>Spanisch</item>
+        <item>Deutsch</item>
+        <item>Englisch</item>
+        <item>Italienisch</item>
+        <item>Französisch</item>
+    </string-array>
+
+    <string name="language_category_title">Sprachen</string>
+    <string name="subpreference_language">Ändern die Sprache der App</string>
+    <string name="language">Sprache ändern</string>
+
+    <string name="about_title">Über die App</string>
+    <string name="version">Version</string>
+    <string name="info">Info</string>
+    <string name="info_message">App gemacht mit Liebe durch AyoPrez. \ n \ n
+                                     Für weitere Informationen, besuchen Sie die Website http://www.ayoprez.com</string>
+    <string name="versionName">1.0</string>
+
+    <string name="legal_title">Rechtliche und Kontakt</string>
+    <string name="terms">Allgemeine Geschäftsbedingungen</string>
+    <string name="contact">Kontakt</string>
+    <string name="contact_message">Wenn Sie mich kontaktieren wollen können so über den Kontaktsektor meiner Website. </string>
+    <string name="legal_text"></string>
+</resources>
