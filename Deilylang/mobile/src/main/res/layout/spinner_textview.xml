@@ -3,7 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="5dp"
-    android:padding="5dp"
+    android:paddingTop="15dp"
+    android:paddingLeft="10dp"
+    android:paddingBottom="15dp"
+    android:paddingRight="10dp"
     android:textSize="@dimen/toolbar_spinner_textSize"
     android:textColor="@color/black"
     android:gravity="center">

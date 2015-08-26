@@ -17,7 +17,7 @@ public class Language {
 
 	private Dialog Dialog;
 	private Context ctx;
-	private ArrayAdapter<String> Adapter;
+	private LanguageDialogAdapter Adapter;
 	private ListView Language_List;
 	
 	
@@ -25,33 +25,28 @@ public class Language {
 		this.ctx = context;
 		
 		this.Dialog = new Dialog(ctx);
-		this.Dialog.setContentView(R.layout.language_dialog);
+		this.Dialog.setContentView(R.layout.dialog_language);
 		this.Dialog.setTitle(R.string.button_language);
 		
 		this.Language_List = (ListView)Dialog.findViewById(R.id.LV_Language);
 
 
         //TODO improve this
-
         String localLanguage = Locale.getDefault().getISO3Language();
 
         final ArrayList<String> Languages = new ArrayList<>();
 
-        if(localLanguage.equals("spa")){
-            Languages.add(ctx.getString(R.string.English));
-            Languages.add(ctx.getString(R.string.German));
-        }else{
-            if(localLanguage.equals("deu")){
+		switch (localLanguage){
+            case "spa":
                 Languages.add(ctx.getString(R.string.English));
+                break;
+            case "eng":
                 Languages.add(ctx.getString(R.string.Spanish));
-            }else{
-                Languages.add(ctx.getString(R.string.Spanish));
-                Languages.add(ctx.getString(R.string.German));
-            }
+                break;
         }
 
-					
-		this.Adapter = new ArrayAdapter<String>(ctx, android.R.layout.simple_list_item_1, Languages);
+		this.Adapter = new LanguageDialogAdapter(ctx, Languages);
+//		this.Adapter = new ArrayAdapter<String>(ctx, android.R.layout.simple_list_item_1, Languages);
 		this.Language_List.setAdapter(Adapter);
 		
 		this.Language_List.setOnItemClickListener(new OnItemClickListener(){

@@ -9,13 +9,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:src="@drawable/ic_volume_up_black_48dp"/>
+        android:layout_marginTop="@dimen/empty_savedWordsList_marginTop"
+        android:layout_marginBottom="@dimen/empty_savedWordsList_marginBottom"
+        android:src="@drawable/ic_close_black_48dp"/>
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="La lista está vacía"
+        android:text="@string/empty_list"
+        android:textColor="@color/black"
         android:textSize="25sp"
         android:layout_gravity="center" />
 </LinearLayout>

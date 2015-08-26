@@ -13,6 +13,7 @@ import android.view.View;
 import com.ayoprez.deilylang.MainActivity;
 import com.ayoprez.deilylang.R;
 import com.ayoprez.login.SessionManager;
+import com.ayoprez.preferences.Preferences;
 import com.ayoprez.savedWords.SavedWordsScreen;
 
 import butterknife.ButterKnife;
@@ -85,7 +86,8 @@ public class ProfileScreen extends AppCompatActivity{
                 finish();
                 return true;
             case R.id.action_settings:
-
+                Intent i = new Intent(this, Preferences.class);
+                startActivity(i);
                 return true;
         }
         return true;

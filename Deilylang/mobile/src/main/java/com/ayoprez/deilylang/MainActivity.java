@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -20,7 +19,6 @@ import com.ayoprez.database.UserMomentsRepository;
 import com.ayoprez.login.LoginActivity;
 import com.ayoprez.login.SessionManager;
 import com.ayoprez.newMoment.NewMomentActivity;
-import com.ayoprez.notification.LaunchNotification;
 import com.ayoprez.notification.StartAndCancelAlarmManager;
 import com.ayoprez.preferences.Preferences;
 import com.ayoprez.userProfile.ProfileScreen;
@@ -39,11 +37,9 @@ import io.fabric.sdk.android.Fabric;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AppCompatActivity {
-
     // Note: Your consumer key and secret should be obfuscated in your source code before shipping.
     private static final String TWITTER_KEY = "ca9fZBuy7LLrMEfaK9mP4VCab";
     private static final String TWITTER_SECRET = "1gJO7L847SiDrFoI6qiohSMipxJPKSRJA2TjHtIdcjr5nVYo8p";
-
 
     @InjectView(R.id.reviewList) ListView mReviewList;
 
@@ -64,14 +60,14 @@ public class MainActivity extends AppCompatActivity {
     String[] languages = {"English", "Spanish"};
     int wordId = 90;
 
-    @OnClick(R.id.buttonn) void newNotification(){
-        try {
-            new LaunchNotification(this).launchNotification(this, new WordFromDatabase(wordId, words, "basic", types, languages));
-        } catch (Exception e) {
-            Log.e("DeilyLangError", "NotificationButton");
-            e.printStackTrace();
-        }
-    }
+//    @OnClick(R.id.buttonn) void newNotification(){
+//        try {
+//            new LaunchNotification(this).launchNotification(this, new WordFromDatabase(wordId, words, "basic", types, languages));
+//        } catch (Exception e) {
+//            Log.e("DeilyLangError", "NotificationButton");
+//            e.printStackTrace();
+//        }
+//    }
 
     private ReviewAdapter mReviewAdapter;
     private Toolbar toolbar;
@@ -111,9 +107,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showAlertDialogToDeleteItem(final Context mContext, final int selectedItem) {
-//        UserMomentsRepository userMomentsRepository = new UserMomentsRepository();
         final List<UserMoments> userMoments = getDataFromDatabaseToListView(mContext);
-//        final int momentId = (int)userMomentsRepository.getIdFromData(mContext, userMoments.get(selectedItem));
 
         new AlertDialog.Builder(this)
                 .setTitle(R.string.deleteMomentDialogTitle)

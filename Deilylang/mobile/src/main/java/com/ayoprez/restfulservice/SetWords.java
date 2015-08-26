@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.ayoprez.deilylang.R;
 import com.ayoprez.deilylang.Utils;
+import com.crashlytics.android.Crashlytics;
 
 import de.greenrobot.event.EventBus;
 import retrofit.Callback;
@@ -43,7 +44,8 @@ public class SetWords {
                     getConfirmedDialog();
                 } else {
                     //Crashlitics
-                    Log.e("DeilyLang", "Error: GetWords = null");
+                    Crashlytics.getInstance().log("SentWords: Response False");
+                    Log.e("DeilyLang", "Error: SetWords = null");
                 }
             }
 
@@ -51,6 +53,7 @@ public class SetWords {
             public void failure(RetrofitError error) {
                 Log.e("RequestError", "Error: " + error.getMessage());
                 //Crashlytics
+                Crashlytics.getInstance().log("Error SetWords: " + error);
                 EventBus.getDefault().post(error);
             }
         });

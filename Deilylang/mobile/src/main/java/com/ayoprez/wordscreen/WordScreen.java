@@ -6,10 +6,8 @@ import android.media.AudioManager;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +17,7 @@ import com.ayoprez.deilylang.WordFromDatabase;
 import com.ayoprez.login.SessionManager;
 import com.ayoprez.notification.ShortTimeStartAndCancel;
 import com.ayoprez.restfulservice.SetWords;
+import com.crashlytics.android.Crashlytics;
 
 import java.util.Locale;
 
@@ -37,14 +36,10 @@ public class WordScreen extends AppCompatActivity {
     private Locale languageUser;
     private Bundle bundle;
 
-    @InjectView(R.id.imageButton_WordScreen_1)
-    ImageButton mImageButton1WordScreen;
     @InjectView(R.id.textView_WordScreen_1)
     TextView mWord1WordScreen;
     @InjectView(R.id.textView_Type_1)
     TextView mType1WordScreen;
-    @InjectView(R.id.imageButton_WordScreen_2)
-    ImageButton mImageButton2WordScreen;
     @InjectView(R.id.textView_WordScreen_2)
     TextView mWord2WordScreen;
     @InjectView(R.id.textView_Type_2)
@@ -62,6 +57,24 @@ public class WordScreen extends AppCompatActivity {
     private String LANGUAGES_ARRAY_KEY = "languages";
     private String LEVEL_KEY = "level";
 
+    @OnClick(R.id.imageButton_WordScreen_1) void speakerNewLanguage(){
+        textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                talkSpeech(status, languageNew, wordsFromTables[0]);
+            }
+        });
+    }
+
+    @OnClick(R.id.imageButton_WordScreen_2) void speakerUserLanguage(){
+        textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                talkSpeech(status, languageUser, wordsFromTables[1]);
+            }
+        });
+    }
+
     @OnClick(R.id.button_WordScreen_) void buttonDone(){
         Integer wordId = bundle.getInt(WORDS_ID_KEY);
         String languageNew = bundle.getStringArray(LANGUAGES_ARRAY_KEY)[0];
@@ -69,12 +82,7 @@ public class WordScreen extends AppCompatActivity {
         String level = bundle.getString("level");
         int id_user = Integer.valueOf(new SessionManager(mContext).getUserDetails().get("id"));
 
-        Log.e("DeilyLang", "Id_User: " + id_user + ", Id_Word: " + wordId +
-                ", LanguageNew: " + languageNew + ", LanguageUser: " + languageDevice);
-
         new SetWords(this).sendUserWord(id_user, wordId, languageDevice, languageNew);
-
-        //Poner que se cierre si se ha guardado la palabra
     }
 
     @OnClick(R.id.button_WordScreen_2) void buttonRemindMeLater(){
@@ -97,8 +105,7 @@ public class WordScreen extends AppCompatActivity {
                         mContext.getString(R.string.errorSavingDialogTitle));
             }
         }else{
-            //Crashlitics
-            Log.e("DeilyLang", "Error: Button remind me later ");
+            Crashlytics.getInstance().log("Error WordScreen: Bundle null");
         }
     }
 
@@ -139,9 +146,6 @@ public class WordScreen extends AppCompatActivity {
 
         defineLocales(bundle.getStringArray(LANGUAGES_ARRAY_KEY));
 
-        mImageButton1WordScreen.setOnClickListener(listenerWordVoice1);
-        mImageButton2WordScreen.setOnClickListener(listenerWordVoice2);
-
         mWord1WordScreen.setText(wordsFromTables[0]);
         mWord2WordScreen.setText(wordsFromTables[1]);
 
@@ -175,32 +179,6 @@ public class WordScreen extends AppCompatActivity {
             }
         }
     }
-
-    private View.OnClickListener listenerWordVoice1 = new View.OnClickListener() {
-
-        @Override
-        public void onClick(View v) {
-            textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
-                @Override
-                public void onInit(int status) {
-                    talkSpeech(status, languageNew, wordsFromTables[0]);
-                }
-            });
-        }
-    };
-
-    private View.OnClickListener listenerWordVoice2 = new View.OnClickListener() {
-
-        @Override
-        public void onClick(View v) {
-            textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
-                @Override
-                public void onInit(int status) {
-                    talkSpeech(status, languageUser, wordsFromTables[1]);
-                }
-            });
-        }
-    };
 
     private void talkSpeech(int status, Locale language, String speech){
         if (status == TextToSpeech.SUCCESS) {

@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.ayoprez.notification.LaunchNotification;
 import com.ayoprez.savedWords.SavedWords;
+import com.crashlytics.android.Crashlytics;
 
 import java.util.ArrayList;
 
@@ -49,6 +50,7 @@ public class GetSavedWords {
             public void failure(RetrofitError error) {
                 Log.e("RequestError", "Error: " + error.getMessage());
                 //Crashlytics
+                Crashlytics.getInstance().log("Error GetSavedEnglishWord: " + error);
                 EventBus.getDefault().post(error);
             }
         });
@@ -68,6 +70,7 @@ public class GetSavedWords {
             public void failure(RetrofitError error) {
                 Log.e("RequestError", "Error: " + error.getMessage());
                 //Crashlytics
+                Crashlytics.getInstance().log("Error GetSavedSpanishWord: " + error);
                 EventBus.getDefault().post(error);
             }
         });

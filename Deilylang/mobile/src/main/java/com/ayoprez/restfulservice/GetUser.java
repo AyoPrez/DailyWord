@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.ayoprez.login.LoginActivity;
 import com.ayoprez.login.User;
+import com.crashlytics.android.Crashlytics;
 
 import de.greenrobot.event.EventBus;
 import retrofit.Callback;
@@ -44,6 +45,7 @@ public class GetUser {
 
                 } else {
                     //Crashlitics
+                    Crashlytics.getInstance().log("Error GetUser: Response null");
                     Log.e("DeilyLang", "Error: GetUser = null");
                 }
             }
@@ -52,6 +54,7 @@ public class GetUser {
             public void failure(RetrofitError error) {
                 Log.e("RequestError", "Error: " + error.getMessage());
                 //Crashlytics
+                Crashlytics.getInstance().log("Error GetUser: " + error);
                 EventBus.getDefault().post(error);
             }
         });

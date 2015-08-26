@@ -80,7 +80,6 @@ dependencies {
     compile 'de.greenrobot:eventbus:2.4.0'
     compile 'com.jakewharton:butterknife:6.1.0'
     compile 'com.squareup.retrofit:retrofit:1.9.0'
-    compile 'com.github.paolorotolo:appintro:2.0.0'
     compile 'uk.co.chrisjenx:calligraphy:2.1.0'
     // ================== TESTING LIBRARIES ======================
     testCompile 'junit:junit:4.12'

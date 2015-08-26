@@ -43,16 +43,19 @@ public class LevelBasicFragment extends AbstractLevelFragment {
             typesList = getArguments().getStringArrayList(TYPES);
             mainLanguage = getArguments().getString(LANGUAGE);
         }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mainView = inflater.inflate(R.layout.language_fragment, container, false);
+        View mainView = inflater.inflate(R.layout.language_fragment, container, false);
 
         recyclerView = (RecyclerView) mainView.findViewById(R.id.recyclerView_savedWords);
         adapter = new SavedWordsRecyclerViewAdapter(getActivity(), wordsList, typesList, mainLanguage);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adapter);
+
+        showEmptyList(mainView, adapter);
 
         return mainView;
     }

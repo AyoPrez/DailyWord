@@ -4,6 +4,8 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -11,6 +13,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.ViewStub;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.Spinner;
@@ -21,8 +24,10 @@ import com.ayoprez.restfulservice.GetSavedWords;
 import com.ayoprez.userProfile.ProfileScreen;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 import de.greenrobot.event.EventBus;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -51,6 +56,10 @@ public class SavedWordsScreen extends AppCompatActivity {
     private ArrayList<String> hardLevelWord = new ArrayList<String>();
 
     private String language;
+    private ArrayList<String> spinnerLanguages = new ArrayList<>();
+
+    @InjectView(R.id.viewStub_no_internet)
+    ViewStub viewStubNoInternet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +74,17 @@ public class SavedWordsScreen extends AppCompatActivity {
 
         initToolbar();
 
-        getSavedWords(getUserId());
+        if(isNetworkAvailable()) {
+            getSavedWords(getUserId());
+        }else{
+            viewStubNoInternet.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
     @Override
@@ -77,7 +96,7 @@ public class SavedWordsScreen extends AppCompatActivity {
     private void createLoadDialog(){
         loadDialog = new Dialog(this);
         loadDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        loadDialog.setContentView(R.layout.load_dialog);
+        loadDialog.setContentView(R.layout.dialog_load);
         loadDialog.show();
     }
 
@@ -114,8 +133,12 @@ public class SavedWordsScreen extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         spinnerAdapter = new SpinnerAdapter(toolbar.getContext(), R.layout.spinner_textview);
-//        spinnerAdapter.add(getString(R.string.Spanish));
-        spinnerAdapter.add(getString(R.string.English));
+
+        if(Locale.getDefault().getDisplayLanguage().equals(Locale.ENGLISH)){
+            spinnerAdapter.add(getString(R.string.Spanish));
+        }else{
+            spinnerAdapter.add(getString(R.string.English));
+        }
 
         spinner = (Spinner) toolbar.findViewById(R.id.spinner_nav);
         spinner.setVisibility(View.VISIBLE);
@@ -123,7 +146,7 @@ public class SavedWordsScreen extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+//                getSavedWords(getUserId());
             }
 
             @Override
@@ -171,11 +194,11 @@ public class SavedWordsScreen extends AppCompatActivity {
     }
 
     protected void getSavedWords(int userId){
-        if(spinner.getSelectedItem().equals(getString(R.string.English))){
-            new GetSavedWords(this).sendEnglishUserWordsRequest(userId, "spanish");
+        if(Locale.getDefault().getISO3Language().equals("eng")){
+            new GetSavedWords(this).sendSpanishUserWordsRequest(userId, "english");
         }else{
-            if (spinner.getSelectedItem().equals(getString(R.string.Spanish))){
-                new GetSavedWords(this).sendSpanishUserWordsRequest(userId, "english");
+            if(Locale.getDefault().getISO3Language().equals("spa")){
+                new GetSavedWords(this).sendEnglishUserWordsRequest(userId, "spanish");
             }
         }
 
@@ -191,32 +214,75 @@ public class SavedWordsScreen extends AppCompatActivity {
 
     protected void separateWordByLevel(ArrayList<SavedWords> savedWords){
         for (int i = 0; i < savedWords.size(); i++){
-            if(savedWords.get(i).getLevel().toLowerCase().equals("basic")){
-                basicLevelWord.add(savedWords.get(i).getWord());
-                basicLevelType.add(savedWords.get(i).getType());
-            }else{
-                if(savedWords.get(i).getLevel().toLowerCase().equals("easy")){
+            switch(savedWords.get(i).getLevel().toLowerCase()){
+                case "basic": {
+                    basicLevelWord.add(savedWords.get(i).getWord());
+                    basicLevelType.add(savedWords.get(i).getType());
+                    break;
+                }
+                case "easy": {
                     easyLevelWord.add(savedWords.get(i).getWord());
                     easyLevelType.add(savedWords.get(i).getType());
-                }else{
-                    if(savedWords.get(i).getLevel().toLowerCase().equals("normal")){
-                        normalLevelWord.add(savedWords.get(i).getWord());
-                        normalLevelType.add(savedWords.get(i).getType());
-                    }else{
-                        if(savedWords.get(i).getLevel().toLowerCase().equals("hard")){
-                            hardLevelWord.add(savedWords.get(i).getWord());
-                            hardLevelType.add(savedWords.get(i).getType());
-                        }
-                    }
+                    break;
                 }
+                case "normal": {
+                    normalLevelWord.add(savedWords.get(i).getWord());
+                    normalLevelType.add(savedWords.get(i).getType());
+                    break;
+                }
+                case "hard":{
+                    hardLevelWord.add(savedWords.get(i).getWord());
+                    hardLevelType.add(savedWords.get(i).getType());
+                    break;
+                }
+
             }
         }
 
         switchFragment();
     }
 
+    private ArrayList<String> getLanguages(ArrayList<SavedWords> savedWordsArrayList){
+        ArrayList<String> languages = new ArrayList<>();
+
+        for(int i = 0; i < savedWordsArrayList.size(); i++){
+            if (!languages.contains(savedWordsArrayList.get(i).getLanguage())){
+                languages.add(savedWordsArrayList.get(i).getLanguage());
+            }
+        }
+        return languages;
+    }
+
+    private void setSpinnerLanguages(ArrayList<String> languages){
+        spinnerAdapter.removeAll();
+        for(int i = 0; i < languages.size(); i++) {
+            spinnerAdapter.add(translateLanguage(languages.get(i)));
+        }
+    }
+
+    private String translateLanguage(String language){
+        String finalLanguage = language;
+
+        if(language.toLowerCase().equals("english")){
+            finalLanguage = getString(R.string.English);
+        }
+
+        if(language.toLowerCase().equals("spanish")){
+            finalLanguage = getString(R.string.Spanish);
+        }
+
+        return finalLanguage;
+    }
+
     public void onEvent(ArrayList<SavedWords> savedWords){
-        language = savedWords.get(0).getLanguage();
-        separateWordByLevel(savedWords);
+        if(savedWords.size() > 0) {
+            language = savedWords.get(0).getLanguage();
+            spinnerLanguages = getLanguages(savedWords);
+            setSpinnerLanguages(spinnerLanguages);
+            separateWordByLevel(savedWords);
+        }else{
+            viewStubNoInternet.setLayoutResource(R.layout.empty_list_layout);
+            viewStubNoInternet.setVisibility(View.VISIBLE);
+        }
     }
 }

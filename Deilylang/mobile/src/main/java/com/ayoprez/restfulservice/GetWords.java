@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.ayoprez.deilylang.WordFromDatabase;
 import com.ayoprez.notification.LaunchNotification;
+import com.crashlytics.android.Crashlytics;
 
 import de.greenrobot.event.EventBus;
 import retrofit.Callback;
@@ -40,10 +41,10 @@ public class GetWords {
             @Override
             public void success(WordFromDatabase word, Response response) {
                 if(word != null && word.getWord()[0] != null && word.getId() != 0) {
-                    Log.e("DeilyLang", "GetWordsSuccess: " + word.getId());
                     EventBus.getDefault().post(word);
                 }else{
                     //Crashlitics
+                    Crashlytics.getInstance().log("GetNewEnglishWord: Response null");
                     Log.e("DeilyLang", "Error: GetWords = null");
                 }
             }
@@ -52,6 +53,7 @@ public class GetWords {
             public void failure(RetrofitError error) {
                 Log.e("RequestError", "Error: " + error.getMessage());
                 //Crashlytics
+                Crashlytics.getInstance().log("Error GetNewEnglishWord: " + error);
                 EventBus.getDefault().post(error);
             }
         });
@@ -69,8 +71,9 @@ public class GetWords {
 
             @Override
             public void failure(RetrofitError error) {
-                Log.e("RequestError", "Error: " + error.getMessage());
+                Log.e("RequestError", "Error GetNewSpanishWords: " + error.getMessage());
                 //Crashlytics
+                Crashlytics.getInstance().log("Error: " + error);
                 EventBus.getDefault().post(error);
             }
         });

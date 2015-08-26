@@ -53,6 +53,8 @@ public class LevelNormalFragment extends AbstractLevelFragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adapter);
 
+        showEmptyList(mainView, adapter);
+
         return mainView;
     }
 }

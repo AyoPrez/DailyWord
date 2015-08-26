@@ -7,16 +7,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
 
 import com.ayoprez.deilylang.R;
 import com.ayoprez.deilylang.WordFromDatabase;
 import com.ayoprez.wordscreen.WordScreen;
+import com.crashlytics.android.Crashlytics;
 
 import java.util.Random;
 
 import de.greenrobot.event.EventBus;
-import deilyword.UserMoments;
 import retrofit.RetrofitError;
 
 /**
@@ -25,20 +24,17 @@ import retrofit.RetrofitError;
 public class LaunchNotification extends Application{
 
     private Context context;
-    private UserMoments userMoments;
+//    private UserMoments userMoments;
 
     public LaunchNotification(Context context){
         this.context = context;
-        this.userMoments = new UserMoments();
+//        this.userMoments = new UserMoments();
         EventBus.getDefault().register(this);
     }
 
     public void launchNotification(Context context, WordFromDatabase words) throws Exception{
         NotificationManager nManager = (NotificationManager)
                 context.getSystemService(Context.NOTIFICATION_SERVICE);
-
-        Log.e("Notification", "Notification up");
-        Log.e("DeilyLang", "Notification: " + words.getId());
 
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(
                 context)
@@ -73,17 +69,15 @@ public class LaunchNotification extends Application{
     }
 
     public void onEvent(WordFromDatabase words){
-        Log.e("DeilyLang", "Launch onEvent: " + words.getId());
         try {
             launchNotification(context, words);
         }catch (Exception e){
-            Log.e("NotificationException", "Error: " + e.getMessage() + ", Trace: " +
-                    Log.getStackTraceString(e) + ",  " +
-                    e.getStackTrace().toString() + "Error: " + e);
             //Crashlytics
+            Crashlytics.getInstance().log("Error LaunchNotification: " + e);
+        }finally{
+            unregisterEvent();
         }
 
-        unregisterEvent();
     }
 
     private void unregisterEvent(){
@@ -91,7 +85,7 @@ public class LaunchNotification extends Application{
     }
 
     public void onEvent(RetrofitError error){ //Cambiar de sitio
-        Log.e("TODO", "Aquí irá el comportamiento a hacer cuando no haya internet");
+        //TODO Aquí irá el comportamiento a hacer cuando no haya internet
     }
 
 }

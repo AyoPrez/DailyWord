@@ -14,7 +14,7 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         android:textColor="#222"
         android:textSize="18sp"
         android:text="@string/button_language" />

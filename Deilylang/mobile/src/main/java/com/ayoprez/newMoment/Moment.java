@@ -24,7 +24,7 @@ public class Moment {
 		this.UTILS = new Utils();
 		
 		this.Dialog = new Dialog(context);
-		this.Dialog.setContentView(R.layout.time_dialog);
+		this.Dialog.setContentView(R.layout.dialog_time);
 		this.Dialog.setTitle(R.string.button_time);
 		
 		Timey_Wimey = (TimePicker) Dialog.findViewById(R.id.tP_time);

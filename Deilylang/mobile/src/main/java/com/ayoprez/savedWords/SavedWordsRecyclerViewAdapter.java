@@ -35,7 +35,7 @@ public class SavedWordsRecyclerViewAdapter extends RecyclerView.Adapter<SavedWor
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.saved_words_recyclerview_item, viewGroup, false);
+                .inflate(R.layout.item_saved_words_recyclerview, viewGroup, false);
         return new ViewHolder(view);
     }
 

@@ -46,7 +46,7 @@ public class ReviewAdapter extends BaseAdapter {
         if(view == null){
             holder = new ViewHolder();
                        
-           	view = inflater.inflate(R.layout.review_item, parent, false);
+           	view = inflater.inflate(R.layout.item_review, parent, false);
            	holder.Time = (TextView) view.findViewById(R.id.tV_review_time);
             holder.Language = (TextView) view.findViewById(R.id.tV_review_language);
             holder.Level = (TextView) view.findViewById(R.id.tV_review_level);

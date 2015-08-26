@@ -16,4 +16,10 @@ public class SpinnerAdapter extends ArrayAdapter<CharSequence>{
     public void add(CharSequence object) {
         super.add(object);
     }
+
+    public void removeAll(){
+      for (int i = 0; i < getCount(); i++){
+          super.remove(getItem(i));
+      }
+    }
 }

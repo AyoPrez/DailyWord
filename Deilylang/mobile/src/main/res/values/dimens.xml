@@ -6,6 +6,24 @@
     <dimen name="savedWordSize">15sp</dimen>
     <dimen name="toolbar_spinner_textSize">20sp</dimen>
 
+    <!-- New moment Language Dialog-->
+    <dimen name="image_flag_width">40dp</dimen>
+    <dimen name="image_flag_height">40dp</dimen>
+    <dimen name="text_margin">15dp</dimen>
+    <dimen name="flag_margin">10dp</dimen>
+    <dimen name="language_dialog_layout_padding">10dp</dimen>
+    <dimen name="language_dialog_row_padding">5dp</dimen>
+    <dimen name="item_marginTop">15dp</dimen>
+
+    <!-- SavedWords -->
+    <dimen name="empty_savedWordsList_marginTop">130dp</dimen>
+    <dimen name="empty_savedWordsList_marginBottom">30dp</dimen>
+    <dimen name="image_no_internet_width">100dp</dimen>
+    <dimen name="image_no_internet_height">100dp</dimen>
+    <dimen name="image_no_internet_marginTop">130dp</dimen>
+    <dimen name="text_no_internet_size">16sp</dimen>
+    <dimen name="text_no_internet_padding">40dp</dimen>
+
     <!-- Preferences-->
     <dimen name="height_madeIn">70dp</dimen>
     <dimen name="width_madeIn">100dp</dimen>
