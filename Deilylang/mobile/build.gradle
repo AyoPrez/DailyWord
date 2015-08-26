@@ -17,14 +17,6 @@ apply plugin: 'io.fabric'
 apply plugin: 'com.neenbedankt.android-apt'
 
 android {
-    signingConfigs {
-        release {
-            keyAlias 'ayoprez'
-            keyPassword 'Doramas96'
-            storeFile file('/home/ayo/Proyectos/dailyWord/Deilylang/certification/mykey.jks')
-            storePassword 'Doramas96'
-        }
-    }
     compileSdkVersion 22
     buildToolsVersion '22.0.1'
     defaultConfig {
