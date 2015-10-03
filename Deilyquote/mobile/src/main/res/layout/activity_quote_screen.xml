@@ -1,0 +1,72 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".WordScreen">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2">
+
+        <TextView
+            android:id="@+id/textView_QuoteScreen"
+            android:layout_width="@dimen/quote_width"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/quote_marginTop"
+            android:layout_marginBottom="@dimen/quote_marginBottom"
+            android:textStyle="italic"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="La gente piensa que concentrarse significa decir sí a aquello en lo que te concentras, pero no es así. Significa decir no a otras cientos de ideas buenas que hay." />
+
+        <TextView
+            android:id="@+id/textView_author_QuoteScreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="@dimen/author_marginLeft"
+            android:layout_marginBottom="@dimen/author_marginBottom"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Steve Jobs" />
+
+        <ImageButton
+            android:id="@+id/imageButton_QuoteScreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/image_margin"
+            android:background="@drawable/ic_volume_up_light_green_50_36dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center_vertical">
+
+        <Button
+            android:id="@+id/buttonSave_QuoteScreen"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:background="#A05"
+            android:text="@string/buttonSave" />
+
+        <Button
+            android:id="@+id/buttonShare_QuoteScreen"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:background="#7A0"
+            android:text="@string/buttonShare" />
+
+    </LinearLayout>
+</LinearLayout>
