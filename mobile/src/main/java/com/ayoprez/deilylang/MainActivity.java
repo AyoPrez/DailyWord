@@ -73,13 +73,6 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private SessionManager sessionManager;
 
-    //Dependencies
-    //-ReviewAdapter
-    //-CreateDatabase
-    //-UserMomentRepository
-    //-StartAndCancelAlarmManager
-    //-SessionManager
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
