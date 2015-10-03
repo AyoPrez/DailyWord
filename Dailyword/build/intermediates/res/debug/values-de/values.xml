@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- From: file:/home/ayo/Proyectos/dailyWord/Dailyword/res/values-de/strings.xml -->
+    <eat-comment />
+
+    <string name="English">Englisch</string>
+    <string name="Finish">Finnisch</string>
+    <string name="German">Deutsch</string>
+    <string name="Spanish">Spanisch</string>
+    <string name="app_name">Dailyword</string>
+    <string name="basic">Basic</string>
+    <string name="buttonDone">Ich habe es!</string>
+    <string name="buttonLater">Erinnere mich in 20 Minuten</string>
+    <string name="button_accept">Fertig!</string>
+    <string name="button_language">Wählen Sie eine Sprache</string>
+    <string name="button_level">Wählen Sie eine Ebene</string>
+    <string name="button_time">Wählen Sie einen Moment</string>
+    <string name="button_time_accept">Akzeptieren den Moment</string>
+    <string name="contestDescription">Bild</string>
+    <string name="dialog_message">Löschen Sie diesen Moment? Wenn Sie dies tun, erhalten Sie keine Meldungen zu diesem Zeit.</string>
+    <string name="dialog_negative_button">Stonieren</string>
+    <string name="dialog_positive_button">Löschen</string>
+    <string name="dialog_title">Moment Löschen</string>
+    <string name="easy">Leicht</string>
+    <string name="error_select">Sie müssen Sprache, Füllstands und Zeit wählen</string>
+    <string name="hard">Schwer</string>
+    <string name="moment_review">Bewertung Momente</string>
+    <string name="new_moment">Neue Moment</string>
+    <string name="normal">Normal</string>
+
+</resources>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- From: file:/home/ayo/Proyectos/dailyWord/Dailyword/res/values/strings.xml -->
+    <eat-comment />
+
+    <string name="English">Inglés</string>
+    <string name="Finish">Finlandés</string>
+    <string name="German">Alemán</string>
+    <string name="Spanish">Español</string>
+    <string name="app_name">Dailyword</string>
+    <string name="basic">Básico</string>
+    <string name="buttonDone">¡La tengo!</string>
+    <string name="buttonLater">Recuerdamela en 20 minutos</string>
+    <string name="button_accept">Aceptar</string>
+    <string name="button_language">Elige un idioma</string>
+    <string name="button_level">Elige nivel</string>
+    <string name="button_time">Elige el momento</string>
+    <string name="button_time_accept">Aceptar momento</string>
+    <string name="contestDescription">Imagen</string>
+    <string name="dialog_message">¿Desea eliminar este momento? Si lo hace, dejará de recibir notificaciones a esa hora.</string>
+    <string name="dialog_negative_button">Cancelar</string>
+    <string name="dialog_positive_button">Eliminar</string>
+    <string name="dialog_title">Eliminar momento</string>
+    <string name="easy">Fácil</string>
+    <string name="error_select">Debe seleccionar idioma, nivel y momento</string>
+    <string name="hard">Difícil</string>
+    <string name="moment_review">Revisar momentos</string>
+    <string name="new_moment">Nuevo momento</string>
+    <string name="normal">Normal</string>
+    <!-- From: file:/home/ayo/Proyectos/dailyWord/Dailyword/res/values/styles.xml -->
+    <eat-comment />
+
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+</resources>

@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="2" >
+
+    <dataSet config="main" >
+        <source path="/home/ayo/Proyectos/dailyWord/Dailyword/res" >
+            <file
+                path="/home/ayo/Proyectos/dailyWord/Dailyword/res/values-v11/styles.xml"
+                qualifiers="v11" >
+
+                <style
+                    name="AppBaseTheme"
+                    parent="android:Theme.Holo.Light" >
+
+                    <!-- API 11 theme customizations can go here. -->
+                </style>
+            </file>
+            <file
+                path="/home/ayo/Proyectos/dailyWord/Dailyword/res/values-de/strings.xml"
+                qualifiers="de" >
+                <string name="normal" >Normal
+                </string>
+                <string name="buttonLater" >Erinnere mich in 20 Minuten
+                </string>
+                <string name="new_moment" >Neue Moment
+                </string>
+                <string name="button_time_accept" >Akzeptieren den Moment
+                </string>
+                <string name="dialog_title" >Moment Löschen
+                </string>
+                <string name="dialog_message" >Löschen Sie diesen Moment? Wenn Sie dies tun, erhalten Sie keine Meldungen zu diesem Zeit.
+                </string>
+                <string name="Finish" >Finnisch
+                </string>
+                <string name="app_name" >Dailyword
+                </string>
+                <string name="hard" >Schwer
+                </string>
+                <string name="button_level" >Wählen Sie eine Ebene
+                </string>
+                <string name="English" >Englisch
+                </string>
+                <string name="German" >Deutsch
+                </string>
+                <string name="dialog_negative_button" >Stonieren
+                </string>
+                <string name="error_select" >Sie müssen Sprache, Füllstands und Zeit wählen
+                </string>
+                <string name="buttonDone" >Ich habe es!
+                </string>
+                <string name="moment_review" >Bewertung Momente
+                </string>
+                <string name="contestDescription" >Bild
+                </string>
+                <string name="button_time" >Wählen Sie einen Moment
+                </string>
+                <string name="easy" >Leicht
+                </string>
+                <string name="button_accept" >Fertig!
+                </string>
+                <string name="button_language" >Wählen Sie eine Sprache
+                </string>
+                <string name="Spanish" >Spanisch
+                </string>
+                <string name="dialog_positive_button" >Löschen
+                </string>
+                <string name="basic" >Basic
+                </string>
+            </file>
+            <file
+                name="ic_launcher"
+                path="/home/ayo/Proyectos/dailyWord/Dailyword/res/drawable-mdpi/ic_launcher.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                path="/home/ayo/Proyectos/dailyWord/Dailyword/res/values-v14/styles.xml"
+                qualifiers="v14" >
+
+                <style
+                    name="AppBaseTheme"
+                    parent="android:Theme.Holo.Light.DarkActionBar" >
+
+                    <!-- API 14 theme customizations can go here. -->
+                </style>
+            </file>
+            <file
+                name="level_dialog"
+                path="/home/ayo/Proyectos/dailyWord/Dailyword/res/layout-small/level_dialog.xml"
+                qualifiers="small-v4"
+                type="layout" />
+            <file
+                name="newmoment_activity"
+                path="/home/ayo/Proyectos/dailyWord/Dailyword/res/layout-small/newmoment_activity.xml"
+                qualifiers="small-v4"
+                type="layout" />
+            <file
+                name="review_item"
+                path="/home/ayo/Proyectos/dailyWord/Dailyword/res/layout-small/review_item.xml"
+                qualifiers="small-v4"
+                type="layout" />
+            <file
+                name="language_dialog"
+                path="/home/ayo/Proyectos/dailyWord/Dailyword/res/layout-small/language_dialog.xml"
+                qualifiers="small-v4"
+                type="layout" />
+            <file
+                path="/home/ayo/Proyectos/dailyWord/Dailyword/res/values/strings.xml"
+                qualifiers="" >
+                <string name="contestDescription" >Imagen
+                </string>
+                <string name="normal" >Normal
+                </string>
+                <string name="button_level" >Elige nivel
+                </string>
+                <string name="Finish" >Finlandés
+                </string>
+                <string name="dialog_title" >Eliminar momento
+                </string>
+                <string name="English" >Inglés
+                </string>
+                <string name="German" >Alemán
+                </string>
+                <string name="dialog_negative_button" >Cancelar
+                </string>
+                <string name="button_language" >Elige un idioma
+                </string>
+                <string name="dialog_message" >¿Desea eliminar este momento? Si lo hace, dejará de recibir notificaciones a esa hora.
+                </string>
+                <string name="moment_review" >Revisar momentos
+                </string>
+                <string name="error_select" >Debe seleccionar idioma, nivel y momento
+                </string>
+                <string name="button_accept" >Aceptar
+                </string>
+                <string name="new_moment" >Nuevo momento
+                </string>
+                <string name="Spanish" >Español
+                </string>
+                <string name="buttonLater" >Recuerdamela en 20 minutos
+                </string>
+                <string name="easy" >Fácil
+                </string>
+                <string name="dialog_positive_button" >Eliminar
+                </string>
+                <string name="app_name" >Dailyword
+                </string>
+                <string name="button_time_accept" >Aceptar momento
+                </string>
+                <string name="basic" >Básico
+                </string>
+                <string name="hard" >Difícil
+                </string>
+                <string name="buttonDone" >¡La tengo!
+                </string>
+                <string name="button_time" >Elige el momento
+                </string>
+            </file>
+            <file
+                path="/home/ayo/Proyectos/dailyWord/Dailyword/res/values/styles.xml"
+                qualifiers="" >
+
+                <style
+                    name="AppBaseTheme"
+                    parent="android:Theme.Light" >
+
+                    <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+                    -->
+                </style>
+
+                <style
+                    name="AppTheme"
+                    parent="AppBaseTheme" >
+
+                    <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+                </style>
+            </file>
+            <file
+                name="level_dialog"
+                path="/home/ayo/Proyectos/dailyWord/Dailyword/res/layout/level_dialog.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="reviewmoments_dialog"
+                path="/home/ayo/Proyectos/dailyWord/Dailyword/res/layout/reviewmoments_dialog.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="dialyword_layout"
+                path="/home/ayo/Proyectos/dailyWord/Dailyword/res/layout/dialyword_layout.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="time_dialog"
+                path="/home/ayo/Proyectos/dailyWord/Dailyword/res/layout/time_dialog.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="mainactivity"
+                path="/home/ayo/Proyectos/dailyWord/Dailyword/res/layout/mainactivity.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="newmoment_activity"
+                path="/home/ayo/Proyectos/dailyWord/Dailyword/res/layout/newmoment_activity.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="review_item"
+                path="/home/ayo/Proyectos/dailyWord/Dailyword/res/layout/review_item.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="language_dialog"
+                path="/home/ayo/Proyectos/dailyWord/Dailyword/res/layout/language_dialog.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="activity_main"
+                path="/home/ayo/Proyectos/dailyWord/Dailyword/res/layout/activity_main.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="applanguage_dialog"
+                path="/home/ayo/Proyectos/dailyWord/Dailyword/res/layout/applanguage_dialog.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="ic_launcher"
+                path="/home/ayo/Proyectos/dailyWord/Dailyword/res/drawable-hdpi/ic_launcher.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/home/ayo/Proyectos/dailyWord/Dailyword/res/drawable-xxhdpi/ic_launcher.png"
+                qualifiers="xxhdpi-v4"
+                type="drawable" />
+            <file
+                name="newmoment_activity"
+                path="/home/ayo/Proyectos/dailyWord/Dailyword/res/layout-large/newmoment_activity.xml"
+                qualifiers="large-v4"
+                type="layout" />
+            <file
+                name="review_item"
+                path="/home/ayo/Proyectos/dailyWord/Dailyword/res/layout-large/review_item.xml"
+                qualifiers="large-v4"
+                type="layout" />
+            <file
+                name="newmoment_activity"
+                path="/home/ayo/Proyectos/dailyWord/Dailyword/res/layout-xlarge/newmoment_activity.xml"
+                qualifiers="xlarge-v4"
+                type="layout" />
+            <file
+                name="review_item"
+                path="/home/ayo/Proyectos/dailyWord/Dailyword/res/layout-xlarge/review_item.xml"
+                qualifiers="xlarge-v4"
+                type="layout" />
+            <file
+                name="ic_launcher"
+                path="/home/ayo/Proyectos/dailyWord/Dailyword/res/drawable-xhdpi/ic_launcher.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                path="/home/ayo/Proyectos/dailyWord/Dailyword/res/values-en/strings.xml"
+                qualifiers="en" >
+                <string name="dialog_message" >Do you want to delete this moment? If you do it you don\'t gonna recieve more notifications at this hour.
+                </string>
+                <string name="normal" >Normal
+                </string>
+                <string name="error_select" >You should select language, level and moment
+                </string>
+                <string name="hard" >Hard
+                </string>
+                <string name="easy" >Easy
+                </string>
+                <string name="buttonLater" >Remind me in 20 minutes
+                </string>
+                <string name="dialog_negative_button" >Cancel
+                </string>
+                <string name="button_language" >Choose a language
+                </string>
+                <string name="button_level" >Choose a level
+                </string>
+                <string name="Spanish" >Spanish
+                </string>
+                <string name="app_name" >Dailyword
+                </string>
+                <string name="moment_review" >Review moments
+                </string>
+                <string name="button_accept" >Done!
+                </string>
+                <string name="button_time" >Choose a moment
+                </string>
+                <string name="new_moment" >New Moment
+                </string>
+                <string name="button_time_accept" >Accept the moment
+                </string>
+                <string name="buttonDone" >I got it! 
+                </string>
+                <string name="basic" >Basic
+                </string>
+                <string name="English" >English
+                </string>
+                <string name="dialog_title" >Delete moment
+                </string>
+                <string name="German" >German
+                </string>
+                <string name="Finish" >Finnish
+                </string>
+                <string name="dialog_positive_button" >Delete
+                </string>
+                <string name="contestDescription" >Image
+                </string>
+            </file>
+        </source>
+        <source path="/home/ayo/Proyectos/dailyWord/Dailyword/build/generated/res/rs/release" />
+        <source path="/home/ayo/Proyectos/dailyWord/Dailyword/build/generated/res/generated/release" />
+    </dataSet>
+    <dataSet config="release" >
+        <source path="/home/ayo/Proyectos/dailyWord/Dailyword/build-types/release/res" />
+    </dataSet>
+
+</merger>
