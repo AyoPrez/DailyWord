@@ -1,4 +1,4 @@
-package com.ayoprez.deilyquote;
+package com.ayoprez.utils;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -8,7 +8,7 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.util.Log;
 
-import java.util.Locale;
+import com.ayoprez.deilyquote.MainActivity;
 
 public class Utils {
 
@@ -69,21 +69,5 @@ public class Utils {
 		String minute = time.substring(3, 5);
 		Log.d("Minute", minute);
 		return Integer.valueOf(minute);
-	}
-
-	public Locale getChangedLanguageLocale(String language){
-
-		switch (language.toLowerCase()) {
-			case "spanish":
-				return new Locale("es");
-			case "german":
-				return new Locale("de");
-			case "italian":
-				return new Locale("it");
-			case "french":
-				return new Locale("fr");
-			default:
-				return new Locale("en");
-		}
 	}
 }
