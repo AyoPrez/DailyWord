@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+
+    <ImageView
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:id="@+id/imageView"
+        android:src="@drawable/deilyquote_icon"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="30dp"
+        android:layout_gravity="center_horizontal" />
+
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/login_button"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_margin="8dp"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:layout_gravity="center_horizontal" />
+
+    <!--<com.google.android.gms.common.SignInButton-->
+        <!--android:id="@+id/sign_in_button"-->
+        <!--android:layout_width="250dp"-->
+        <!--android:layout_height="60dp"-->
+        <!--android:layout_margin="8dp"-->
+        <!--android:textSize="17sp"-->
+        <!--android:layout_gravity="center_horizontal"/>-->
+
+    <com.twitter.sdk.android.core.identity.TwitterLoginButton
+        android:id="@+id/twitter_login_button"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_centerInParent="true"
+        android:layout_margin="8dp"
+        android:textSize="17sp"
+        android:layout_gravity="center_horizontal"/>
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:text="@string/Login_Continue"
+        android:id="@+id/login_continue"
+        android:layout_margin="8dp"
+        android:background="@color/no_login"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:layout_gravity="center_horizontal" />
+</LinearLayout>

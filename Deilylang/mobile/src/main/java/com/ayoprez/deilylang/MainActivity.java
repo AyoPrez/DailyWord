@@ -7,12 +7,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Toast;
-import android.support.v7.widget.Toolbar;
 
 import com.ayoprez.database.CreateDatabase;
 import com.ayoprez.database.UserMomentsRepository;
@@ -28,8 +28,8 @@ import com.twitter.sdk.android.core.TwitterAuthConfig;
 
 import java.util.List;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 import butterknife.OnClick;
 import butterknife.OnItemLongClick;
 import deilyword.UserMoments;
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TWITTER_KEY = "ca9fZBuy7LLrMEfaK9mP4VCab";
     private static final String TWITTER_SECRET = "1gJO7L847SiDrFoI6qiohSMipxJPKSRJA2TjHtIdcjr5nVYo8p";
 
-    @Bind(R.id.reviewList) ListView mReviewList;
+    @InjectView(R.id.reviewList) ListView mReviewList;
 
     @OnClick(R.id.b_main) void mMomentsButton(){
         Intent newMomentIntent = new Intent(this, NewMomentActivity.class);
@@ -73,13 +73,20 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private SessionManager sessionManager;
 
+    //Dependencies
+    //-ReviewAdapter
+    //-CreateDatabase
+    //-UserMomentRepository
+    //-StartAndCancelAlarmManager
+    //-SessionManager
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
         Fabric.with(this, new Crashlytics(), new Twitter(authConfig));
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+        ButterKnife.inject(this);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

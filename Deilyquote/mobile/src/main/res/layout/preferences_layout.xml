@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="preferences"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <PreferenceCategory android:title="@string/about_title">
+        <!-- About (Información de la aplicación)-->
+        <Preference
+            android:key="about"
+            android:title="@string/info" />
+
+        <!-- Version -->
+        <Preference
+            android:key="version"
+            android:title="@string/version"
+            android:summary="@string/versionName" />
+
+        <!-- Feedback -->
+        <Preference
+            android:key="feedback"
+            android:title="@string/feedback" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/legal_title">
+        <!-- Información legal -->
+        <Preference
+            android:key="legal"
+            android:title="@string/terms"/>
+
+        <!-- Contacto -->
+        <Preference
+            android:key="contact"
+            android:title="@string/contact" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/developer">
+        <!-- more of AyoPrez -->
+        <Preference
+            android:key="more"
+            android:title="@string/more_of_Ayoprez"/>
+
+        <Preference
+            android:key="rate"
+            android:title="@string/rateAtGoogle"/>
+
+    </PreferenceCategory>
+</PreferenceScreen>

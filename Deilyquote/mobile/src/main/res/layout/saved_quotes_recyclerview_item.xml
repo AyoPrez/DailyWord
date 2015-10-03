@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_layout"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="30dp"
+    android:paddingBottom="30dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:layout_marginTop="2dp"
+    android:layout_marginBottom="2dp"
+    android:background="@color/tw__light_gray">
+
+    <TextView
+        android:id="@+id/textView_savedQuote"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:gravity="left"
+        android:text="Ejemplo2"
+        android:singleLine="true"
+        android:layout_marginRight="9dp"
+        android:textColor="@color/black"
+        android:layout_gravity="left"
+        android:textSize="15sp"/>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:layout_marginRight="10dp"/>
+
+    <TextView
+        android:id="@+id/textView_savedQuote_author"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:gravity="left"
+        android:text="Ejemplo1"
+        android:textColor="@color/black"
+        android:layout_gravity="left"
+        android:textSize="15sp"/>
+</LinearLayout>
