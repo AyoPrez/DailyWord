@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:layout_width="@dimen/width_madeIn"
+    android:layout_height="@dimen/height_madeIn"
+    android:layout_margin="@dimen/margin_madeIn">
+
+    <ImageView
+        android:id="@+id/imageView_madeInGermany"
+        android:layout_width="@dimen/width_madeIn"
+        android:layout_height="@dimen/height_madeIn"
+        android:background="@drawable/made_in_germany"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/margin_madeIn"/>
+
+    <TextView
+        android:id="@+id/textView_made_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/textSize_madeIn"
+        android:gravity="center"
+        android:text="@string/made_in"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/margin_madeIn"/>
+</LinearLayout>
