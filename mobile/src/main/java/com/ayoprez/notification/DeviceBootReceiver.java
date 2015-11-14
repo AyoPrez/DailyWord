@@ -10,10 +10,15 @@ import android.util.Log;
 import com.ayoprez.database.UserMomentsRepository;
 
 import java.util.List;
+import java.util.Locale;
 
+import com.ayoprez.deilylang.ErrorHandler;
+import com.ayoprez.deilylang.Translations;
+import com.ayoprez.login.SessionManager;
 import deilyword.UserMoments;
 
 public class DeviceBootReceiver extends BroadcastReceiver {
+    private static final String TAG = DeviceBootReceiver.class.getSimpleName();
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -24,34 +29,16 @@ public class DeviceBootReceiver extends BroadcastReceiver {
         }
     }
 
+    //TODO It doesn't work well. Review in the future
+
     public void reSchedule(Context context){
-        Intent alarmIntent = new Intent(context, AlarmReceiver.class);
-        AlarmManager manager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-
         List<UserMoments> dataFromDatabase = new UserMomentsRepository().getAllMoments(context);
-        int total = new UserMomentsRepository().getRowsCount(context);
 
-        String time;
-        PendingIntent pendingIntent;
-
-        for(int i = 0; i < total; i++){
+        for(UserMoments userMoments : dataFromDatabase){
             try {
-                time = dataFromDatabase.get(i).getTime();
-                long id = dataFromDatabase.get(i).getId();
-                pendingIntent = PendingIntent.getBroadcast(context, (int)id, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-                manager.setRepeating(
-                        AlarmManager.RTC_WAKEUP,
-                        System.currentTimeMillis() +
-                                new TimeCalculator().getTimeFromNowUntilUserChoiceTime(time),
-                        AlarmManager.INTERVAL_DAY,
-                        pendingIntent);
-
-                time = null;
-                pendingIntent = null;
+                new StartAndCancelAlarmManager(context, userMoments);
             }catch(Exception e){
-                //Crashlytics
-                Log.e("RescheduleException", "Error: " + e.getMessage());
+                ErrorHandler.getInstance().Error(TAG, e.toString());
             }
         }
     }

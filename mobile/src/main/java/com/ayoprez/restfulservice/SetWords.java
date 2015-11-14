@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.ayoprez.deilylang.R;
-import com.ayoprez.deilylang.Utils;
+import com.ayoprez.utils.Utils;
 import com.crashlytics.android.Crashlytics;
 
 import de.greenrobot.event.EventBus;

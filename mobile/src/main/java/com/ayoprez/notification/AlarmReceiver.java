@@ -4,15 +4,17 @@ package com.ayoprez.notification;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
+import com.ayoprez.deilylang.ErrorHandler;
 import com.ayoprez.deilylang.Translations;
 import com.ayoprez.restfulservice.GetWords;
-import com.crashlytics.android.Crashlytics;
 
 public class AlarmReceiver extends BroadcastReceiver{
 
+    private static final String LOG_TAG = AlarmReceiver.class.getSimpleName();
+
     public Context context;
-    public Translations translations = new Translations();
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -20,15 +22,17 @@ public class AlarmReceiver extends BroadcastReceiver{
         try {
             getWords(context, intent);
         } catch (Exception e) {
-            Crashlytics.getInstance().log("Error AlarmReceiver: " + e);
-            e.printStackTrace();
+            ErrorHandler.getInstance().Error(LOG_TAG, e.toString());
         }
     }
 
     private void getWords(Context context, Intent intent)throws Exception{
-        String level = translations.translateLevel(intent.getStringExtra("level"));
+        String level = Translations.translateLevel(intent.getStringExtra("level"));
         String languageLearning = intent.getStringExtra("languageLearning");
-        String languageDevice = translations.translateLanguage(intent.getStringExtra("languageDevice"));
+
+        //TODO Revisar porque traduzco el lenguaje del dispositivo
+        String languageDevice = Translations.translateLanguageFromSpanishToEnglish(intent.getStringExtra("languageDevice"));
+
         int id = intent.getIntExtra("id", 0);
 
         if(languageLearning.equals("eng")){

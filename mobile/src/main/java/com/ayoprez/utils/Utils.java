@@ -1,4 +1,4 @@
-package com.ayoprez.deilylang;
+package com.ayoprez.utils;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -10,9 +10,11 @@ import android.content.res.Resources;
 import android.util.Log;
 import android.util.TypedValue;
 
+import com.ayoprez.deilylang.MainActivity;
+
 public class Utils {
 
-	public void Create_Dialog(final Context ctx, String message, String button_title, String dialog_title){
+	public static void Create_Dialog(final Context ctx, String message, String button_title, String dialog_title){
 		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ctx);
 		alertDialogBuilder.setTitle(dialog_title);
 		alertDialogBuilder.setMessage(message);
@@ -29,16 +31,18 @@ public class Utils {
 		alertDialogBuilder.show();
 	}
 
-	public void Create_Dialog_DoNotFinishActivity(final Context ctx, String message, String button_title, String dialog_title){
+	public static void Create_Dialog_DoNotFinishActivity(final Context ctx, String message,
+                                                         String button_title, String dialog_title,
+                                                         DialogInterface.OnClickListener onClickListener){
 		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ctx);
 		alertDialogBuilder.setTitle(dialog_title);
 		alertDialogBuilder.setMessage(message);
-		alertDialogBuilder.setPositiveButton(button_title, null);
+		alertDialogBuilder.setPositiveButton(button_title, onClickListener);
 
 		alertDialogBuilder.show();
 	}
 
-	public float convertDPToPX(Context context, int dp){
+	public static float convertDPToPX(Context context, int dp){
 		Resources r = context.getResources();
 		float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 14, r.getDisplayMetrics());
 		return px;
@@ -52,7 +56,7 @@ public class Utils {
 		}
 	}
 	
-	public String TakeOutTimeDots(String s){
+	public static String TakeOutTimeDots(String s){
 		int n = s.indexOf(':');
 		return s.substring(0, n) + s.substring(n + 1);
 	}
@@ -76,28 +80,5 @@ public class Utils {
 		Log.d("Minute", minute);
 		return Integer.valueOf(minute);
 	}
-
-    /**
-     * Change when more languages are included.
-     * **/
-	public String translateLanguagesToISO(String language){
-
-        String lang = language.toLowerCase();
-        String ISO3 = null;
-
-        if(lang.equals("inglés") || lang.equals("englisch") || lang.equals("english")){
-            ISO3 = "eng";
-        }else{
-            if(lang.equals("español") || lang.equals("spanisch") || lang.equals("spanish")){
-                ISO3 = "spa";
-            }else{
-                if(lang.equals("alemán") || lang.equals("deutsch") || lang.equals("german")){
-                    ISO3 = "deu";
-                }
-            }
-        }
-        return ISO3;
-    }
-
 
 }

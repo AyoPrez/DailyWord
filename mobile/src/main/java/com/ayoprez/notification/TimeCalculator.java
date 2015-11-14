@@ -2,7 +2,7 @@ package com.ayoprez.notification;
 
 import android.app.AlarmManager;
 
-import com.ayoprez.deilylang.Utils;
+import com.ayoprez.utils.Utils;
 
 import java.util.Calendar;
 

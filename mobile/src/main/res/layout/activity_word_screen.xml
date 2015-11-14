@@ -21,6 +21,14 @@
             android:layout_gravity="center_vertical"
             android:background="@drawable/ic_volume_up_black_48dp" />
 
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="10dp"
+            android:layout_gravity="center_vertical"
+            android:visibility="gone"/>
+
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -63,6 +71,14 @@
             android:layout_gravity="center_vertical"
             android:layout_margin="10dp"
             android:background="@drawable/ic_volume_up_black_48dp" />
+
+        <ProgressBar
+                android:id="@+id/progressBar2"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="10dp"
+                android:layout_gravity="center_vertical"
+                android:visibility="gone"/>
 
         <LinearLayout
             android:orientation="vertical"

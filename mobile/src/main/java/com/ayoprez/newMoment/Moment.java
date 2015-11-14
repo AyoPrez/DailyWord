@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.TimePicker;
 
 import com.ayoprez.deilylang.R;
-import com.ayoprez.deilylang.Utils;
+import com.ayoprez.utils.Utils;
 
 import java.util.Calendar;
 

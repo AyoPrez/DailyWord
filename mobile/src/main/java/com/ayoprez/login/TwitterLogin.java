@@ -9,13 +9,10 @@ import com.ayoprez.restfulservice.GetUser;
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
-import com.twitter.sdk.android.core.TwitterAuthConfig;
 import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.identity.TwitterAuthClient;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
-
-import io.fabric.sdk.android.Fabric;
 
 /**
  * Created by AyoPrez on 25/07/15.
@@ -31,8 +28,8 @@ public class TwitterLogin {
     }
 
     public void initTwitter(){
-        TwitterAuthConfig authConfig = new TwitterAuthConfig(context.getString(R.string.t_key), context.getString(R.string.t_secret));
-        Fabric.with(context, new Twitter(authConfig));
+//        TwitterAuthConfig authConfig = new TwitterAuthConfig(context.getString(R.string.t_key), context.getString(R.string.t_secret));
+//        Fabric.with(context, new Twitter(authConfig));
 
         twitterLogin();
     }

@@ -8,11 +8,12 @@ import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ayoprez.deilylang.R;
-import com.ayoprez.deilylang.Utils;
+import com.ayoprez.utils.Utils;
 import com.ayoprez.deilylang.WordFromDatabase;
 import com.ayoprez.login.SessionManager;
 import com.ayoprez.notification.ShortTimeStartAndCancel;
@@ -46,10 +47,10 @@ public class WordScreen extends AppCompatActivity {
     TextView mType2WordScreen;
     @Bind(R.id.button_WordScreen_)
     Button mButtonSaveWord;
-    @Bind(R.id.button_WordScreen_2)
-    Button mButtonRemainLater;
-    @Bind(R.id.button_report_WordScreen)
-    Button mButtonReport;
+    @Bind(R.id.progressBar)
+    ProgressBar progressBar;
+    @Bind(R.id.progressBar2)
+    ProgressBar progressBar2;
 
     private String WORDS_ID_KEY = "wordId";
     private String WORDS_ARRAY_KEY = "words";

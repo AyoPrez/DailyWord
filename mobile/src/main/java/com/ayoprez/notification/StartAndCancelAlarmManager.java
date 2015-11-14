@@ -5,7 +5,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 
-import com.ayoprez.deilylang.Utils;
+import com.ayoprez.deilylang.Translations;
 import com.ayoprez.login.SessionManager;
 
 import java.util.Locale;
@@ -35,7 +35,7 @@ public class StartAndCancelAlarmManager extends TimeCalculator{
     private Intent startIntent(Context context, UserMoments userMoments){
         Intent alarmIntent = new Intent(context, AlarmReceiver.class);
         alarmIntent.putExtra("level", userMoments.getLevel());
-        alarmIntent.putExtra("languageLearning", new Utils().translateLanguagesToISO(userMoments.getLanguage()));
+        alarmIntent.putExtra("languageLearning", Translations.translateLanguagesToISO(userMoments.getLanguage()));
         alarmIntent.putExtra("languageDevice", Locale.getDefault().getDisplayLanguage());
 
         if(id_U != null){

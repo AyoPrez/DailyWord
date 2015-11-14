@@ -5,7 +5,7 @@ import android.widget.Toast;
 
 import com.ayoprez.database.UserMomentsRepository;
 import com.ayoprez.deilylang.R;
-import com.ayoprez.deilylang.Utils;
+import com.ayoprez.utils.Utils;
 import com.ayoprez.notification.StartAndCancelAlarmManager;
 
 import deilyword.UserMoments;
@@ -13,11 +13,9 @@ import deilyword.UserMoments;
 public class Accept {
 
 	private Context context;
-	private Utils UTILS;
 	
 	public Accept(Context context){
 		this.context = context;
-		this.UTILS = new Utils();
 	}
 	
 	public void Accept_Dialog(String AppLanguage, String Language, final String Level, String Time){
@@ -29,17 +27,17 @@ public class Accept {
                     userMomentsRepository.getLastId(context),
                     Language,
                     Level,
-                    UTILS.TakeOutTimeDots(Time),
+                    Utils.TakeOutTimeDots(Time),
                     AppLanguage);
 
             userMomentsRepository.insertOrUpdate(context, userMoments);
 
 			if(new StartAndCancelAlarmManager(context, userMoments).startAlarmManager(Time)){
-                UTILS.Create_Dialog(context, context.getString(R.string.successSavingMoment),
+                Utils.Create_Dialog(context, context.getString(R.string.successSavingMoment),
                         context.getString(R.string.buttonAcceptDialog),
                         context.getString(R.string.successSavingDialogTitle));
             }else{
-                UTILS.Create_Dialog(context, context.getString(R.string.errorSavingMoment),
+                Utils.Create_Dialog(context, context.getString(R.string.errorSavingMoment),
                         context.getString(R.string.buttonAcceptDialog),
                         context.getString(R.string.errorSavingDialogTitle));
             }
