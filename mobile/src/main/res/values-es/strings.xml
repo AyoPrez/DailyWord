@@ -21,6 +21,9 @@
 
     <!-- Login activity texts-->
     <string name="Login_Continue">Continuar sin iniciar sesión</string>
+    <string name="login_facebook">Iniciar sesión con Facebook</string>
+    <string name="login_twitter">Iniciar sesión con Twitter</string>
+    <string name="logout">Cerrar sesión</string>
     <string name="register">¡Regístrate!</string>
 
     <!-- Languages -->
@@ -69,8 +72,10 @@
     <!-- Errors -->
     <string name="error_select">Debe seleccionar idioma, nivel y momento</string>
     <string name="errorSavingMoment">Ha habido un error y no se ha podido guardar el momento</string>
-    <string name="errorSavingDialogTitle">Hubo un error</string>
+    <string name="errorSavingDialogTitle">Error</string>
     <string name="title_activity_word_screen">WordScreen</string>
+    <string name="errorDefault">Hubo un error</string>
+    <string name="errorDefaultAndTry">Hubo un error. Por favor, inténtalo de nuevo</string>
     <string name="errorDeletingMoment" />
 
     <!-- Preferences -->
@@ -87,7 +92,7 @@
     <string name="version">Versión</string>
     <string name="info">Info</string>
     <string name="info_message">Aplicación realizada con cariño por AyoPrez. \n\n
-                                Para más información, acuda a la web </string>
+                                Para más información, acuda a la web: </string>
     <string name="versionName">0.1</string>
 
     <string name="legal_title">Legal y contacto</string>
@@ -99,7 +104,7 @@
     <string name="developer">Desarrollador</string>
     <string name="rateAtGoogle">Evalúa la app</string>
     <string name="rateError">No fue posible abrir la tienda de aplicaciones. Por favor, instalala y vuelve a intentarlo.</string>
-    <string name="feedback_mail_subject">Feedback SHC</string>
+    <string name="feedback_mail_subject">Feedback DeilyLang</string>
     <string name="feedback_mail_dialog_title">Envía feedback</string>
     <string name="feedback_mail_error">No hay clientes de correo electrónico instalados</string>
     <string name="marketId">com.ayoprez.deilylang</string>
@@ -110,6 +115,5 @@
 
     <string name="Login_TwitterButton">Twitter</string>
     <string name="f_key">697126877059363</string>
-    <string name="errorDefault">Hubo un error</string>
 
 </resources>

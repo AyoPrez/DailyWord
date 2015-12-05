@@ -18,6 +18,10 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnItemLongClick;
+import com.ayoprez.utils.Test;
+import com.crashlytics.android.Crashlytics;
+import com.crashlytics.android.answers.ContentViewEvent;
+import com.crashlytics.android.answers.CustomEvent;
 
 public class MainActivity extends AbstractBaseActivity {
     @Bind(R.id.reviewList)
@@ -25,19 +29,18 @@ public class MainActivity extends AbstractBaseActivity {
 
     @OnClick(R.id.b_main)
     void momentsButton(){
-        Intent newMomentIntent = new Intent(this, NewMomentActivity.class);
-        startActivity(newMomentIntent);
-        ((Activity) this).finish();
+        startActivity(new Intent(this, NewMomentActivity.class));
+        finish();
     }
 
     @OnItemLongClick(R.id.reviewList)
     boolean longItem(int position){
+        Crashlytics.getInstance().answers.logCustom(new CustomEvent("LongItemClick"));
         new ReviewList(reviewList).showAlertDialogToDeleteItem(this, position);
         return true;
     }
 
     //Tests
-    //TODO hide
 //    @OnClick(R.id.buttonn) void newNotification(){
 //        Test.testNotification(this);
 //    }

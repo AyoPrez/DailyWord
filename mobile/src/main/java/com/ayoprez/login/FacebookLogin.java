@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.ayoprez.deilylang.ErrorHandler;
 import com.ayoprez.deilylang.R;
 import com.ayoprez.restfulservice.GetUser;
 import com.facebook.AccessToken;
@@ -28,6 +29,7 @@ import java.util.List;
  * Created by AyoPrez on 25/07/15.
  */
 public class FacebookLogin {
+    private static final String LOG_TAG = FacebookLogin.class.getSimpleName();
 
     private String TYPE_ID = "f";
     private LoginButton facebookLoginButton;
@@ -78,14 +80,13 @@ public class FacebookLogin {
 
             @Override
             public void onCancel() {
-                // App code
-                Toast.makeText(context, "Come off Facebook! ", Toast.LENGTH_LONG).show();
+                ErrorHandler.getInstance().informUser(context, context.getString(R.string.errorDefault));
             }
 
             @Override
             public void onError(FacebookException exception) {
-                // App code
-                Toast.makeText(context, "Come error Facebook! ", Toast.LENGTH_LONG).show();
+                ErrorHandler.getInstance().Error(LOG_TAG, exception.toString());
+                ErrorHandler.getInstance().informUser(context, context.getString(R.string.errorDefault));
             }
         });
     }
@@ -94,8 +95,6 @@ public class FacebookLogin {
         GraphRequest request = GraphRequest.newMeRequest(AccessToken.getCurrentAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
             @Override
             public void onCompleted(JSONObject object, GraphResponse response) {
-                // Application code
-                Log.v("LoginActivity", response.toString());
                 try {
                     //and fill them here like so.
                     user = new User(object.getString("name"), object.getString("id"));
@@ -103,8 +102,8 @@ public class FacebookLogin {
                     new GetUser(context).sendUserDataRequest(user.getSocial_Id(), TYPE_ID, user.getName());
 
                 } catch (JSONException e) {
-                    e.printStackTrace();
-                    Log.v("DeilyLang", "UserDataError: " + e.toString());
+                    ErrorHandler.getInstance().Error(LOG_TAG, e.toString());
+                    ErrorHandler.getInstance().informUser(context, context.getString(R.string.errorDefault));
                 }
             }
         });

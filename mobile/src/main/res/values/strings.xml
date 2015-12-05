@@ -24,6 +24,9 @@
 
     <!-- Login activity texts-->
     <string name="Login_Continue">Continue without login</string>
+    <string name="login_facebook">Login with Facebook</string>
+    <string name="login_twitter">Login with Twitter</string>
+    <string name="logout">Logout</string>
     <string name="register">Sign up!</string>
 
     <!-- Levels -->
@@ -68,8 +71,9 @@
     <!-- Errors -->
     <string name="error_select">You should select language, level and moment</string>
     <string name="errorSavingMoment">There was an error and the moment could not be saved</string>
-    <string name="errorSavingDialogTitle">There was an error</string>
+    <string name="errorSavingDialogTitle">Error</string>
     <string name="errorDefault">There was an error</string>
+    <string name="errorDefaultAndTry">There was an error. Plase, try again</string>
     <string name="errorDeletingMoment" />
 
     <!-- Preferences -->
@@ -86,7 +90,7 @@
     <string name="version">Version</string>
     <string name="info">Info</string>
     <string name="info_message">App made fondly by AyoPrez. \n\n
-                                For more information, visit the website http://www.ayoprez.com</string>
+                                For more information, visit the website: </string>
 
     <string name="legal_title">Legal and contact</string>
     <string name="terms">Terms and conditions</string>
@@ -99,7 +103,7 @@
     <string name="rateError">Could not open the Play Store, please install it and try again.</string>
     <string name="appName_shc">Speech help cards</string>
     <string name="appName_deilyquote">DeilyQuote</string>
-    <string name="feedback_mail_subject">Feedback SHC</string>
+    <string name="feedback_mail_subject">Feedback DeilyLang</string>
     <string name="feedback_mail_dialog_title">Send feedback</string>
     <string name="feedback_mail_error">There are no email clients installed</string>
     <string name="deleteMomentDialogTitle">Delete moment</string>
@@ -110,6 +114,5 @@
     <string name="marketId">com.ayoprez.deilylang</string>
     <string name="title_activity_word_screen">WordScreen</string>
     <string name="versionName">0.1</string>
-
 
 </resources>

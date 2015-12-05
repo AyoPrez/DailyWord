@@ -37,10 +37,8 @@ public class AlarmReceiver extends BroadcastReceiver{
 
         if(languageLearning.equals("eng")){
             new GetWords(context).sendEnglishWordRequest(level, id, languageDevice);
-        }else{
-            if(languageLearning.equals("spa")){
+        }else if(languageLearning.equals("spa")){
                 new GetWords(context).sendSpanishWordRequest(level, id, languageDevice);
-            }
         }
     }
 }

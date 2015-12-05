@@ -17,11 +17,274 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/black"
-            android:text="@string/eula"
-            android:padding="5dp"
+            android:text="@string/eula_data"
+            android:gravity="center"
             android:paddingBottom="10dp"
             android:paddingTop="10dp"
+            android:textStyle="bold"
             android:layout_margin="@dimen/legal_titles_margin"/>
+
+        <TextView
+                android:id="@+id/textView_legal1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/eula_introduction"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:lineSpacingExtra="@dimen/legal_content_lines_spacing"/>
+
+
+        <TextView
+                android:id="@+id/textView_legal2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/eula_one"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_margin="@dimen/activity_horizontal_margin"/>
+
+        <TextView
+                android:id="@+id/textView_legal3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/eula_one_text"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:lineSpacingExtra="@dimen/legal_content_lines_spacing"/>
+
+        <TextView
+                android:id="@+id/textView_legal4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/eula_two"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_margin="@dimen/activity_horizontal_margin"/>
+
+        <TextView
+                android:id="@+id/textView_legal5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/eula_two_text"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:lineSpacingExtra="@dimen/legal_content_lines_spacing"/>
+        <TextView
+                android:id="@+id/textView_legal6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/eula_three"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_margin="@dimen/activity_horizontal_margin"/>
+
+        <TextView
+                android:id="@+id/textView_legal7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/eula_three_text"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:lineSpacingExtra="@dimen/legal_content_lines_spacing"/>
+        <TextView
+                android:id="@+id/textView_legal8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/eula_four"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_margin="@dimen/activity_horizontal_margin"/>
+
+        <TextView
+                android:id="@+id/textView_legal9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/eula_four_text"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:lineSpacingExtra="@dimen/legal_content_lines_spacing"/>
+        <TextView
+                android:id="@+id/textView_legal10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/eula_five"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_margin="@dimen/activity_horizontal_margin"/>
+
+        <TextView
+                android:id="@+id/textView_legal11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/eula_five_text"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:lineSpacingExtra="@dimen/legal_content_lines_spacing"/>
+        <TextView
+                android:id="@+id/textView_legal12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/eula_six"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_margin="@dimen/activity_horizontal_margin"/>
+
+        <TextView
+                android:id="@+id/textView_legal13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/eula_six_text"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:lineSpacingExtra="@dimen/legal_content_lines_spacing"/>
+
+        <TextView
+                android:id="@+id/textView_legal14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/eula_six_one"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:paddingLeft="15dp"
+                android:layout_margin="@dimen/activity_horizontal_margin"/>
+
+        <TextView
+                android:id="@+id/textView_legal15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/eula_six_one_text"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:paddingLeft="15dp"
+                android:lineSpacingExtra="@dimen/legal_content_lines_spacing"/>
+
+        <TextView
+                android:id="@+id/textView_legal16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/eula_six_two"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:paddingLeft="15dp"
+                android:layout_margin="@dimen/activity_horizontal_margin"/>
+
+        <TextView
+                android:id="@+id/textView_legal17"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/eula_six_two_text"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:paddingLeft="15dp"
+                android:lineSpacingExtra="@dimen/legal_content_lines_spacing"/>
+
+        <TextView
+                android:id="@+id/textView_legal18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/eula_seven"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_margin="@dimen/activity_horizontal_margin"/>
+
+        <TextView
+                android:id="@+id/textView_legal19"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/eula_seven_text"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:lineSpacingExtra="@dimen/legal_content_lines_spacing"/>
+        <TextView
+                android:id="@+id/textView_legal20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/eula_eight"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_margin="@dimen/activity_horizontal_margin"/>
+
+        <TextView
+                android:id="@+id/textView_legal21"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/eula_eight_text"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:lineSpacingExtra="@dimen/legal_content_lines_spacing"/>
+
+        <TextView
+                android:id="@+id/textView_legal22"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/eula_nine"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_margin="@dimen/activity_horizontal_margin"/>
+
+        <TextView
+                android:id="@+id/textView_legal23"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/eula_nine_text"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:lineSpacingExtra="@dimen/legal_content_lines_spacing"/>
+
+        <TextView
+                android:id="@+id/textView_legal24"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/eula_ten"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_margin="@dimen/activity_horizontal_margin"/>
+
+        <TextView
+                android:id="@+id/textView_legal25"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/eula_ten_text"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:lineSpacingExtra="@dimen/legal_content_lines_spacing"/>
 
         <TextView
             android:id="@+id/textView_privacy"
@@ -31,208 +294,127 @@
             android:textColor="@color/black"
             android:text="@string/privacy"
             android:padding="5dp"
+            android:gravity="center"
             android:paddingBottom="10dp"
             android:paddingTop="10dp"
+            android:textStyle="bold"
             android:lineSpacingExtra="@dimen/legal_content_lines_spacing"/>
 
+        <TextView
+                android:id="@+id/textView_legal27"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/privacy_introduction"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:lineSpacingExtra="@dimen/legal_content_lines_spacing"/>
+
+        <TextView
+                android:id="@+id/textView_legal28"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/privacy_one"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_margin="@dimen/activity_horizontal_margin"/>
+
+        <TextView
+                android:id="@+id/textView_legal29"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/privacy_one_text"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:lineSpacingExtra="@dimen/legal_content_lines_spacing"/>
+
+        <TextView
+                android:id="@+id/textView_legal30"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/privacy_two"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_margin="@dimen/activity_horizontal_margin"/>
+
+        <TextView
+                android:id="@+id/textView_legal31"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/privacy_two_text"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:lineSpacingExtra="@dimen/legal_content_lines_spacing"/>
+
+        <TextView
+                android:id="@+id/textView_legal32"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/privacy_three"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_margin="@dimen/activity_horizontal_margin"/>
+
+        <TextView
+                android:id="@+id/textView_legal33"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/privacy_three_text"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:lineSpacingExtra="@dimen/legal_content_lines_spacing"/>
+
+        <TextView
+                android:id="@+id/textView_legal34"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/privacy_four"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_margin="@dimen/activity_horizontal_margin"/>
+
+        <TextView
+                android:id="@+id/textView_legal35"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/privacy_four_text"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:lineSpacingExtra="@dimen/legal_content_lines_spacing"/>
+
+        <TextView
+                android:id="@+id/textView_legal36"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/privacy_five"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_margin="@dimen/activity_horizontal_margin"/>
+
+        <TextView
+                android:id="@+id/textView_legal37"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/privacy_five_text"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:lineSpacingExtra="@dimen/legal_content_lines_spacing"/>
+
     </LinearLayout>
-
-<!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout_margin="@dimen/legal_titles_margin"-->
-        <!--android:orientation="vertical">-->
-
-        <!--<TextView-->
-            <!--android:id="@+id/textView_legal1"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
-
-            <!--android:textColor="@color/black"-->
-            <!--android:textStyle="bold"-->
-            <!--android:layout_margin="@dimen/legal_titles_margin"/>-->
-
-        <!--<TextView-->
-            <!--android:id="@+id/textView_legal2"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
-            <!--android:textColor="@color/black"-->
-
-            <!--android:lineSpacingExtra="@dimen/legal_content_lines_spacing"/>-->
-
-        <!--<TextView-->
-            <!--android:id="@+id/textView_legal3"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
-            <!--android:textColor="@color/black"-->
-
-            <!--android:textStyle="bold"-->
-            <!--android:layout_margin="@dimen/legal_titles_margin"/>-->
-
-        <!--<TextView-->
-            <!--android:id="@+id/textView_legal4"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
-            <!--android:textColor="@color/black"-->
-
-            <!--android:lineSpacingExtra="@dimen/legal_content_lines_spacing"/>-->
-
-        <!--<TextView-->
-            <!--android:id="@+id/textView_legal5"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
-            <!--android:textColor="@color/black"-->
-
-            <!--android:textStyle="bold"-->
-            <!--android:layout_margin="@dimen/legal_titles_margin"/>-->
-
-        <!--<TextView-->
-            <!--android:id="@+id/textView_legal6"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
-            <!--android:textColor="@color/black"-->
-
-            <!--android:lineSpacingExtra="@dimen/legal_content_lines_spacing"/>-->
-
-        <!--<TextView-->
-            <!--android:id="@+id/textView_legal7"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
-            <!--android:textColor="@color/black"-->
-
-            <!--android:textStyle="bold"-->
-            <!--android:layout_margin="@dimen/legal_titles_margin"/>-->
-
-        <!--<TextView-->
-            <!--android:id="@+id/textView_legal8"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
-            <!--android:textColor="@color/black"-->
-
-            <!--android:lineSpacingExtra="@dimen/legal_content_lines_spacing"/>-->
-
-        <!--<TextView-->
-            <!--android:id="@+id/textView_legal9"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
-            <!--android:textColor="@color/black"-->
-
-            <!--android:textStyle="bold"-->
-            <!--android:layout_margin="@dimen/legal_titles_margin"/>-->
-
-        <!--<TextView-->
-            <!--android:id="@+id/textView_legal10"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
-            <!--android:textColor="@color/black"-->
-
-            <!--android:lineSpacingExtra="@dimen/legal_content_lines_spacing"/>-->
-
-        <!--<TextView-->
-            <!--android:id="@+id/textView_legal11"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
-            <!--android:textColor="@color/black"-->
-
-            <!--android:textStyle="bold"-->
-            <!--android:layout_margin="@dimen/legal_titles_margin"/>-->
-
-        <!--<TextView-->
-            <!--android:id="@+id/textView_legal12"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
-            <!--android:textColor="@color/black"-->
-
-            <!--android:lineSpacingExtra="@dimen/legal_content_lines_spacing"/>-->
-
-        <!--<TextView-->
-            <!--android:id="@+id/textView_legal13"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
-            <!--android:textColor="@color/black"-->
-
-            <!--android:textStyle="bold"-->
-            <!--android:layout_margin="@dimen/legal_titles_margin"/>-->
-
-        <!--<TextView-->
-            <!--android:id="@+id/textView_legal14"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
-            <!--android:textColor="@color/black"-->
-
-            <!--android:lineSpacingExtra="@dimen/legal_content_lines_spacing"/>-->
-
-        <!--<TextView-->
-            <!--android:id="@+id/textView_legal15"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
-            <!--android:textColor="@color/black"-->
-
-            <!--android:textStyle="bold"-->
-            <!--android:layout_margin="@dimen/legal_titles_margin"/>-->
-
-        <!--<TextView-->
-            <!--android:id="@+id/textView_legal16"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
-            <!--android:textColor="@color/black"-->
-
-            <!--android:lineSpacingExtra="@dimen/legal_content_lines_spacing"/>-->
-
-        <!--<TextView-->
-            <!--android:id="@+id/textView_legal17"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
-
-            <!--android:textColor="@color/black"-->
-            <!--android:textStyle="bold"-->
-            <!--android:layout_margin="@dimen/legal_titles_margin"/>-->
-
-        <!--<TextView-->
-            <!--android:id="@+id/textView_legal18"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
-            <!--android:textColor="@color/black"-->
-
-            <!--android:lineSpacingExtra="@dimen/legal_content_lines_spacing"/>-->
-
-        <!--<TextView-->
-            <!--android:id="@+id/textView_legal19"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
-            <!--android:textColor="@color/black"-->
-
-            <!--android:textStyle="bold"-->
-            <!--android:layout_margin="@dimen/legal_titles_margin"/>-->
-
-        <!--<TextView-->
-            <!--android:id="@+id/textView_legal20"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
-            <!--android:textColor="@color/black"-->
-
-            <!--android:layout_marginBottom="@dimen/legal_titles_margin"-->
-            <!--android:lineSpacingExtra="@dimen/legal_content_lines_spacing"/>-->
-    <!--</LinearLayout>-->
 
 </ScrollView>

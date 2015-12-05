@@ -3,6 +3,8 @@ package com.ayoprez.restfulservice;
 import android.content.Context;
 import android.util.Log;
 
+import com.ayoprez.deilylang.ErrorHandler;
+import com.ayoprez.deilylang.R;
 import com.ayoprez.login.LoginActivity;
 import com.ayoprez.login.User;
 import com.crashlytics.android.Crashlytics;
@@ -17,6 +19,7 @@ import retrofit.client.Response;
  * Created by AyoPrez on 8/08/15.
  */
 public class GetUser {
+    private static final String LOG_TAG = GetUser.class.getSimpleName();
     public static final String ENDPOINT = "http://deilylang.com/api/index.php/";
 
     private UserAPI userAPI;
@@ -44,17 +47,15 @@ public class GetUser {
                     ((LoginActivity)context).startSession(context, new User(userName, user.getId_U()));
 
                 } else {
-                    //Crashlitics
-                    Crashlytics.getInstance().log("Error GetUser: Response null");
-                    Log.e("DeilyLang", "Error: GetUser = null");
+                    ErrorHandler.getInstance().Error(LOG_TAG, "");
+                    ErrorHandler.getInstance().informUser(context, context.getString(R.string.errorDefault));
                 }
             }
 
             @Override
             public void failure(RetrofitError error) {
-                Log.e("RequestError", "Error: " + error.getMessage());
-                //Crashlytics
-                Crashlytics.getInstance().log("Error GetUser: " + error);
+                ErrorHandler.getInstance().Error(LOG_TAG, error.toString());
+                ErrorHandler.getInstance().informUser(context, context.getString(R.string.errorDefault));
                 EventBus.getDefault().post(error);
             }
         });

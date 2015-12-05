@@ -3,6 +3,8 @@ package com.ayoprez.restfulservice;
 import android.content.Context;
 import android.util.Log;
 
+import com.ayoprez.deilylang.ErrorHandler;
+import com.ayoprez.deilylang.R;
 import com.ayoprez.notification.LaunchNotification;
 import com.ayoprez.savedWords.SavedWords;
 import com.crashlytics.android.Crashlytics;
@@ -19,6 +21,7 @@ import retrofit.client.Response;
  * Created by AyoPrez on 30/05/15.
  */
 public class GetSavedWords {
+    private static final String LOG_TAG = GetSavedWords.class.getSimpleName();
 
     public static final String ENDPOINT = "http://deilylang.com/api/index.php/";
 
@@ -48,9 +51,8 @@ public class GetSavedWords {
 
             @Override
             public void failure(RetrofitError error) {
-                Log.e("RequestError", "Error: " + error.getMessage());
-                //Crashlytics
-                Crashlytics.getInstance().log("Error GetSavedEnglishWord: " + error);
+                ErrorHandler.getInstance().Error(LOG_TAG, error.toString());
+                ErrorHandler.getInstance().informUser(context, context.getString(R.string.errorDefault));
                 EventBus.getDefault().post(error);
             }
         });
@@ -68,9 +70,8 @@ public class GetSavedWords {
 
             @Override
             public void failure(RetrofitError error) {
-                Log.e("RequestError", "Error: " + error.getMessage());
-                //Crashlytics
-                Crashlytics.getInstance().log("Error GetSavedSpanishWord: " + error);
+                ErrorHandler.getInstance().Error(LOG_TAG, error.toString());
+                ErrorHandler.getInstance().informUser(context, context.getString(R.string.errorDefault));
                 EventBus.getDefault().post(error);
             }
         });

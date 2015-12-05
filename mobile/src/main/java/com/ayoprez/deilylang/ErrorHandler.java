@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.util.Log;
 
+import android.view.WindowManager;
 import com.ayoprez.utils.Utils;
 import com.crashlytics.android.Crashlytics;
 
@@ -24,12 +25,16 @@ public class ErrorHandler {
     }
 
     public void informUser(Context context, String message){
-        Utils.Create_Dialog_DoNotFinishActivity(context, message, context.getString(android.R.string.ok),
-                context.getString(R.string.errorDefault), new DialogInterface.OnClickListener() {
+        try {
+            Utils.Create_Dialog_DoNotFinishActivity(context, message, context.getString(android.R.string.ok),
+                context.getString(R.string.errorSavingDialogTitle), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
                     }
                 });
+        }catch (WindowManager.BadTokenException e){
+
+        }
     }
 }

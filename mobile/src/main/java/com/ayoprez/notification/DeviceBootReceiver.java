@@ -26,6 +26,7 @@ public class DeviceBootReceiver extends BroadcastReceiver {
            reSchedule(context);
         }else{
             Log.e("", "It is not a reboot intent");
+            ErrorHandler.getInstance().Error(TAG, "It is not a reboot intent");
         }
     }
 

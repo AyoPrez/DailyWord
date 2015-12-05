@@ -43,8 +43,8 @@ public class ReviewList {
                     deleteItemFromDatabase(context, selectedItem);
                     showReviewList(context);
                 } catch (Exception e) {
-                    //TODO Change for Snackbar
-                    Toast.makeText(context, R.string.errorDeletingMoment, Toast.LENGTH_LONG).show();
+                    ErrorHandler.getInstance().Error(LOG_TAG, e.toString());
+                    ErrorHandler.getInstance().informUser(context, context.getString(R.string.errorDefault));
                 }
             }
         };
@@ -68,8 +68,8 @@ public class ReviewList {
             new StartAndCancelAlarmManager(context, getDataFromDatabaseToListView(context).get(selectedItem)).cancelAlarmManager();
             new UserMomentsRepository().deleteMomentWithId(context, getIdToDelete(context, selectedItem));
         }catch(Exception e){
-            //TODO Crashlytics
             ErrorHandler.getInstance().Error(LOG_TAG, e.toString());
+            ErrorHandler.getInstance().informUser(context, context.getString(R.string.errorDefault));
         }
     }
 }

@@ -7,6 +7,9 @@ import android.os.Bundle;
 import com.ayoprez.deilylang.AbstractBaseActivity;
 import com.ayoprez.deilylang.MainActivity;
 import com.ayoprez.deilylang.R;
+import com.crashlytics.android.Crashlytics;
+import com.crashlytics.android.answers.CustomEvent;
+import com.crashlytics.android.answers.LoginEvent;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 
 import butterknife.ButterKnife;
@@ -23,8 +26,8 @@ public class LoginActivity extends AbstractBaseActivity {
 
     @OnClick(R.id.login_continue)
     void loginContinue(){
-        Intent i = new Intent(this, MainActivity.class);
-        startActivity(i);
+        Crashlytics.getInstance().answers.logCustom(new CustomEvent("ContinueWithoutLogin"));
+        startActivity(new Intent(this, MainActivity.class));
         finish();
     }
 

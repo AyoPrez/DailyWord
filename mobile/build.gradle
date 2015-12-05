@@ -16,6 +16,10 @@ repositories {
 apply plugin: 'io.fabric'
 
 android {
+    signingConfigs {
+        config
+    }
+
     compileSdkVersion 23
     buildToolsVersion '23.0.1'
     defaultConfig {
@@ -25,12 +29,14 @@ android {
         versionCode 1
         versionName "0.1"
         multiDexEnabled true
+        signingConfig signingConfigs.config
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             testCoverageEnabled = false
+            signingConfig signingConfigs.config
         }
     }
     sourceSets {
@@ -45,6 +51,30 @@ android {
     lintOptions {
         disable 'InvalidPackage'
     }
+    productFlavors {
+    }
+}
+
+def Properties props = new Properties()
+def propFile = file(new File('../signing.properties'))
+if (propFile.canRead()) {
+    props.load(new FileInputStream(propFile))
+    if (props != null &&
+            props.containsKey('STORE_FILE') &&
+            props.containsKey('STORE_PASSWORD') &&
+            props.containsKey('KEY_ALIAS') &&
+            props.containsKey('KEY_PASSWORD')) {
+        android.signingConfigs.config.storeFile = file(props['STORE_FILE'])
+        android.signingConfigs.config.storePassword = props['STORE_PASSWORD']
+        android.signingConfigs.config.keyAlias = props['KEY_ALIAS']
+        android.signingConfigs.config.keyPassword = props['KEY_PASSWORD']
+    } else {
+        println 'signing.properties found but some entries are missing'
+        android.buildTypes.release.signingConfig = null
+    }
+} else {
+    println 'signing.properties not found'
+    android.buildTypes.release.signingConfig = null
 }
 
 dependencies {
@@ -75,8 +105,4 @@ dependencies {
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.squareup.retrofit:retrofit:1.9.0'
     compile 'uk.co.chrisjenx:calligraphy:2.1.0'
-    compile 'com.google.android.gms:play-services-ads:8.1.0'
-    compile 'com.google.android.gms:play-services-analytics:8.1.0'
-    compile 'com.google.android.gms:play-services-identity:8.1.0'
-    compile 'com.google.android.gms:play-services-gcm:8.1.0'
 }

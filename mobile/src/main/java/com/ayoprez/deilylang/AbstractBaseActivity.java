@@ -21,7 +21,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
  * Created by AyoPrez on 10.10.15.
  */
 public abstract class AbstractBaseActivity extends AppCompatActivity {
-//TODO end this
+
     protected String DeviceLanguageISO = DetectDeviceLanguage.getISO3Language();
     protected Locale DeviceLocale = DetectDeviceLanguage.getLocaleFromISO3(DeviceLanguageISO);
 
@@ -61,8 +61,7 @@ public abstract class AbstractBaseActivity extends AppCompatActivity {
     }
 
     protected void goToNewScreen(Class destinyClass){
-        Intent i = new Intent(this, destinyClass);
-        startActivity(i);
+        startActivity(new Intent(this, destinyClass));
         this.finish();
     }
 

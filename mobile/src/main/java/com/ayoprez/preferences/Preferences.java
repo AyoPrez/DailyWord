@@ -26,6 +26,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ayoprez.deilylang.R;
+import com.crashlytics.android.Crashlytics;
+import com.crashlytics.android.answers.CustomEvent;
 
 import java.util.Locale;
 
@@ -46,7 +48,7 @@ public class Preferences extends PreferenceActivity {
         @Override
         public void onCreate(final Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            addPreferencesFromResource(R.layout.preferences_layout);
+            addPreferencesFromResource(R.xml.preferences_layout);
 
             Preference buttonAbout = (Preference) findPreference("about");
             buttonAbout.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
@@ -70,6 +72,7 @@ public class Preferences extends PreferenceActivity {
             buttonLegal.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
+                    Crashlytics.getInstance().answers.logCustom(new CustomEvent("Preferences").putCustomAttribute("pref", "Legal"));
                     getFragmentManager().beginTransaction().replace(
                             android.R.id.content, new LegalFragment()).commit();
                     return true;
@@ -90,19 +93,21 @@ public class Preferences extends PreferenceActivity {
             buttonMoreApps.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener(){
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
+                    Crashlytics.getInstance().answers.logCustom(new CustomEvent("Preferences").putCustomAttribute("pref", "MoreApps"));
                     showMoreAppsDialog();
                     return true;
                 }
             });
 
-            Preference buttonRateApp = (Preference) findPreference("rate");
-            buttonRateApp.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener(){
-                @Override
-                public boolean onPreferenceClick(Preference preference) {
-                    openMarket(getString(R.string.marketId));
-                    return true;
-                }
-            });
+//            TODO Uncomment when beta version is finished
+//            Preference buttonRateApp = (Preference) findPreference("rate");
+//            buttonRateApp.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener(){
+//                @Override
+//                public boolean onPreferenceClick(Preference preference) {
+//                    openMarket(getString(R.string.marketId));
+//                    return true;
+//                }
+//            });
 
         }
 
@@ -123,6 +128,13 @@ public class Preferences extends PreferenceActivity {
                     Snackbar.make(getView(), getString(R.string.rateError), Snackbar.LENGTH_LONG).show();
                 }
             }
+        }
+
+        private void openTestMarket(String id){
+//                https://play.google.com/apps/testing/com.ayoprez.speechhelpcards?hl=de
+            Intent i = new Intent(getActivity(), TestMarketWebView.class);
+            i.putExtra("id", id);
+            startActivity(i);
         }
 
         private boolean MyStartActivity(Intent aIntent) {
@@ -150,7 +162,6 @@ public class Preferences extends PreferenceActivity {
             ((TextView) alertDialog.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
         }
 
-
         public void sendFeedback(){
             Intent i = new Intent(Intent.ACTION_SEND);
             i.setType("message/rfc822");
@@ -175,14 +186,14 @@ public class Preferences extends PreferenceActivity {
             ((ImageButton) alertDialog.findViewById(R.id.button_SHC)).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    openMarket(getString(R.string.SHCId));
+                    openTestMarket(getString(R.string.SHCId));
                 }
             });
 
             ((ImageButton) alertDialog.findViewById(R.id.button_DeilyQuote)).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    openMarket(getString(R.string.QuoteId));
+                    openTestMarket(getString(R.string.QuoteId));
                 }
             });
         }

@@ -13,6 +13,8 @@ import com.ayoprez.deilylang.R;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import com.crashlytics.android.Crashlytics;
+import com.crashlytics.android.answers.CustomEvent;
 
 public class NewMomentActivity extends AbstractBaseActivity{
 
@@ -42,6 +44,7 @@ public class NewMomentActivity extends AbstractBaseActivity{
 
 	@OnClick(R.id.b_accept)
 	void OnAcceptClick(){
+		Crashlytics.getInstance().answers.logCustom(new CustomEvent("Level").putCustomAttribute("level", B_Level.getText().toString()));
 		new Accept(context).Accept_Dialog(DetectDeviceLanguage.getISO3Language(), B_Language.getText().toString(),
 				B_Level.getText().toString(), B_Time.getText().toString());
 	}

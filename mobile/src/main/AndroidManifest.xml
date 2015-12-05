@@ -64,6 +64,10 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
+            android:name="com.ayoprez.preferences.TestMarketWebView"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
             android:name="com.ayoprez.wordscreen.WordScreen"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />

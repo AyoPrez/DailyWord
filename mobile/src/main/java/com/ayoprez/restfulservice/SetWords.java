@@ -3,6 +3,7 @@ package com.ayoprez.restfulservice;
 import android.content.Context;
 import android.util.Log;
 
+import com.ayoprez.deilylang.ErrorHandler;
 import com.ayoprez.deilylang.R;
 import com.ayoprez.utils.Utils;
 import com.crashlytics.android.Crashlytics;
@@ -13,10 +14,13 @@ import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
+import java.util.Set;
+
 /**
  * Created by AyoPrez on 9/08/15.
  */
 public class SetWords {
+    private static final String LOG_TAG = SetWords.class.getSimpleName();
     public static final String ENDPOINT = "http://deilylang.com/api/index.php/";
 
     private UserAPI userAPI;
@@ -43,23 +47,20 @@ public class SetWords {
                 if (bool == 1) {
                     getConfirmedDialog();
                 } else {
-                    //Crashlitics
-                    Crashlytics.getInstance().log("SentWords: Response False");
-                    Log.e("DeilyLang", "Error: SetWords = null");
+                    ErrorHandler.getInstance().informUser(context, context.getString(R.string.errorDefault));
                 }
             }
 
             @Override
             public void failure(RetrofitError error) {
-                Log.e("RequestError", "Error: " + error.getMessage());
-                //Crashlytics
-                Crashlytics.getInstance().log("Error SetWords: " + error);
+                ErrorHandler.getInstance().Error(LOG_TAG, error.getMessage());
+                ErrorHandler.getInstance().informUser(context, context.getString(R.string.errorDefaultAndTry));
                 EventBus.getDefault().post(error);
             }
         });
     }
 
     public void getConfirmedDialog(){
-        new Utils().Create_Dialog(context, context.getString(R.string.doneDialog), context.getString(R.string.buttonAcceptDialog), context.getString(R.string.doneDialogTitle));
+        Utils.Create_Dialog(context, context.getString(R.string.doneDialog), context.getString(R.string.buttonAcceptDialog), context.getString(R.string.doneDialogTitle));
     }
 }
