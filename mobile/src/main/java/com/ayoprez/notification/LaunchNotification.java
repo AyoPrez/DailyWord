@@ -5,9 +5,12 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 
+import android.util.Log;
+import com.ayoprez.deilylang.ErrorHandler;
 import com.ayoprez.deilylang.R;
 import com.ayoprez.deilylang.WordFromDatabase;
 import com.ayoprez.wordscreen.WordScreen;
@@ -22,13 +25,12 @@ import retrofit.RetrofitError;
  * Created by AyoPrez on 12/04/15.
  */
 public class LaunchNotification extends Application{
+    private static final String TAG = LaunchNotification.class.getSimpleName();
 
     private Context context;
-//    private UserMoments userMoments;
 
     public LaunchNotification(Context context){
         this.context = context;
-//        this.userMoments = new UserMoments();
         EventBus.getDefault().register(this);
     }
 
@@ -38,12 +40,31 @@ public class LaunchNotification extends Application{
 
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(
                 context)
-                .setSmallIcon(R.drawable.deilylang_notification_icon)
+                .setColor(context.getResources().getColor(R.color.ColorPrimary))
+                .setSmallIcon(
+                    Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ?
+                        R.drawable.deilylang_lollipop_notification_icon : R.drawable.deilylang_notification_icon)
                 .setContentTitle(context.getString(R.string.app_name))
                 .setContentText(words.getWord()[0] + " -> " + words.getWord()[1]);
 
+        int requestId = getRandomId();
+        PendingIntent contentIntent = PendingIntent.getActivity(context, requestId, getTargetIntent(words),
+                PendingIntent.FLAG_ONE_SHOT);
+
+        notificationBuilder.setContentIntent(contentIntent);
+        notificationBuilder.setAutoCancel(true);
+
+        nManager.notify(requestId, notificationBuilder.build());
+    }
+
+    private Intent getTargetIntent(WordFromDatabase words){
         Intent targetIntent = new Intent(context, WordScreen.class);
 
+        targetIntent.putExtras(setBundleData(words));
+        return targetIntent;
+    }
+
+    private Bundle setBundleData(WordFromDatabase words){
         Bundle bundle = new Bundle();
 
         bundle.putInt("wordId", words.getId());
@@ -51,17 +72,7 @@ public class LaunchNotification extends Application{
         bundle.putStringArray("types", words.getType());
         bundle.putString("level", words.getLevel());
         bundle.putStringArray("languages", words.getLanguages());
-
-        targetIntent.putExtras(bundle);
-
-        int requestId = getRandomId();
-        PendingIntent contentIntent = PendingIntent.getActivity(context, requestId, targetIntent,
-                PendingIntent.FLAG_ONE_SHOT);
-
-        notificationBuilder.setContentIntent(contentIntent);
-        notificationBuilder.setAutoCancel(true);
-
-        nManager.notify(requestId, notificationBuilder.build());
+        return bundle;
     }
 
     public int getRandomId(){
@@ -72,8 +83,8 @@ public class LaunchNotification extends Application{
         try {
             launchNotification(context, words);
         }catch (Exception e){
-            //Crashlytics
-            Crashlytics.getInstance().log("Error LaunchNotification: " + e);
+            ErrorHandler.getInstance().Error(TAG, e.toString());
+            ErrorHandler.getInstance().informUser(context, context.getString(R.string.errorDefault));
         }finally{
             unregisterEvent();
         }
@@ -84,8 +95,8 @@ public class LaunchNotification extends Application{
         EventBus.getDefault().unregister(this);
     }
 
-    public void onEvent(RetrofitError error){ //Cambiar de sitio
-        //TODO Aquí irá el comportamiento a hacer cuando no haya internet
+    public void onEvent(RetrofitError error){
+        ErrorHandler.getInstance().informUser(context, context.getString(R.string.dgts__network_error));
     }
 
 }

@@ -9,16 +9,14 @@ import com.ayoprez.deilylang.R;
 
 public class Level {
 
-	private Context ctx;
 	private Dialog Dialog;
 	private NewMomentActivity MA;
 	
 	
-	public Level(Context context){
-		this.ctx = context;
-		this.MA = ((NewMomentActivity)ctx);
+	public Level(final Context context){
+		this.MA = ((NewMomentActivity)context);
 		
-		this.Dialog = new Dialog(ctx);
+		this.Dialog = new Dialog(context);
 		this.Dialog.setContentView(R.layout.dialog_level);
 		this.Dialog.setTitle(R.string.button_level);
 		
@@ -32,16 +30,16 @@ public class Level {
 								
 				switch(idx){
 					case 0:
-						MA.Level_Text(ctx.getString(R.string.basic));
+						MA.Level_Text(context.getString(R.string.basic));
 						break;
 					case 1:
-						MA.Level_Text(ctx.getString(R.string.easy));
+						MA.Level_Text(context.getString(R.string.easy));
 						break;
 					case 2:
-						MA.Level_Text(ctx.getString(R.string.normal));
+						MA.Level_Text(context.getString(R.string.normal));
 						break;
 					case 3:
-						MA.Level_Text(ctx.getString(R.string.hard));
+						MA.Level_Text(context.getString(R.string.hard));
 						break;
 				}
 								

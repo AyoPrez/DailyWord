@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="eula_data">EULA</string>
+    <string name="eula_impresum">Última actualización: 26 - 08 - 2015 \n\n
+        Ayoze Pérez Rodríguez(en adelante "EL DESARROLLADOR") \n
+        con dirección Teichgraben, 4, Jena, Alemania, \n
+        con DNI 42217341J. \n
+        número de teléfono +49 015903510907, \n
+        y dirección de correo electrónico info@ayoprez.com \n</string>
+
+    <string name="eula_introduction">EL ACUERDO DE LICENCIA DE USUARIO FINAL PARA DeilyLang (en adelante "PRODUCTO DE SOFTWARE") IMPORTANTE POR FAVOR LEA LOS TÉRMINOS Y CONDICIONES DEL PRESENTE ACUERDO DE LICENCIA ANTES DE CONTINUAR CON EL USO DE LA APP: El acuerdo de licencia de usuario final de LA COMPAÑÍA ("EULA") es un acuerdo legal entre usted (ya sea un individuo o una entidad) y LA COMPAÑÍA. Su acceso y uso del PRODUCTO DE SOFTWARE está condicionado a la aceptación y el cumplimiento de estos EULA. Estos términos se aplican a todos los visitantes, usuarios y otras personas que accedan o usen el PRODUCTO DE SOFTWARE. Para el producto de software de EL DESARROLLADOR identificado anteriormente que puede incluir componentes asociados de software, medios, materiales impresos y documentación electrónica o "en línea". Al instalar, copiar, acceder o utilizar el PRODUCTO DE SOFTWARE, usted acepta que quedará vinculado por los términos de esta EULA. Este acuerdo de licencia constituye el acuerdo completo sobre el programa entre usted y EL DESARROLLADOR, y sustituye cualquier propuesta previa, representación o entendimiento entre las partes. Si no está de acuerdo con alguna parte de los términos, entonces no puede acceder, instalar o utilizar el PRODUCTO DE SOFTWARE. \n
+        El PRODUCTO DE SOFTWARE está protegido por leyes de derecho de autor, nacionales e internacionales, al igual que otras leyes de protección de derecho intelectual. \n
+        El PRODUCTO DE SOFTWARE es licenciado, no vendido.\n</string>
+
+    <string name="eula_one">1. CONCESIÓN DE LICENCIA.</string>
+
+    <string name="eula_one_text">El PRODUCTO DE SOFTWARE esta licenciado como sigue: \n\n
+        a) Instalación y Uso. \n
+        EL DESARROLLADOR le concede el derecho de instalar y usar copias de EL PRODUCTO DE SOFTWARE en tu dispositivo corriendo una copia válida de la licencia del sistema operativo para el que EL PRODUCTO DE SOFTWARE fue diseñado [e.g., Windows 7, Windows 8, Window 10, Android, iOS, Windows Phone, etc.]. EL PRODUCTO DE SOFTWARE está disponible para tu uso propio y personal. No debe ser usado con finalidad comercial ni para ninguna finalidad ilegal o desautorizada. Usando EL PRODUCTO DE SOFTWARE debe cumplir con todas las leyes aplicables en Alemania e internacionalmente. Aceptando esta EULA usted está de acuerdo en que, cuando usa EL PRODUCTO DE SOFTWARE, estará cumpliendo con todas las leyes y con estos términos. \n\n
+        b) Copias de seguridad. \n
+        Usted también puede hacer las copias del PRODUCTO DE SOFTWARE que sean necesarias para la copia de seguridad y con fines de archivo. \n</string>
+
+    <string name="eula_two">2. DESCRIPCIÓN DE OTROS DERECHOS Y LIMITACIONES.</string>
+    <string name="eula_two_text">a) Mantenimiento de los derechos de autor.\n
+        Usted no debe quitar o alterar los avisos de derechos de autor sobre cualquier y todas las copias del PRODUCTO DE SOFTWARE.\n\n
+        b) Distribución. \n
+        Usted no puede distribuir copias registradas del PRODUCTO DE SOFTWARE a terceros. Versiones de evaluación disponibles para su descarga desde los sitios web de EL DESARROLLADOR pueden ser distribuidos libremente.\n\n
+        c) Prohibición de ingeniería inversa, descompilación y desensamblaje.\n
+        Usted se compromete a no modificar, adaptar, traducir, realizar ingeniería inversa, descompilar o desensamblar cualquier parte del PRODUCTO DE SOFTWARE o a re-formatear o enmarcar cualquier parte de las páginas y el código que integran el PRODUCTO DE SOFTWARE, salvo en la medida y sólo en la medida en que dicha actividad esté expresamente permitida por estas EULA o por la ley a pesar de esta limitación.\n\n
+        d) Rentar.\n
+        Usted no puede alquilar, arrendar o prestar el PRODUCTO DE SOFTWARE.\n\n
+        e) Servicio de soporte.\n
+        EL DESARROLLADOR le puede proporcionar servicios de apoyo relacionados con EL PRODUCTO DE SOFTWARE ("Servicios de Soporte"). Cualquier código de software complementario proporcionado a usted como parte de los Servicios de soporte será considerado parte del PRODUCTO DE SOFTWARE y sujeto a los términos y condiciones de este EULA.\n\n
+        f) Cumplimiento de las Leyes Aplicables.\n
+        Usted debe cumplir con todas las leyes aplicables acerca del uso del PRODUCTO DE SOFTWARE.\n </string>
+
+    <string name="eula_three">3. TERMINACIÓN</string>
+    <string name="eula_three_text">EL DESARROLLADOR podrá dar por terminada o suspender el acceso al PRODUCTO DE SOFTWARE de inmediato, sin previo aviso o responsabilidad, por cualquier motivo, incluyendo, sin limitación, si usted no cumple con el EULA.
+        Todas las disposiciones del EULA que por su naturaleza deberían sobrevivir a la finalización, sobrevivirán a ella, incluyendo, sin limitación, las disposiciones de propiedad, renuncias de garantía, indemnización y limitaciones de responsabilidad.
+        Sin perjuicio de cualquier otro derecho, EL DESARROLLADOR podrá dar por terminada esta EULA si usted no cumple con los términos y condiciones de la misma. En tal caso, deberá destruir todas las copias del PRODUCTO DE SOFTWARE en su posesión. \n</string>
+
+    <string name="eula_four">4. DERECHOS DE AUTOR</string>
+    <string name="eula_four_text">Todos los títulos, incluyendo pero no limitado a derechos de autor, en y para el PRODUCTO DE SOFTWARE y todas las copias de los mismos son propiedad de la empresa o de sus proveedores. Todos los títulos y derechos de propiedad intelectual en y para el contenido que se puede acceder a través del uso del PRODUCTO DE SOFTWARE es propiedad del respectivo dueño del contenido y pueden estar protegidos por derechos de autor u otras leyes de propiedad intelectual y los tratados correspondientes. Esta EULA no le concede ningún derecho a utilizar dichos contenidos. Todos los derechos no otorgados expresamente están reservados para EL DESARROLLADOR.\n </string>
+
+    <string name="eula_five">5. SIN GARANTÍAS</string>
+    <string name="eula_five_text">EL DESARROLLADOR expresamente renuncia a cualquier garantía para el PRODUCTO DE SOFTWARE. El PRODUCTO DE SOFTWARE se proporciona "tal cual" sin ninguna garantía expresa o implícita de ningún tipo, incluyendo pero no limitado a cualquier garantía de comercialización, no infracción, o aptitud de un propósito particular. EL DESARROLLADOR no garantiza ni asume responsabilidad por la exactitud o integridad de cualquier información, textos, gráficos, enlaces u otros elementos contenidos en el PRODUCTO DE SOFTWARE. EL DESARROLLADOR no ofrece garantías en lo referente a cualquier daño que pueda ser causado por la transmisión de un virus, gusano, bomba de tiempo, bomba lógica, u otro software o dispositivo. EL DESARROLLADOR se exime expresamente de cualquier garantía o representación de Usuarios Autorizados o para terceros.\n</string>
+
+    <string name="eula_six">6. LIMITACIÓN DE RESPONSABILIDAD</string>
+    <string name="eula_six_text">En ningún caso EL DESARROLLADOR será responsable de ningún daño (incluyendo, sin limitación, pérdida de beneficios, interrupción del negocio o pérdida de información) que se eleva fuera de uso normal de un \'Usuarios Autorizados\' o la imposibilidad de utilizar el PRODUCTO DE SOFTWARE, incluso si EL DESARROLLADOR ha sido advertida de la posibilidad de tales daños. En ningún caso EL DESARROLLADOR será responsable de la pérdida de datos ni de los daños indirectos, especiales, incidentales, consecuentes (incluyendo lucro cesante), u otras basadas en el contrato, agravio u otra manera. EL DESARROLLADOR no tendrá ninguna responsabilidad con respecto al contenido del PRODUCTO DE SOFTWARE o cualquier parte del mismo, incluyendo pero no limitado a errores u omisiones contenidas en el mismo, la difamación, la violación de los derechos de publicidad, privacidad, derechos de marcas comerciales, interrupción del negocio, lesiones personales, pérdida de privacidad, derechos morales o de la divulgación de información confidencial.\n</string>
+
+    <string name="eula_six_one">6.1. ENLACES A OTROS SITIOS WEB</string>
+    <string name="eula_six_one_text">El PRODUCTO DE SOFTWARE puede contener enlaces a sitios web de terceros o servicios que no son propiedad o están controladas por EL DESARROLLADOR.\n
+        EL DESARROLLADOR no tiene control sobre ellas, y no asume ninguna responsabilidad por el contenido, políticas de privacidad o las prácticas de sitios web o servicios de terceros. Además, usted reconoce y acepta que EL DESARROLLADOR no será responsable o estará obligado, directa o indirectamente, por cualquier daño o pérdida causada o supuestamente causada por o en conexión con el uso o la credibilidad de cualquier contenido, bienes o servicios disponibles en o a través de dichos sitios o servicios web.\n
+        EL DESARROLLADOR le aconseja encarecidamente que lea los términos y condiciones y las políticas de privacidad de los sitios web de terceros o servicios que usted visite.\n</string>
+
+    <string name="eula_six_two">6.2. SOFTWARE DE TERCEROS</string>
+    <string name="eula_six_two_text">El PRODUCTO DE SOFTWARE puede utilizar bibliotecas de terceros o herramientas que proporcionan algunas funcionalidades al PRODUCTO DE SOFTWARE. EL DESARROLLADOR no se hace responsable del mal desempeño que el producto de terceros puede experimentar con el paso del tiempo. Pero, EL DESARROLLADOR se compromete a resolver cualquier problema relacionado con un producto de terceros tan pronto como sea posible, ofreciendo siempre una versión totalmente funcional del PRODUCTO DE SOFTWARE para el usuario.\n
+        Actualmente las bibliotecas y herramientas de terceros utilizados en EL PRODUCTO DE SOFTWARE son:\n\n
+
+        Nombre: Crashlytics \n
+        Autor(es): Twitter Inc. \n
+        Licencia: https://dev.twitter.com/overview/terms/agreement-and-policy \n\n
+
+        Nombre: Twitter \n
+        Autor(es): Twitter Inc. \n
+        Licencia: https://dev.twitter.com/overview/terms/agreement-and-policy \n\n
+
+        Nombre: Facebook\n
+        Autor(es): Facebook Inc.\n
+        Licencia: https://developers.facebook.com/policy/ \n\n
+
+        Nombre: Greendao \n
+        Autor(es): Green Robot \n
+        Licencia: \n\n
+
+        Nombre: EventBus \n
+        Autor(es): Green Robot \n
+        Licencia: https://github.com/greenrobot/EventBus/blob/master/LICENSE \n
+
+        Nombre: Butterknife \n
+        Autor(es): Jake Wharton \n
+        Licencia: https://github.com/JakeWharton/butterknife/blob/master/LICENSE.txt \n\n
+
+        Nombre: Retrofit \n
+        Autor(es): Square \n
+        Licencia: https://github.com/square/retrofit/blob/master/LICENSE.txt \n
+
+        Nombre: Calligraphy \n
+        Autor(es): Christopher Jenkins \n
+        Licencia: https://github.com/chrisjenx/Calligraphy/blob/master/LICENSE \n </string>
+
+    <string name="eula_seven">7. DATOS DE USUARIO</string>
+    <string name="eula_seven_text">Para tener una experiencia de uso completo del PRODUCTO DE SOFTWARE, se requiere que el usuario introduzca algunos datos personales. Estos datos serán sólo usados con el propósito de un mejor uso del PRODUCTO DE SOFTWARE y los datos estarán siempre bajo la supervisión de un responsable del servidor. En el caso de que los servidores no sean propiedad de EL DESARROLLADOR, nos comprometemos a agregar toda la información necesaria acerca de la empresa propietaria de los servidores en la política de privacidad del PRODUCTO DE SOFTWARE. El PRODUCTO DE SOFTWARE puede utilizar la autenticación social para recoger datos del usuario de la red social que el usuario escoja. En ese caso, los datos estarán bajo la supervisión de la empresa responsable de esta red social, siendo sólo responsable EL DESARROLLADOR de los datos que EL DESARROLLADOR guarda. Para obtener más información acerca de la privacidad y el uso de los datos de usuario que el PRODUCTO DE SOFTWARE y LA COPAÑÍA hacen, puede leer la política de privacidad.\n </string>
+
+    <string name="eula_eight">8. LEY QUE RIGE</string>
+    <string name="eula_eight_text">Estos términos de la EULA se regirán e interpretarán de acuerdo con las leyes de Alemania, sin consideración a su conflicto de disposiciones legales. \n
+        El fracaso de EL DESARROLLADOR por hacer cumplir cualquier derecho o disposición de estas condiciones no se considerará una renuncia a esos derechos. Si alguna disposición de estos términos se considera inválida o inaplicable por un tribunal, las restantes disposiciones de esta EULA permanecerá en efecto. Estos términos constituyen el acuerdo entre la empresa con respecto al PRODUCTO DE SOFTWARE, y sustituyen y reemplazan cualquier acuerdo anterior que tengan las partes en relación con el PRODUCTO DE SOFTWARE.\n</string>
+
+    <string name="eula_nine">9. CAMBIOS</string>
+    <string name="eula_nine_text">EL DESARROLLADOR se reserva el derecho de modificar o reemplazar estos términos en cualquier momento. Si una revisión es material se procurará una nueva copia el mismo día en la que es lanzado una nueva actualización, incluyendo en esta dichos cambios.Lo que constituye un cambio material será determinado a discreción exclusiva EL DESARROLLADOR.
+        En el caso de que EL DESARROLLADOR, por falta de datos como el correo electrónico para establecer la comunicación, no pueda proporcionar esta información a cada usuario, el usuario del PRODUCTO DE SOFTWARE será informado de estos cambios en el instante de la descarga o la instalación de una nueva versión del PRODUCTO DE SOFTWARE.
+        Al continuar accediendo o utilizando EL PRODUCTO DE SOFTWARE después de esas revisiones se hagan efectivas, usted acepta que quedará vinculado por el EULA revisado. Si no acepta los nuevos términos, por favor, deje de utilizar EL PRODUCTO DE SOFTWARE.\n </string>
+
+    <string name="eula_ten">10. CONTÁCTAME</string>
+    <string name="eula_ten_text">Si usted tiene alguna pregunta sobre estos términos de la EULA, puede ponerse en contacto con EL DESARROLLADOR a través de los datos que se encuentran al principio. \n</string>
+
+    <string name="privacy">Política de privacidad</string>
+    <string name="privacy_introduction">Tu privacidad es lo más importante para mi, Ayoze Pérez Rodríguez, y por esa razón quiero explicarte claramente qué datos requiero del usuario, porqué hago eso y cómo uso esas datos. \n</string>
+
+    <string name="privacy_one">1.QUIÉN SOY</string>
+    <string name="privacy_one_text">Ayoze Pérez Rodríguez(en adelante "THE DEVELOPER")\n
+        con dirección Teichgraben, 4, Jena, Alemania,\n
+        con DNI 42217341J.\n
+        con número de teléfono +49 015903510907,\n
+        con página web ayoprez.com,\n
+        y dirección de correo electrónico info@ayoprez.com\n</string>
+
+    <string name="privacy_two">2.QUÉ DATOS RECOLECTA LA APP</string>
+    <string name="privacy_two_text">DeilyLang(en adelante "SOFTWARE PRODUCT") collecta del usuario dos datos que ayudan a identificarlo. Cuando el usuario se registra a través de los botones de las redes sociales, y da los permisos necesarios, la aplicación toma el id del usuario en dicha red social. El otro dato que la aplicación requiere es la red social de la que se toma dicho id. Esta información es encryptada y guardada en la base de datos de la aplicación en un servidor remoto. De esta manera nadie puede saber con exactitud quien está registrado, y yo no guardo ningún tipo de dato personal, sólo un número, que es todo lo que la app necesita. \n
+        La aplicación requiere también un nombre de usuario, pero este no está guardado en ningún sitio, y sólo se muestra el correspondiente nombre de usuario de la red social escogida.\n</string>
+
+    <string name="privacy_three">3.PORQUÉ LA APP RECOLECTA ESTOS DATOS</string>
+    <string name="privacy_three_text">La aplicación usa todos los datos recogidos en PRODUCTO DE SOFTWARE con el objetivo de identificar a cada usuario y permitirles que guarden contenido. En este caso concreto, PRODUCTO DE SOFTWARE, el usuario puede guardar las palabras que él/ella ya conozca, y ver todas esas las palabras en culquier momento.\n</string>
+
+    <string name="privacy_four">4.SON ESTOS DATOS COMPARTIDOS CON TERCERAS PERSONAS?</string>
+    <string name="privacy_four_text">EL DESARROLLADOR cuenta con un servidor proporsionado por 1and1 Internet SE con dirección en Elgendorfer Str. 57, Montabaur, y cuyos términos y condiciones, datos y política d eprivacidad están indicadas en los enlaces siguientes: \n\n
+
+        Datos: https://www.1and1.co.uk/AboutUs?__lf= \n
+        Términos y condiciones: https://www.1and1.co.uk/terms-gtc?__lf=Static \n
+        Política de privacidad: https://www.1and1.co.uk/terms-privacy?__lf=Static \n </string>
+
+    <string name="privacy_five">5.CUÁLES SON TUS DERECHOS</string>
+    <string name="privacy_five_text">Tú, como usuario tienes derecho a consultar cuál de tus datos guarda EL DESARROLLADOR; también puedes pedir por un cambio en alguno de los datos, pero existirá un revisión previa por parte de EL DESARROLLADOR para demostrar que los nuevos datos son correctos. El usuario tiene también derecho a pedir que sean eliminados todos sus datos de la base de datos y el servidor bajo el control de EL DESARROLLADOR. Si el PRODUCTO DE SOFTWARE no le permite eliminar su cuenta y los datos asociados, desde la interfaz, debe escribir a EL DESARROLLADOR y pedir por la eliminación de los datos deseados.\n
+        EL DESARROLLADOR puede no guardar todos los datos requeridos para el uso de EL PRODUCTO DE SOFTWARE, como por ejemplo los datos de autenticación en una red social. En tal caso el usuario debe contactar con EL DESARROLLADOR y con el responsable de la compañía detrás de la red social usada, para completar la eliminación de los datos.\n\n
+    </string>
+
+</resources>

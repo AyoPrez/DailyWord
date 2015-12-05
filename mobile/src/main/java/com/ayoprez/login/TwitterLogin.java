@@ -4,23 +4,22 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.widget.Toast;
 
+import com.ayoprez.deilylang.ErrorHandler;
 import com.ayoprez.deilylang.R;
 import com.ayoprez.restfulservice.GetUser;
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
-import com.twitter.sdk.android.core.TwitterAuthConfig;
 import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.identity.TwitterAuthClient;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 
-import io.fabric.sdk.android.Fabric;
-
 /**
  * Created by AyoPrez on 25/07/15.
  */
 public class TwitterLogin {
+    private static final String LOG_TAG = TwitterLogin.class.getSimpleName();
 
     private String TYPE_ID = "t";
     private Context context;
@@ -31,8 +30,8 @@ public class TwitterLogin {
     }
 
     public void initTwitter(){
-        TwitterAuthConfig authConfig = new TwitterAuthConfig(context.getString(R.string.t_key), context.getString(R.string.t_secret));
-        Fabric.with(context, new Twitter(authConfig));
+//        TwitterAuthConfig authConfig = new TwitterAuthConfig(context.getString(R.string.t_key), context.getString(R.string.t_secret));
+//        Fabric.with(context, new Twitter(authConfig));
 
         twitterLogin();
     }
@@ -51,6 +50,7 @@ public class TwitterLogin {
         twitterButton.setCompoundDrawables(null, null, null, null);
         twitterButton.setCompoundDrawablePadding(0);
         twitterButton.setPadding(10, 30, 10, 30);
+        twitterButton.setText(context.getString(R.string.login_twitter));
     }
 
     public void logoutTwitter(){
@@ -91,8 +91,8 @@ public class TwitterLogin {
 
             @Override
             public void failure(TwitterException exception) {
-                //TODO cambiar esto
-                Toast.makeText(context, "Come off Twitter! " + exception.getMessage(), Toast.LENGTH_LONG).show();
+                ErrorHandler.getInstance().Error(LOG_TAG, exception.toString());
+                ErrorHandler.getInstance().informUser(context, context.getString(R.string.dgts__sign_in_error));
             }
         });
     }

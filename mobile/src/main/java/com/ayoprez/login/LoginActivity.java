@@ -3,42 +3,31 @@ package com.ayoprez.login;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
+import com.ayoprez.deilylang.AbstractBaseActivity;
 import com.ayoprez.deilylang.MainActivity;
 import com.ayoprez.deilylang.R;
 import com.crashlytics.android.Crashlytics;
-import com.twitter.sdk.android.Twitter;
-import com.twitter.sdk.android.core.TwitterAuthConfig;
+import com.crashlytics.android.answers.CustomEvent;
+import com.crashlytics.android.answers.LoginEvent;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import io.fabric.sdk.android.Fabric;
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
  * Created by AyoPrez on 22/05/15.
  */
-public class LoginActivity extends AppCompatActivity {
-
-    //Extend AbstractBase class
-
-    // Note: Your consumer key and secret should be obfuscated in your source code before shipping.
-    private static final String TWITTER_KEY = "ca9fZBuy7LLrMEfaK9mP4VCab";
-    private static final String TWITTER_SECRET = "1gJO7L847SiDrFoI6qiohSMipxJPKSRJA2TjHtIdcjr5nVYo8p";
+public class LoginActivity extends AbstractBaseActivity {
 
     public TwitterLoginButton twitterLoginButton;
-    private Context context;
-    private User user;
-    private SessionManager sessionManager;
     private FacebookLogin facebookLogin = new FacebookLogin(this);
     private TwitterLogin twitterLogin = new TwitterLogin(this);
 
     @OnClick(R.id.login_continue)
     void loginContinue(){
-        Intent i = new Intent(this, MainActivity.class);
-        startActivity(i);
+        Crashlytics.getInstance().answers.logCustom(new CustomEvent("ContinueWithoutLogin"));
+        startActivity(new Intent(this, MainActivity.class));
         finish();
     }
 
@@ -46,13 +35,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         facebookLogin.initFacebook();
-        TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
-        Fabric.with(this, new Twitter(authConfig), new Crashlytics());
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-
-        this.context = this;
-        this.sessionManager = new SessionManager(this);
 
         if(sessionManager.isLoggedIn()){
             Intent i = new Intent(this, MainActivity.class);
@@ -74,14 +58,6 @@ public class LoginActivity extends AppCompatActivity {
 
     public void startSession(Context applicationContext, User user){
         new SessionManager(applicationContext).createLoginSession(user.getName(), String.valueOf(user.getId_U()));
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        finish();
+        goToNewScreen(MainActivity.class);
     }
-
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-    }
-
 }

@@ -3,13 +3,23 @@ package com.ayoprez.savedWords;
 import android.content.Context;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import android.widget.Toast;
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import com.ayoprez.deilylang.DetectDeviceLanguage;
 import com.ayoprez.deilylang.R;
+import com.ayoprez.utils.SpeakerHelper;
+import com.crashlytics.android.Crashlytics;
+import com.crashlytics.android.answers.CustomEvent;
+import de.greenrobot.event.EventBus;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -23,13 +33,18 @@ public class SavedWordsRecyclerViewAdapter extends RecyclerView.Adapter<SavedWor
     private ArrayList<String> savedTypesList = new ArrayList<>();
     private String language;
     private TextToSpeech textToSpeech;
-    private Context context;
+    private int speechStatus;
 
     public SavedWordsRecyclerViewAdapter(Context context, ArrayList<String> savedWords, ArrayList<String> savedTypes, String language){
         this.savedWordsList = savedWords;
         this.savedTypesList = savedTypes;
         this.language = language;
-        this.context = context;
+        textToSpeech = new TextToSpeech(context, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                speechStatus = status;
+            }
+        });
     }
 
     @Override
@@ -47,12 +62,8 @@ public class SavedWordsRecyclerViewAdapter extends RecyclerView.Adapter<SavedWor
             viewHolder.savedSpeaker.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    textToSpeech = new TextToSpeech(context, new TextToSpeech.OnInitListener() {
-                        @Override
-                        public void onInit(int status) {
-                            talkSpeech(status, defineLocales(language), savedWordsList.get(i));
-                        }
-                    });
+                    Crashlytics.getInstance().answers.logCustom(new CustomEvent("SavedWordsSpeaker"));
+                    talkSpeech(speechStatus, DetectDeviceLanguage.getLocale(language), savedWordsList.get(i));
                 }
             });
         }
@@ -63,24 +74,6 @@ public class SavedWordsRecyclerViewAdapter extends RecyclerView.Adapter<SavedWor
             textToSpeech.setLanguage(language);
             textToSpeech.speak(speech, TextToSpeech.QUEUE_FLUSH, null);
         }
-    }
-
-    private Locale defineLocales(String language){
-        Locale languageWords = null;
-
-        if(language.toLowerCase().equals("english")){
-            languageWords = Locale.ENGLISH;
-        }else{
-            if(language.toLowerCase().equals("spanish")){
-                languageWords = new Locale("es", "ES");
-            }else{
-                if(language.toLowerCase().equals("german")){
-                    languageWords = Locale.GERMAN;
-                }
-            }
-        }
-
-        return languageWords;
     }
 
     @Override
@@ -94,15 +87,16 @@ public class SavedWordsRecyclerViewAdapter extends RecyclerView.Adapter<SavedWor
 
     class ViewHolder extends RecyclerView.ViewHolder{
 
+        @Bind(R.id.imageButton_savedWord_speaker)
         ImageButton savedSpeaker;
+        @Bind(R.id.textView_savedWord)
         TextView savedWord;
+        @Bind(R.id.textView_savedWord_type)
         TextView savedType;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            savedWord = (TextView) itemView.findViewById(R.id.textView_savedWord);
-            savedType = (TextView) itemView.findViewById(R.id.textView_savedWord_type);
-            savedSpeaker = (ImageButton) itemView.findViewById(R.id.imageButton_savedWord_speaker);
+            ButterKnife.bind(this, itemView);
         }
     }
 }

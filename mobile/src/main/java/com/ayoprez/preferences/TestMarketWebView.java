@@ -1,20 +1,20 @@
 package com.ayoprez.preferences;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 import com.ayoprez.deilylang.AbstractBaseActivity;
 
-import java.util.Locale;
-
 /**
- * Created by AyoPrez on 5/07/15.
+ * Created by ayo on 04.12.15.
  */
-public class ContactWebview extends AbstractBaseActivity {
+public class TestMarketWebView extends AbstractBaseActivity {
 
     private WebView mWebView;
+    private String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +25,9 @@ public class ContactWebview extends AbstractBaseActivity {
         mWebView.getSettings().setJavaScriptEnabled(true); // enable javascript
 
         final Activity activity = this;
+
+        Intent intent = getIntent();
+        id = intent.getStringExtra("id");
 
         mWebView.setWebViewClient(new WebViewClient() {
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
@@ -48,20 +51,19 @@ public class ContactWebview extends AbstractBaseActivity {
         switch (language){
             case 1:
                 //Spanish
-                webView.loadUrl("http://ayoprez.com/es/contacto/");
+                webView.loadUrl("https://play.google.com/apps/testing/" + id + "?hl=es");
                 setContentView(mWebView);
                 break;
 
             case 2:
                 //German
-                webView.loadUrl("http://ayoprez.com/de/kontakt/");
+                webView.loadUrl("https://play.google.com/apps/testing/" + id + "?hl=de");
                 setContentView(mWebView);
                 break;
 
             default:
-                webView.loadUrl("http://ayoprez.com/en/contact/");
+                webView.loadUrl("https://play.google.com/apps/testing/" + id + "?hl=en");
                 setContentView(mWebView);
         }
     }
-
 }

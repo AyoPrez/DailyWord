@@ -12,12 +12,15 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewStub;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.Spinner;
 
+import com.ayoprez.deilylang.AbstractBaseActivity;
+import com.ayoprez.deilylang.DetectDeviceLanguage;
 import com.ayoprez.deilylang.R;
 import com.ayoprez.login.SessionManager;
 import com.ayoprez.restfulservice.GetSavedWords;
@@ -34,15 +37,15 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 /**
  * Created by AyoPrez on 24/05/15.
  */
-public class SavedWordsScreen extends AppCompatActivity {
+public class SavedWordsScreen extends AbstractBaseActivity {
+private static final String LOG_TAG = SavedWordsScreen.class.getSimpleName();
 
-    private Toolbar toolbar;
+    //TODO deep refactoring here. Use some library
     private Spinner spinner;
     private ArrayList<String> titlesList;
     private ArrayList<Fragment> fragmentsList;
 
     private SpinnerAdapter spinnerAdapter;
-    protected SessionManager sessionManager;
     protected Dialog loadDialog;
 
     private ArrayList<String> basicLevelType = new ArrayList<String>();
@@ -69,8 +72,6 @@ public class SavedWordsScreen extends AppCompatActivity {
         ButterKnife.bind(this);
 
         EventBus.getDefault().register(this);
-
-        sessionManager = new SessionManager(this);
 
         initToolbar();
 
@@ -125,9 +126,9 @@ public class SavedWordsScreen extends AppCompatActivity {
         fragmentsList.add(LevelHardFragment.newInstance(hardLevelWord, hardLevelType, language));
     }
 
-    private void initToolbar(){
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+    @Override
+    protected void initToolbar(){
+        super.initToolbar();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -184,22 +185,11 @@ public class SavedWordsScreen extends AppCompatActivity {
         viewPager.setAdapter(adapter);
     }
 
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-    }
-
-    protected int getUserId(){
-        return Integer.valueOf(sessionManager.getUserDetails().get("id"));
-    }
-
     protected void getSavedWords(int userId){
-        if(Locale.getDefault().getISO3Language().equals("eng")){
-            new GetSavedWords(this).sendSpanishUserWordsRequest(userId, "english");
+        if(DetectDeviceLanguage.getISO3Language().toLowerCase().equals("spa")){
+            new GetSavedWords(this).sendEnglishUserWordsRequest(userId, "spanish");
         }else{
-            if(Locale.getDefault().getISO3Language().equals("spa")){
-                new GetSavedWords(this).sendEnglishUserWordsRequest(userId, "spanish");
-            }
+            new GetSavedWords(this).sendSpanishUserWordsRequest(userId, "english");
         }
 
         createLoadDialog();
@@ -213,29 +203,29 @@ public class SavedWordsScreen extends AppCompatActivity {
     }
 
     protected void separateWordByLevel(ArrayList<SavedWords> savedWords){
-        for (int i = 0; i < savedWords.size(); i++){
-            switch(savedWords.get(i).getLevel().toLowerCase()){
+
+            for (SavedWords saveWords : savedWords){
+            switch(saveWords.getLevel().toLowerCase().trim()){
                 case "basic": {
-                    basicLevelWord.add(savedWords.get(i).getWord());
-                    basicLevelType.add(savedWords.get(i).getType());
+                    basicLevelWord.add(saveWords.getWord());
+                    basicLevelType.add(saveWords.getType());
                     break;
                 }
                 case "easy": {
-                    easyLevelWord.add(savedWords.get(i).getWord());
-                    easyLevelType.add(savedWords.get(i).getType());
+                    easyLevelWord.add(saveWords.getWord());
+                    easyLevelType.add(saveWords.getType());
                     break;
                 }
                 case "normal": {
-                    normalLevelWord.add(savedWords.get(i).getWord());
-                    normalLevelType.add(savedWords.get(i).getType());
+                    normalLevelWord.add(saveWords.getWord());
+                    normalLevelType.add(saveWords.getType());
                     break;
                 }
                 case "hard":{
-                    hardLevelWord.add(savedWords.get(i).getWord());
-                    hardLevelType.add(savedWords.get(i).getType());
+                    hardLevelWord.add(saveWords.getWord());
+                    hardLevelType.add(saveWords.getType());
                     break;
                 }
-
             }
         }
 
@@ -255,19 +245,19 @@ public class SavedWordsScreen extends AppCompatActivity {
 
     private void setSpinnerLanguages(ArrayList<String> languages){
         spinnerAdapter.removeAll();
-        for(int i = 0; i < languages.size(); i++) {
-            spinnerAdapter.add(translateLanguage(languages.get(i)));
+        for(String language : languages) {
+            spinnerAdapter.add(translateLanguage(language));
         }
     }
 
     private String translateLanguage(String language){
         String finalLanguage = language;
 
-        if(language.toLowerCase().equals("english")){
+        if(language.toLowerCase().trim().equals("english")){
             finalLanguage = getString(R.string.English);
         }
 
-        if(language.toLowerCase().equals("spanish")){
+        if(language.toLowerCase().trim().equals("spanish")){
             finalLanguage = getString(R.string.Spanish);
         }
 
@@ -283,6 +273,7 @@ public class SavedWordsScreen extends AppCompatActivity {
         }else{
             viewStubNoInternet.setLayoutResource(R.layout.empty_list_layout);
             viewStubNoInternet.setVisibility(View.VISIBLE);
+            cancelDialog();
         }
     }
 }

@@ -7,13 +7,11 @@ import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.*;
 
-import com.ayoprez.deilylang.R;
-import com.ayoprez.deilylang.Utils;
-import com.ayoprez.deilylang.WordFromDatabase;
+import com.ayoprez.deilylang.*;
+import com.ayoprez.utils.SpeakerHelper;
+import com.ayoprez.utils.Utils;
 import com.ayoprez.login.SessionManager;
 import com.ayoprez.notification.ShortTimeStartAndCancel;
 import com.ayoprez.restfulservice.SetWords;
@@ -24,17 +22,18 @@ import java.util.Locale;
 import butterknife.ButterKnife;
 import butterknife.Bind;
 import butterknife.OnClick;
+import com.crashlytics.android.answers.CustomEvent;
+import de.greenrobot.event.EventBus;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class WordScreen extends AppCompatActivity {
+public class WordScreen extends AbstractBaseActivity {
+    private static final String LOG_TAG = WordScreen.class.getSimpleName();
 
     private Context mContext;
-    private TextToSpeech textToSpeech;
-    private String[] wordsFromTables;
-    private String[] typesFromTables;
     private Locale languageNew;
     private Locale languageUser;
     private Bundle bundle;
+    private SpeakerHelper speak;
 
     @Bind(R.id.textView_WordScreen_1)
     TextView mWord1WordScreen;
@@ -46,10 +45,14 @@ public class WordScreen extends AppCompatActivity {
     TextView mType2WordScreen;
     @Bind(R.id.button_WordScreen_)
     Button mButtonSaveWord;
-    @Bind(R.id.button_WordScreen_2)
-    Button mButtonRemainLater;
-    @Bind(R.id.button_report_WordScreen)
-    Button mButtonReport;
+    @Bind(R.id.imageButton_WordScreen_1)
+    ImageButton ibSpeaker1;
+    @Bind(R.id.imageButton_WordScreen_2)
+    ImageButton ibSpeaker2;
+    @Bind(R.id.progressBar_1)
+    ProgressBar pbSpeaker1;
+    @Bind(R.id.progressBar_2)
+    ProgressBar pbSpeaker2;
 
     private String WORDS_ID_KEY = "wordId";
     private String WORDS_ARRAY_KEY = "words";
@@ -58,21 +61,11 @@ public class WordScreen extends AppCompatActivity {
     private String LEVEL_KEY = "level";
 
     @OnClick(R.id.imageButton_WordScreen_1) void speakerNewLanguage(){
-        textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int status) {
-                talkSpeech(status, languageNew, wordsFromTables[0]);
-            }
-        });
+        talkSpeech(languageNew, mWord1WordScreen.getText().toString());
     }
 
     @OnClick(R.id.imageButton_WordScreen_2) void speakerUserLanguage(){
-        textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int status) {
-                talkSpeech(status, languageUser, wordsFromTables[1]);
-            }
-        });
+        talkSpeech(languageUser, mWord2WordScreen.getText().toString());
     }
 
     @OnClick(R.id.button_WordScreen_) void buttonDone(){
@@ -86,6 +79,7 @@ public class WordScreen extends AppCompatActivity {
     }
 
     @OnClick(R.id.button_WordScreen_2) void buttonRemindMeLater(){
+        Crashlytics.getInstance().answers.logCustom(new CustomEvent("WordScreen").putCustomAttribute("button", "RemindMeLater"));
         if(bundle != null){
             WordFromDatabase wordFromDatabase = new WordFromDatabase(
                     bundle.getInt(WORDS_ID_KEY),
@@ -96,28 +90,29 @@ public class WordScreen extends AppCompatActivity {
 
             if(new ShortTimeStartAndCancel(mContext, wordFromDatabase).startAlarmManager20MinutesLater()){
 
-                new Utils().Create_Dialog(mContext, getString(R.string.laterDialog),
+                Utils.Create_Dialog(mContext, getString(R.string.laterDialog),
                         mContext.getString(R.string.buttonAcceptDialog),
                         mContext.getString(R.string.successSavingDialogTitle));
             }else{
-                new Utils().Create_Dialog(mContext, getString(R.string.errorSavingMoment),
+                Utils.Create_Dialog(mContext, getString(R.string.errorSavingMoment),
                         mContext.getString(R.string.buttonAcceptDialog),
                         mContext.getString(R.string.errorSavingDialogTitle));
             }
         }else{
-            Crashlytics.getInstance().log("Error WordScreen: Bundle null");
+            ErrorHandler.getInstance().Error(LOG_TAG, "Bundle null");
         }
     }
 
     @OnClick(R.id.button_report_WordScreen) void buttonReport(){
+        Crashlytics.getInstance().answers.logCustom(new CustomEvent("WordScreen").putCustomAttribute("button", "ReportWrongTranslation"));
         //TODO make it easier. Just push the button, see that the report is sending, and done
         //TODO http://stackoverflow.com/questions/2020088/sending-email-in-android-using-javamail-api-without-using-the-default-built-in-a/2033124#2033124
         Intent i = new Intent(Intent.ACTION_SEND);
         i.setType("message/rfc822");
         i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"report@deilylang.com"});
         i.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.Subject));
-        i.putExtra(Intent.EXTRA_TEXT   , getString(R.string.Body) + " '" + wordsFromTables[0] + "' " +
-                                            getString(R.string.Body2) + " '" + wordsFromTables[1] + "'" +
+        i.putExtra(Intent.EXTRA_TEXT   , getString(R.string.Body) + " '" + mWord1WordScreen.getText().toString() + "' " +
+                                            getString(R.string.Body2) + " '" + mWord2WordScreen.getText().toString() + "'" +
                                             getString(R.string.Body3));
         try {
             startActivity(Intent.createChooser(i, getString(R.string.Title)));
@@ -132,6 +127,9 @@ public class WordScreen extends AppCompatActivity {
         setContentView(R.layout.activity_word_screen);
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
         ButterKnife.bind(this);
+        EventBus.getDefault().register(this);
+
+        speak = new SpeakerHelper(this);
 
         this.mContext = this;
 
@@ -141,54 +139,60 @@ public class WordScreen extends AppCompatActivity {
             mButtonSaveWord.setVisibility(View.GONE);
         }
 
-        wordsFromTables = bundle.getStringArray(WORDS_ARRAY_KEY);
-        typesFromTables = bundle.getStringArray(TYPES_ARRAY_KEY);
-
         defineLocales(bundle.getStringArray(LANGUAGES_ARRAY_KEY));
+        defineWords(bundle.getStringArray(WORDS_ARRAY_KEY));
+        defineType(bundle.getStringArray(TYPES_ARRAY_KEY));
+    }
 
+    private void defineLocales(String[] languages){
+        languageNew = DetectDeviceLanguage.getLocaleFromString(languages[0].toLowerCase());
+        languageUser = DetectDeviceLanguage.getLocaleFromString(languages[1].toLowerCase());
+    }
+
+    private void defineWords(String[] wordsFromTables){
         mWord1WordScreen.setText(wordsFromTables[0]);
         mWord2WordScreen.setText(wordsFromTables[1]);
+    }
 
+    private void defineType(String[] typesFromTables){
         mType1WordScreen.setText(typesFromTables[0]);
         mType2WordScreen.setText(typesFromTables[1]);
     }
 
-    private void defineLocales(String[] languages){
-
-        if(languages[0].toLowerCase().equals("english")){
-            languageNew = Locale.ENGLISH;
-        }else{
-            if(languages[0].toLowerCase().equals("spanish")){
-                languageNew = new Locale("es", "ES");
-            }else{
-                if(languages[0].toLowerCase().equals("german")){
-                    languageNew = Locale.GERMAN;
-                }
-            }
-        }
-
-        if(languages[1].toLowerCase().equals("english")){
-            languageUser = Locale.ENGLISH;
-        }else{
-            if(languages[1].toLowerCase().equals("spanish")){
-                languageUser = new Locale("es", "ES");
-            }else{
-                if(languages[1].toLowerCase().equals("german")){
-                    languageUser = Locale.GERMAN;
-                }
-            }
-        }
+    private void talkSpeech(Locale language, String speech){
+        speak.allow(true);
+        speak.speak(language, speech);
     }
 
-    private void talkSpeech(int status, Locale language, String speech){
-        if (status == TextToSpeech.SUCCESS) {
-            textToSpeech.setLanguage(language);
-            textToSpeech.speak(speech, TextToSpeech.QUEUE_FLUSH, null);
-        }
-    }
+    public void onEvent(final Boolean ready){
 
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(8000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        if(ready){
+                            ibSpeaker1.setVisibility(View.VISIBLE);
+                            pbSpeaker1.setVisibility(View.GONE);
+                            ibSpeaker2.setVisibility(View.VISIBLE);
+                            pbSpeaker2.setVisibility(View.GONE);
+                        }else{
+                            ibSpeaker1.setVisibility(View.GONE);
+                            pbSpeaker1.setVisibility(View.VISIBLE);
+                            ibSpeaker2.setVisibility(View.VISIBLE);
+                            pbSpeaker2.setVisibility(View.GONE);
+                        }
+                    }
+                });
+            }
+        };
+
+        thread.run();
     }
 }

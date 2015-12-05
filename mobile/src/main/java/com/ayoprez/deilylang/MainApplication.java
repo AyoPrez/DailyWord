@@ -1,13 +1,13 @@
 package com.ayoprez.deilylang;
 
-import android.app.Application;
+import android.support.multidex.MultiDexApplication;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 /**
  * Created by AyoPrez on 14/06/15.
  */
-public class MainApplication extends Application {
+public class MainApplication extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();
@@ -19,4 +19,5 @@ public class MainApplication extends Application {
         );
 //        LeakCanary.install(this);
     }
+
 }

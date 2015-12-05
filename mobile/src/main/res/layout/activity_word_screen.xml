@@ -19,7 +19,16 @@
             android:layout_height="80dp"
             android:layout_margin="10dp"
             android:layout_gravity="center_vertical"
+            android:visibility="gone"
             android:background="@drawable/ic_volume_up_black_48dp" />
+
+        <ProgressBar
+            android:id="@+id/progressBar_1"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="10dp"
+            android:layout_gravity="center_vertical"
+            android:indeterminate="true"/>
 
         <LinearLayout
             android:orientation="vertical"
@@ -62,7 +71,16 @@
             android:layout_height="80dp"
             android:layout_gravity="center_vertical"
             android:layout_margin="10dp"
+            android:visibility="gone"
             android:background="@drawable/ic_volume_up_black_48dp" />
+
+        <ProgressBar
+                android:id="@+id/progressBar_2"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="10dp"
+                android:layout_gravity="center_vertical"
+                android:indeterminate="true"/>
 
         <LinearLayout
             android:orientation="vertical"

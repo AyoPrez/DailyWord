@@ -13,15 +13,14 @@ import deilyword.UserMoments;
 
 public class ReviewAdapter extends BaseAdapter {
 
-	// Declare Variables
     private LayoutInflater inflater;
     private List<UserMoments> dataFromListView = null;
-    private Context ctx;
+    protected Context context;
  
     public ReviewAdapter(Context context, List<UserMoments> getDataFromDatabaseToListView) {
         this.dataFromListView = getDataFromDatabaseToListView;
-        this.ctx = context;
-        this.inflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        this.context = context;
+        this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
    
     public class ViewHolder {

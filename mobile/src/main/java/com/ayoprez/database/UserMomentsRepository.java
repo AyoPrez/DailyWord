@@ -53,7 +53,7 @@ public class UserMomentsRepository {
         getUserMomentsDao(context).delete(getMomentForId(context, id));
     }
 
-    public static List<UserMoments> getAllMoments(Context context) {
+    public List<UserMoments> getAllMoments(Context context) {
         return getUserMomentsDao(context).loadAll();
     }
 

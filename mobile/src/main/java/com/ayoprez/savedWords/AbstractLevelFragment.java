@@ -42,5 +42,4 @@ public abstract class AbstractLevelFragment extends Fragment {
             viewStub.setVisibility(View.GONE);
         }
     }
-
 }

@@ -5,8 +5,7 @@ package com.ayoprez.deilylang;
  */
 public class Translations {
 
-
-    public String translateLevel(String level){
+    public static String translateLevel(String level){
         String translatedLevel = "";
         switch(level.toLowerCase()){
             case "básico":
@@ -28,7 +27,7 @@ public class Translations {
         return translatedLevel;
     }
 
-    public String translateLanguage(String language){
+    public static String translateLanguageFromSpanishToEnglish(String language){
         String translatedLanguage = "";
         switch(language.toLowerCase()){
             case "español":
@@ -44,7 +43,7 @@ public class Translations {
         return translatedLanguage;
     }
 
-    public String translateLanguageFromEnglishToSpanish(String language){
+    public static String translateLanguageFromEnglishToSpanish(String language){
         String translatedLanguage = "";
         switch(language.toLowerCase()){
             case "spanish":
@@ -58,5 +57,31 @@ public class Translations {
         }
 
         return translatedLanguage;
+    }
+
+    /**
+     * Change when more languages are included.
+     * **/
+    public static String translateLanguagesToISO(String language){
+
+        String lang = language.toLowerCase();
+        String ISO3 = null;
+
+        String[] English = {"inglés", "english", "englisch"};
+        String[] Spanish = {"español", "spanish", "spanisch"};
+        String[] German = {"alemán", "german", "deutsch"};
+
+        if(lang.equals(English[0]) || lang.equals(English[1]) || lang.equals(English[2])){
+            ISO3 = "eng";
+        }else{
+            if(lang.equals(Spanish[0]) || lang.equals(Spanish[1]) || lang.equals(Spanish[2])){
+                ISO3 = "spa";
+            }else{
+                if(lang.equals(German[0]) || lang.equals(German[1]) || lang.equals(German[2])){
+                    ISO3 = "deu";
+                }
+            }
+        }
+        return ISO3;
     }
 }
