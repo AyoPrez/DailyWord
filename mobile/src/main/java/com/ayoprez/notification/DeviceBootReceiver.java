@@ -25,7 +25,7 @@ public class DeviceBootReceiver extends BroadcastReceiver {
         if (intent.getAction().equals("android.intent.action.BOOT_COMPLETED")) {
            reSchedule(context);
         }else{
-            Log.e("", "It is not a reboot intent");
+            Log.e(TAG, "It is not a reboot intent");
             ErrorHandler.getInstance().Error(TAG, "It is not a reboot intent");
         }
     }

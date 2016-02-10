@@ -41,9 +41,9 @@ public class MainActivity extends AbstractBaseActivity {
     }
 
     //Tests
-//    @OnClick(R.id.buttonn) void newNotification(){
-//        Test.testNotification(this);
-//    }
+    @OnClick(R.id.buttonn) void newNotification(){
+        Test.testNotification(this);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

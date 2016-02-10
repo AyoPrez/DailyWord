@@ -18,6 +18,9 @@ import com.ayoprez.restfulservice.SetWords;
 import com.crashlytics.android.Crashlytics;
 
 import java.util.Locale;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.ButterKnife;
 import butterknife.Bind;
@@ -29,6 +32,8 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 public class WordScreen extends AbstractBaseActivity {
     private static final String LOG_TAG = WordScreen.class.getSimpleName();
 
+    private static final ScheduledExecutorService worker =
+            Executors.newSingleThreadScheduledExecutor();
     private Context mContext;
     private Locale languageNew;
     private Locale languageUser;
@@ -164,19 +169,16 @@ public class WordScreen extends AbstractBaseActivity {
         speak.speak(language, speech);
     }
 
-    public void onEvent(final Boolean ready){
 
-        Thread thread = new Thread() {
-            @Override
+
+    public void onEventBackgroundThread(final Boolean ready){
+
+        Runnable task = new Runnable() {
             public void run() {
+
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        try {
-                            Thread.sleep(8000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
                         if(ready){
                             ibSpeaker1.setVisibility(View.VISIBLE);
                             pbSpeaker1.setVisibility(View.GONE);
@@ -193,6 +195,38 @@ public class WordScreen extends AbstractBaseActivity {
             }
         };
 
-        thread.run();
+        worker.schedule(task, 8, TimeUnit.SECONDS);
     }
+
+//    public void onEvent(final Boolean ready){
+//
+//        Thread thread = new Thread() {
+//            @Override
+//            public void run() {
+//                runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        try {
+//                            Thread.sleep(8000);
+//                        } catch (InterruptedException e) {
+//                            e.printStackTrace();
+//                        }
+//                        if(ready){
+//                            ibSpeaker1.setVisibility(View.VISIBLE);
+//                            pbSpeaker1.setVisibility(View.GONE);
+//                            ibSpeaker2.setVisibility(View.VISIBLE);
+//                            pbSpeaker2.setVisibility(View.GONE);
+//                        }else{
+//                            ibSpeaker1.setVisibility(View.GONE);
+//                            pbSpeaker1.setVisibility(View.VISIBLE);
+//                            ibSpeaker2.setVisibility(View.VISIBLE);
+//                            pbSpeaker2.setVisibility(View.GONE);
+//                        }
+//                    }
+//                });
+//            }
+//        };
+//
+//        thread.run();
+//    }
 }
