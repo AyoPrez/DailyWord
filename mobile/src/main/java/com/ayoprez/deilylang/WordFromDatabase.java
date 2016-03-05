@@ -10,15 +10,17 @@ public class WordFromDatabase {
     private String Level;
     private String[] Type;
     private String[] Languages;
+    private String[] Articles;
 
     public WordFromDatabase(){}
 
-    public WordFromDatabase(int Id, String[] Word, String Level, String[] Type, String[] Languages){
+    public WordFromDatabase(int Id, String[] Word, String Level, String[] Type, String[] Languages, String[] Articles){
         this.Id = Id;
         this.Word = Word;
         this.Level = Level;
         this.Type = Type;
         this.Languages = Languages;
+        this.Articles = Articles;
     }
 
     public int getId() {
@@ -59,5 +61,13 @@ public class WordFromDatabase {
 
     public void setLanguages(String[] languages) {
         Languages = languages;
+    }
+
+    public String[] getArticles() {
+        return Articles;
+    }
+
+    public void setArticles(String[] articles) {
+        Articles = articles;
     }
 }

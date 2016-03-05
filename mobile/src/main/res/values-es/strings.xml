@@ -60,6 +60,7 @@
     <string name="doneDialog">Perfecto. Ya la tienes. Ahora conoces esta palabra.</string>
     <string name="laterDialog">Te recordaré esta palabra en un rato para que la memorices.</string>
     <string name="doneDialogTitle">Palabra guardada</string>
+    <string name="artc">Artc:</string>
 
     <!-- Report bad translation mail-->
     <string name="Subject">Reporte de traducción</string>

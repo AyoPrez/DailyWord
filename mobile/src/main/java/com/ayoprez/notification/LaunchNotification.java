@@ -28,6 +28,14 @@ public class LaunchNotification extends Application{
     private static final String TAG = LaunchNotification.class.getSimpleName();
 
     private Context context;
+    private static LaunchNotification instance;
+
+    public static LaunchNotification getInstance(Context context){
+        if(instance == null){
+            return new LaunchNotification(context);
+        }
+        return instance;
+    }
 
     public LaunchNotification(Context context){
         this.context = context;
@@ -72,6 +80,7 @@ public class LaunchNotification extends Application{
         bundle.putStringArray("types", words.getType());
         bundle.putString("level", words.getLevel());
         bundle.putStringArray("languages", words.getLanguages());
+        bundle.putStringArray("articles", words.getArticles());
         return bundle;
     }
 

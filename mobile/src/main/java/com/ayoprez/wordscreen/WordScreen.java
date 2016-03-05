@@ -6,6 +6,7 @@ import android.media.AudioManager;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.*;
 
@@ -44,10 +45,14 @@ public class WordScreen extends AbstractBaseActivity {
     TextView mWord1WordScreen;
     @Bind(R.id.textView_Type_1)
     TextView mType1WordScreen;
+    @Bind(R.id.textView_Article_1)
+    TextView mArticle1WordScreen;
     @Bind(R.id.textView_WordScreen_2)
     TextView mWord2WordScreen;
     @Bind(R.id.textView_Type_2)
     TextView mType2WordScreen;
+    @Bind(R.id.textView_Article_2)
+    TextView mArticle2WordScreen;
     @Bind(R.id.button_WordScreen_)
     Button mButtonSaveWord;
     @Bind(R.id.imageButton_WordScreen_1)
@@ -64,6 +69,7 @@ public class WordScreen extends AbstractBaseActivity {
     private String TYPES_ARRAY_KEY = "types";
     private String LANGUAGES_ARRAY_KEY = "languages";
     private String LEVEL_KEY = "level";
+    private String ARTICLE_KEY = "articles";
 
     //TODO Dependencies
     //-new SessionManager
@@ -83,7 +89,6 @@ public class WordScreen extends AbstractBaseActivity {
         Integer wordId = bundle.getInt(WORDS_ID_KEY);
         String languageNew = bundle.getStringArray(LANGUAGES_ARRAY_KEY)[0];
         String languageDevice = bundle.getStringArray(LANGUAGES_ARRAY_KEY)[1];
-        String level = bundle.getString("level");
         int id_user = Integer.valueOf(new SessionManager(mContext).getUserDetails().get("id"));
 
         new SetWords(this).sendUserWord(id_user, wordId, languageDevice, languageNew);
@@ -97,7 +102,8 @@ public class WordScreen extends AbstractBaseActivity {
                     bundle.getStringArray(WORDS_ARRAY_KEY),
                     bundle.getString(LEVEL_KEY),
                     bundle.getStringArray(TYPES_ARRAY_KEY),
-                    bundle.getStringArray(LANGUAGES_ARRAY_KEY));
+                    bundle.getStringArray(LANGUAGES_ARRAY_KEY),
+                    bundle.getStringArray(ARTICLE_KEY));
 
             if(new ShortTimeStartAndCancel(mContext, wordFromDatabase).startAlarmManager20MinutesLater()){
 
@@ -120,11 +126,11 @@ public class WordScreen extends AbstractBaseActivity {
         //TODO http://stackoverflow.com/questions/2020088/sending-email-in-android-using-javamail-api-without-using-the-default-built-in-a/2033124#2033124
         Intent i = new Intent(Intent.ACTION_SEND);
         i.setType("message/rfc822");
-        i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"report@deilylang.com"});
+        i.putExtra(Intent.EXTRA_EMAIL, new String[]{"report@deilylang.com"});
         i.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.Subject));
-        i.putExtra(Intent.EXTRA_TEXT   , getString(R.string.Body) + " '" + mWord1WordScreen.getText().toString() + "' " +
-                                            getString(R.string.Body2) + " '" + mWord2WordScreen.getText().toString() + "'" +
-                                            getString(R.string.Body3));
+        i.putExtra(Intent.EXTRA_TEXT, getString(R.string.Body) + " '" + mWord1WordScreen.getText().toString() + "' " +
+                getString(R.string.Body2) + " '" + mWord2WordScreen.getText().toString() + "'" +
+                getString(R.string.Body3));
         try {
             startActivity(Intent.createChooser(i, getString(R.string.Title)));
         } catch (android.content.ActivityNotFoundException ex) {
@@ -153,6 +159,7 @@ public class WordScreen extends AbstractBaseActivity {
         defineLocales(bundle.getStringArray(LANGUAGES_ARRAY_KEY));
         defineWords(bundle.getStringArray(WORDS_ARRAY_KEY));
         defineType(bundle.getStringArray(TYPES_ARRAY_KEY));
+        defineArticle(bundle.getStringArray(ARTICLE_KEY));
     }
 
     private void defineLocales(String[] languages){
@@ -168,6 +175,21 @@ public class WordScreen extends AbstractBaseActivity {
     private void defineType(String[] typesFromTables){
         mType1WordScreen.setText(typesFromTables[0]);
         mType2WordScreen.setText(typesFromTables[1]);
+    }
+
+    private void defineArticle(String[] articlesFromTables){
+        if(articlesFromTables != null && articlesFromTables.length > 1){
+            if(!TextUtils.isEmpty(articlesFromTables[0])) {
+                mArticle1WordScreen.setText(getString(R.string.artc) + " " + articlesFromTables[0]);
+            }else{
+                mArticle1WordScreen.setVisibility(View.GONE);
+            }
+            if(!TextUtils.isEmpty(articlesFromTables[1])) {
+                mArticle2WordScreen.setText(getString(R.string.artc) + " " + articlesFromTables[1]);
+            }else{
+                mArticle2WordScreen.setVisibility(View.GONE);
+            }
+        }
     }
 
     private void talkSpeech(Locale language, String speech){

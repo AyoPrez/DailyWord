@@ -36,9 +36,10 @@ public class ShortTimeReceiver extends BroadcastReceiver {
         String languageLearning = intent.getStringExtra("languageLearning");
         String languageDevice = intent.getStringExtra("languageDevice");
         String[] languages = {languageLearning, languageDevice};
+        String[] articles = intent.getStringArrayExtra("articles");
         int id = intent.getIntExtra("id", 0);
 
-        WordFromDatabase wordFromDatabase = new WordFromDatabase(id, words, level, types, languages);
+        WordFromDatabase wordFromDatabase = new WordFromDatabase(id, words, level, types, languages, articles);
 
         new LaunchNotification(context).launchNotification(context, wordFromDatabase);
     }

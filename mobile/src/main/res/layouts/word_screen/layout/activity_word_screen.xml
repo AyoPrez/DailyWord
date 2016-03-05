@@ -54,6 +54,18 @@
                 android:textStyle="italic"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Large Text" />
+
+            <TextView
+                android:id="@+id/textView_Article_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="5dp"
+                android:textStyle="italic"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Artc: "/>
+
             </LinearLayout>
     </LinearLayout>
 
@@ -107,6 +119,18 @@
                 android:textStyle="italic"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Large Text" />
+
+            <TextView
+                android:id="@+id/textView_Article_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="5dp"
+                android:textStyle="italic"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Artc: "/>
+
         </LinearLayout>
     </LinearLayout>
 

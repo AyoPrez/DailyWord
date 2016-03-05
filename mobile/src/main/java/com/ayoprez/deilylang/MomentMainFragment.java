@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.ayoprez.database.UserMomentsRepository;
 import com.ayoprez.notification.StartAndCancelAlarmManager;
+import com.ayoprez.utils.Test;
 import com.ayoprez.utils.Utils;
 import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.answers.CustomEvent;
@@ -30,9 +31,9 @@ public class MomentMainFragment extends Fragment {
 
     private static MomentMainFragment instance;
 
-    //Tests
+//    Tests
 //    @OnClick(R.id.buttonn) void newNotification(){
-//        Test.testNotification(this);
+//        Test.testNotification(getActivity());
 //    }
 
     @Bind(R.id.iv_flag)
