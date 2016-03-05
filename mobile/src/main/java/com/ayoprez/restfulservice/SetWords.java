@@ -61,6 +61,6 @@ public class SetWords {
     }
 
     public void getConfirmedDialog(){
-        Utils.Create_Dialog(context, context.getString(R.string.doneDialog), context.getString(R.string.buttonAcceptDialog), context.getString(R.string.doneDialogTitle));
+        Utils.getInstance().Create_Dialog(context, context.getString(R.string.doneDialog), context.getString(R.string.buttonAcceptDialog), context.getString(R.string.doneDialogTitle));
     }
 }

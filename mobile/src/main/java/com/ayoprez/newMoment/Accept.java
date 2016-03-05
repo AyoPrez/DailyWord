@@ -13,31 +13,35 @@ import deilyword.UserMoments;
 public class Accept {
 
 	private Context context;
-	
+
+    //TODO Dependencies
+    //-new UserMoments
+    //-new StartAndCancelAlarmManager
+
+
 	public Accept(Context context){
 		this.context = context;
 	}
 	
-	public void Accept_Dialog(String AppLanguage, String Language, final String Level, String Time){
+	public void Accept_Dialog(String Language, final String Level, String Time){
 		UserMomentsRepository userMomentsRepository = new UserMomentsRepository();
 
 		if(!Language.equals(context.getString(R.string.button_language)) && !Level.equals(context.getString(R.string.button_level))
 				&& !Time.equals(context.getString(R.string.button_time))){
             UserMoments userMoments = new UserMoments(
-                    userMomentsRepository.getLastId(context),
+                    userMomentsRepository.getLastId(),
                     Language,
                     Level,
-                    Utils.TakeOutTimeDots(Time),
-                    AppLanguage);
+                    Utils.getInstance().TakeOutTimeDots(Time));
 
-            userMomentsRepository.insertOrUpdate(context, userMoments);
+            UserMomentsRepository.insertOrUpdate(userMoments);
 
 			if(new StartAndCancelAlarmManager(context, userMoments).startAlarmManager(Time)){
-                Utils.Create_Dialog(context, context.getString(R.string.successSavingMoment),
+                Utils.getInstance().Create_Dialog(context, context.getString(R.string.successSavingMoment),
                         context.getString(R.string.buttonAcceptDialog),
                         context.getString(R.string.successSavingDialogTitle));
             }else{
-                Utils.Create_Dialog(context, context.getString(R.string.errorSavingMoment),
+                Utils.getInstance().Create_Dialog(context, context.getString(R.string.errorSavingMoment),
                         context.getString(R.string.buttonAcceptDialog),
                         context.getString(R.string.errorSavingDialogTitle));
             }

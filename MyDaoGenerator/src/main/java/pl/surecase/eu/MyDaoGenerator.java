@@ -7,9 +7,8 @@ import de.greenrobot.daogenerator.Schema;
 public class MyDaoGenerator {
 
     public static void main(String args[]) throws Exception {
-        Schema schema = new Schema(1, "deilyword");
+        Schema schema = new Schema(1, "deilylang");
         CreateUserMomentsEntity(schema);
-//        CreateUserWordsEntity(schema);
         new DaoGenerator().generateAll(schema, args[0]);
     }
 
@@ -21,13 +20,4 @@ public class MyDaoGenerator {
         moments.addStringProperty("time");
         moments.addStringProperty("applanguage");
     }
-//
-//    public static void CreateUserWordsEntity(Schema schema){
-//        Entity words = schema.addEntity("UserWords");
-//        words.addIdProperty();
-//        words.addIntProperty("IdWord");
-//        words.addStringProperty("LanguageNew");
-//        words.addStringProperty("LanguageDevice");
-//        words.addStringProperty("Level");
-//    }
 }

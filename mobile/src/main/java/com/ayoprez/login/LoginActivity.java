@@ -20,6 +20,11 @@ import butterknife.OnClick;
  */
 public class LoginActivity extends AbstractBaseActivity {
 
+    //TODO Dependencies
+    //-new FacebookLogin
+    //-new TwitterLogin
+    //-
+
     public TwitterLoginButton twitterLoginButton;
     private FacebookLogin facebookLogin = new FacebookLogin(this);
     private TwitterLogin twitterLogin = new TwitterLogin(this);

@@ -18,7 +18,10 @@ public class Moment {
 	private Dialog Dialog;
 	private final TimePicker Timey_Wimey;
 	private Utils UTILS;
-	
+
+	//TODO Dependencies
+	//-new Utils
+
 	public Moment(Context context){	
 		this.ctx = context;
 		this.UTILS = new Utils();

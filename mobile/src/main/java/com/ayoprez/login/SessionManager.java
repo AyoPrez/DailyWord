@@ -19,7 +19,12 @@ public class SessionManager {
     private SharedPreferences.Editor editor;
     private Context context;
 
-    private int PRIVATE_MODE = 0;
+    //TODO Dependencies
+    //-new FacebookLogin
+    //-new TwitterLogin
+
+
+    protected int PRIVATE_MODE = 0;
 
     private static final String PREF_NAME = "Pref";
     private static final String IS_LOGIN = "IsLoggedIn";

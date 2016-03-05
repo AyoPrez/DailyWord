@@ -16,6 +16,9 @@ public class ShortTimeStartAndCancel extends TimeCalculator{
     private PendingIntent pendingIntent;
     private AlarmManager alarmManager;
 
+    //TODO Dependencies
+    //-new SessionManager
+
     public ShortTimeStartAndCancel(Context context, WordFromDatabase wordFromDatabase){
         Intent alarmIntent = startIntent(context, wordFromDatabase);
 

@@ -65,6 +65,12 @@ public class WordScreen extends AbstractBaseActivity {
     private String LANGUAGES_ARRAY_KEY = "languages";
     private String LEVEL_KEY = "level";
 
+    //TODO Dependencies
+    //-new SessionManager
+    //-new SetWords
+    //-new ShortTimeStartAndCancel
+
+
     @OnClick(R.id.imageButton_WordScreen_1) void speakerNewLanguage(){
         talkSpeech(languageNew, mWord1WordScreen.getText().toString());
     }
@@ -95,11 +101,11 @@ public class WordScreen extends AbstractBaseActivity {
 
             if(new ShortTimeStartAndCancel(mContext, wordFromDatabase).startAlarmManager20MinutesLater()){
 
-                Utils.Create_Dialog(mContext, getString(R.string.laterDialog),
+                Utils.getInstance().Create_Dialog(mContext, getString(R.string.laterDialog),
                         mContext.getString(R.string.buttonAcceptDialog),
                         mContext.getString(R.string.successSavingDialogTitle));
             }else{
-                Utils.Create_Dialog(mContext, getString(R.string.errorSavingMoment),
+                Utils.getInstance().Create_Dialog(mContext, getString(R.string.errorSavingMoment),
                         mContext.getString(R.string.buttonAcceptDialog),
                         mContext.getString(R.string.errorSavingDialogTitle));
             }
@@ -169,8 +175,6 @@ public class WordScreen extends AbstractBaseActivity {
         speak.speak(language, speech);
     }
 
-
-
     public void onEventBackgroundThread(final Boolean ready){
 
         Runnable task = new Runnable() {
@@ -197,36 +201,4 @@ public class WordScreen extends AbstractBaseActivity {
 
         worker.schedule(task, 8, TimeUnit.SECONDS);
     }
-
-//    public void onEvent(final Boolean ready){
-//
-//        Thread thread = new Thread() {
-//            @Override
-//            public void run() {
-//                runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        try {
-//                            Thread.sleep(8000);
-//                        } catch (InterruptedException e) {
-//                            e.printStackTrace();
-//                        }
-//                        if(ready){
-//                            ibSpeaker1.setVisibility(View.VISIBLE);
-//                            pbSpeaker1.setVisibility(View.GONE);
-//                            ibSpeaker2.setVisibility(View.VISIBLE);
-//                            pbSpeaker2.setVisibility(View.GONE);
-//                        }else{
-//                            ibSpeaker1.setVisibility(View.GONE);
-//                            pbSpeaker1.setVisibility(View.VISIBLE);
-//                            ibSpeaker2.setVisibility(View.VISIBLE);
-//                            pbSpeaker2.setVisibility(View.GONE);
-//                        }
-//                    }
-//                });
-//            }
-//        };
-//
-//        thread.run();
-//    }
 }

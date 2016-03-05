@@ -53,4 +53,19 @@ public class DetectDeviceLanguage {
                 return new Locale("en");
         }
     }
+
+    public static String getISO3FromString(String language){
+        switch (language){
+            case "spanish":
+                return "spa";
+            case "español":
+                return "spa";
+            case "english":
+                return "eng";
+            case "inglés":
+                return "eng";
+            default:
+                return null;
+        }
+    }
 }

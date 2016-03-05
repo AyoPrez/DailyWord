@@ -15,9 +15,11 @@ import java.util.ArrayList;
 public class Language {
 
 	private Dialog Dialog;
-	private LanguageDialogAdapter Adapter;
-	private ListView Language_List;
-	
+	protected LanguageDialogAdapter Adapter;
+	protected ListView Language_List;
+
+	//TODO Dependencies
+	//-new LanguageDialogAdapter
 	
 	public Language(final Context context){
 

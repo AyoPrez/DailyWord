@@ -11,6 +11,8 @@
     <color name="no_login">@color/ColorPrimaryDark</color>
     <color name="login">@color/ColorPrimaryVeryDark</color>
 
+    <color name="newmoment_button">#28D</color>
+
     <color name="white">#FFF</color>
     <color name="black">#000</color>
 </resources>

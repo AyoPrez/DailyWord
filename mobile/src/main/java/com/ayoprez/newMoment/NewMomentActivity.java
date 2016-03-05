@@ -45,7 +45,7 @@ public class NewMomentActivity extends AbstractBaseActivity{
 	@OnClick(R.id.b_accept)
 	void OnAcceptClick(){
 		Crashlytics.getInstance().answers.logCustom(new CustomEvent("Level").putCustomAttribute("level", B_Level.getText().toString()));
-		new Accept(context).Accept_Dialog(DetectDeviceLanguage.getISO3Language(), B_Language.getText().toString(),
+		new Accept(context).Accept_Dialog(B_Language.getText().toString(),
 				B_Level.getText().toString(), B_Time.getText().toString());
 	}
 

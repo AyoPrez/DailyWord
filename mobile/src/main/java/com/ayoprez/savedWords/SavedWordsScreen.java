@@ -59,7 +59,11 @@ private static final String LOG_TAG = SavedWordsScreen.class.getSimpleName();
     private ArrayList<String> hardLevelWord = new ArrayList<String>();
 
     private String language;
-    private ArrayList<String> spinnerLanguages = new ArrayList<>();
+    protected ArrayList<String> spinnerLanguages = new ArrayList<>();
+
+    //TODO Dependencies
+    //-new MainViewPagerAdapter
+    //-new GetSavedWords
 
     @Bind(R.id.viewStub_no_internet)
     ViewStub viewStubNoInternet;

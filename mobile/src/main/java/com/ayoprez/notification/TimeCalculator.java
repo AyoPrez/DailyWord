@@ -11,10 +11,13 @@ import java.util.Calendar;
  */
 public class TimeCalculator {
 
+    //TODO Dependencies
+    //-new Utils
+
     public long getTimeFromNowUntilUserChoiceTime(String time) throws Exception{
 
         if(time.length() != 5){
-            time = new Utils().PutInTimeDots(time);
+            time = Utils.getInstance().putDotsInTime(time);
         }
 
         int hour = Integer.valueOf(time.substring(0, 2).toString());

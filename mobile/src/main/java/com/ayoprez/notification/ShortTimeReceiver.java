@@ -14,6 +14,10 @@ public class ShortTimeReceiver extends BroadcastReceiver {
 
     public Context context;
 
+    //TODO Dependencies
+    //-new LaunchNotification
+    //-new WordFromDatabase
+
     @Override
     public void onReceive(Context context, Intent intent) {
         this.context = context;

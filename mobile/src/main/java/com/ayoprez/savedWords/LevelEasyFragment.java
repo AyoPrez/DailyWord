@@ -21,6 +21,9 @@ public class LevelEasyFragment extends AbstractLevelFragment {
     protected ArrayList<String> typesList = new ArrayList<>();
     protected String mainLanguage;
 
+    //TODO Dependencies
+    //-new SavedWordsRecyclerViewAdapter
+
     public static Fragment newInstance(ArrayList<String> listWords, ArrayList<String> listTypes, String language) {
         LevelEasyFragment myFragment = new LevelEasyFragment();
 

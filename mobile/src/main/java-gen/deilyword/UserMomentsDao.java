@@ -80,11 +80,6 @@ public class UserMomentsDao extends AbstractDao<UserMoments, Long> {
         if (time != null) {
             stmt.bindString(4, time);
         }
- 
-        String applanguage = entity.getApplanguage();
-        if (applanguage != null) {
-            stmt.bindString(5, applanguage);
-        }
     }
 
     /** @inheritdoc */
@@ -100,8 +95,7 @@ public class UserMomentsDao extends AbstractDao<UserMoments, Long> {
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // language
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // level
-            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // time
-            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4) // applanguage
+            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3) // time
         );
         return entity;
     }
@@ -113,7 +107,6 @@ public class UserMomentsDao extends AbstractDao<UserMoments, Long> {
         entity.setLanguage(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setLevel(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
         entity.setTime(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
-        entity.setApplanguage(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
      }
     
     /** @inheritdoc */

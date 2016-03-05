@@ -16,6 +16,9 @@ public class AlarmReceiver extends BroadcastReceiver{
 
     public Context context;
 
+    //TODO Dependencies
+    //-new GetWords
+
     @Override
     public void onReceive(Context context, Intent intent) {
         this.context = context;

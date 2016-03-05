@@ -1,7 +1,5 @@
 package com.ayoprez.database;
 
-import android.content.Context;
-
 import java.util.List;
 
 import de.greenrobot.dao.query.QueryBuilder;
@@ -9,18 +7,20 @@ import de.greenrobot.dao.query.WhereCondition;
 import deilyword.UserMoments;
 import deilyword.UserMomentsDao;
 
-
 /**
  * Created by Ayoze on 29/01/15.
  */
 public class UserMomentsRepository {
 
-    public static void insertOrUpdate(Context context, UserMoments userMoments) {
-        getUserMomentsDao(context).insertOrReplace(userMoments);
+    //TODO Dependencies
+    //new CreateDatabase
+
+    public static void insertOrUpdate(UserMoments userMoments) {
+        getUserMomentsDao().insertOrReplace(userMoments);
     }
 
-    public long getIdFromData(Context context, UserMoments userMoments){
-        QueryBuilder qb = getUserMomentsDao(context).queryBuilder();
+    public static long getIdFromData(UserMoments userMoments){
+        QueryBuilder qb = getUserMomentsDao().queryBuilder();
         qb.where(new WhereCondition.StringCondition("Time = '"+ userMoments.getTime() +"' " +
                 "AND Level = '"+ userMoments.getLevel() +"' " +
                 "AND Language = '"+ userMoments.getLanguage() +"' "));
@@ -29,39 +29,38 @@ public class UserMomentsRepository {
         return idList.get(0).getId();
     }
 
-    public long getLastId(Context context){
-        List<UserMoments> userMomentsList = getUserMomentsDao(context).loadAll();
+    public long getLastId(){
+        List<UserMoments> userMomentsList = getUserMomentsDao().loadAll();
 
         if(userMomentsList.size() == 0){
             return 0;
         }else{
-            long lastId = getUserMomentsDao(context).loadAll().get(getRowsCount(context) - 1).getId();
+            long lastId = getUserMomentsDao().loadAll().get(getRowsCount() - 1).getId();
             return lastId + 1;
         }
     }
 
-    public int getRowsCount(Context context){
-        int totalSize = getUserMomentsDao(context).loadAll().size();
-        return totalSize;
+    public int getRowsCount(){
+        return getUserMomentsDao().loadAll().size();
     }
 
-    public static void clearMoments(Context context) {
-        getUserMomentsDao(context).deleteAll();
+    public static void clearMoments() {
+        getUserMomentsDao().deleteAll();
     }
 
-    public static void deleteMomentWithId(Context context, long id) {
-        getUserMomentsDao(context).delete(getMomentForId(context, id));
+    public static void deleteMomentWithId(long id) {
+        getUserMomentsDao().delete(getMomentForId(id));
     }
 
-    public List<UserMoments> getAllMoments(Context context) {
-        return getUserMomentsDao(context).loadAll();
+    public static List<UserMoments> getAllMoments() {
+        return getUserMomentsDao().loadAll();
     }
 
-    public static UserMoments getMomentForId(Context context, long id) {
-        return getUserMomentsDao(context).load(id);
+    public static UserMoments getMomentForId(long id) {
+        return getUserMomentsDao().load(id);
     }
 
-    private static UserMomentsDao getUserMomentsDao(Context c) {
-        return new CreateDatabase(c).getDaoSession().getUserMomentsDao();
+    private static UserMomentsDao getUserMomentsDao() {
+        return CreateDatabase.getDaoSession().getUserMomentsDao();
     }
 }
