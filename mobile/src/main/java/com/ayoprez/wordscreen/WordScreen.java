@@ -189,6 +189,9 @@ public class WordScreen extends AbstractBaseActivity {
             }else{
                 mArticle2WordScreen.setVisibility(View.GONE);
             }
+        }else{
+            mArticle1WordScreen.setVisibility(View.GONE);
+            mArticle2WordScreen.setVisibility(View.GONE);
         }
     }
 
