@@ -96,9 +96,4 @@ public class TwitterLogin {
             }
         });
     }
-
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        twitterLoginButton.onActivityResult(requestCode, resultCode, data);
-//    }
 }

@@ -91,6 +91,7 @@ public class FacebookLogin {
         });
     }
 
+    //Get Name for the app and the id for the database
     public void getUserData(){
         GraphRequest request = GraphRequest.newMeRequest(AccessToken.getCurrentAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
             @Override
