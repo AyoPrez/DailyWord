@@ -42,9 +42,9 @@
             android:title="@string/more_of_Ayoprez"/>
 
         <!--TODO Descomment when the beta version is over-->
-        <!--<Preference-->
-            <!--android:key="rate"-->
-            <!--android:title="@string/rateAtGoogle"/>-->
+        <Preference
+            android:key="rate"
+            android:title="@string/rateAtGoogle"/>
 
     </PreferenceCategory>
 </PreferenceScreen>

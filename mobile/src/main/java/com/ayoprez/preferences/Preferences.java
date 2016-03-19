@@ -16,6 +16,7 @@ import android.text.Html;
 import android.text.SpannableString;
 import android.text.method.LinkMovementMethod;
 import android.text.util.Linkify;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -99,15 +100,14 @@ public class Preferences extends PreferenceActivity {
                 }
             });
 
-//            TODO Uncomment when beta version is finished
-//            Preference buttonRateApp = (Preference) findPreference("rate");
-//            buttonRateApp.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener(){
-//                @Override
-//                public boolean onPreferenceClick(Preference preference) {
-//                    openMarket(getString(R.string.marketId));
-//                    return true;
-//                }
-//            });
+            Preference buttonRateApp = (Preference) findPreference("rate");
+            buttonRateApp.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener(){
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    openMarket(getString(R.string.marketId));
+                    return true;
+                }
+            });
 
         }
 
@@ -117,12 +117,14 @@ public class Preferences extends PreferenceActivity {
         }
 
         private void openMarket(String id){
-            Intent intent = new Intent(Intent.ACTION_VIEW);
+            Intent intent;
+
+            intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("market://details?id="+id));
             //Try Google play
-            intent.setData(Uri.parse("market://details?id= " + id));
             if (!MyStartActivity(intent)) {
                 //Market (Google play) app seems not installed, let's try to open a webbrowser
-                intent.setData(Uri.parse("https://play.google.com/store/apps/details?" + id));
+                intent.setData(Uri.parse("https://play.google.com/store/apps/details?id="+id));
                 if (!MyStartActivity(intent)) {
                     //Well if this also fails, we have run out of options, inform the user.
                     Snackbar.make(getView(), getString(R.string.rateError), Snackbar.LENGTH_LONG).show();
