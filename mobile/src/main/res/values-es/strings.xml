@@ -25,6 +25,8 @@
     <string name="login_twitter">Iniciar sesión con Twitter</string>
     <string name="logout">Cerrar sesión</string>
     <string name="register">¡Regístrate!</string>
+    <string name="login_dialog_text">Si decides registrarte a través de las redes sociales podrás acceder a funcionalidades extras como guardar las palabras que quieras repasar el futuro</string>
+    <string name="login_dialog_title">Información</string>
 
     <!-- Languages -->
     <string name="Spanish">Español</string>

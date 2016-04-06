@@ -1,6 +1,8 @@
 package com.ayoprez.login;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -8,6 +10,7 @@ import android.widget.TextView;
 import com.ayoprez.deilylang.AbstractBaseActivity;
 import com.ayoprez.deilylang.MainActivity;
 import com.ayoprez.deilylang.R;
+import com.ayoprez.utils.Utils;
 import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.answers.CustomEvent;
 import com.crashlytics.android.answers.LoginEvent;
@@ -57,9 +60,30 @@ public class LoginActivity extends AbstractBaseActivity {
             finish();
         }
 
+        showDialogOnce();
+
         facebookLogin.facebookLogin();
         twitterLogin.twitterLogin();
         googleLogin.googleLogin();
+    }
+
+    private void showDialogOnce(){
+        boolean firstrun = this.getSharedPreferences("PREFERENCE", MODE_PRIVATE).getBoolean("firstrun", true);
+        if (firstrun){
+            Utils.getInstance().Create_Dialog_DoNotFinishActivity(this, getString(R.string.login_dialog_text),
+                    "Ok", getString(R.string.login_dialog_title), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+
+            // Save the state
+            this.getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+                    .edit()
+                    .putBoolean("firstrun", false)
+                    .commit();
+        }
     }
 
     @Override
