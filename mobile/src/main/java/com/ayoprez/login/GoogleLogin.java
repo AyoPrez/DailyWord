@@ -74,7 +74,7 @@ public class GoogleLogin {
         //Add the icon in the desired position
         googleButton.setCompoundDrawables(null, null, null, null);
         googleButton.setCompoundDrawablePadding(0);
-        googleButton.setPadding(10, 30, 10, 30);
+        googleButton.setPadding(10, 20, 10, 20);
     }
 
     private void signIn() {

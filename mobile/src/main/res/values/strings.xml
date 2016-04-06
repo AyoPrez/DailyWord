@@ -114,6 +114,6 @@
     <string name="f_key">697126877059363</string>
     <string name="marketId">com.ayoprez.deilylang</string>
     <string name="title_activity_word_screen">WordScreen</string>
-    <string name="versionName">0.1</string>
+    <string name="versionName">0.3</string>
 
 </resources>

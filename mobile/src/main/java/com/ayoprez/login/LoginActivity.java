@@ -3,6 +3,7 @@ package com.ayoprez.login;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.ayoprez.deilylang.AbstractBaseActivity;
 import com.ayoprez.deilylang.MainActivity;
@@ -12,6 +13,7 @@ import com.crashlytics.android.answers.CustomEvent;
 import com.crashlytics.android.answers.LoginEvent;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -29,6 +31,11 @@ public class LoginActivity extends AbstractBaseActivity {
     private FacebookLogin facebookLogin = new FacebookLogin(this);
     private TwitterLogin twitterLogin = new TwitterLogin(this);
     private GoogleLogin googleLogin = new GoogleLogin(this);
+
+    @OnClick(R.id.terms_link)
+    void termsLink(){
+        startActivity(new Intent(this, LegalActivity.class));
+    }
 
     @OnClick(R.id.login_continue)
     void loginContinue(){
