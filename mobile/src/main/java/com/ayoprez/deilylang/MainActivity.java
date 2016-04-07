@@ -1,5 +1,6 @@
 package com.ayoprez.deilylang;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,7 +16,8 @@ import com.ayoprez.database.UserMomentsRepository;
 import com.ayoprez.login.LoginActivity;
 import com.ayoprez.newMoment.NewMomentActivity;
 import com.ayoprez.preferences.Preferences;
-import com.ayoprez.userProfile.ProfileScreen;
+import com.ayoprez.savedWords.SavedWords;
+import com.ayoprez.savedWords.SavedWordsScreen;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -42,11 +44,11 @@ public class MainActivity extends AbstractBaseActivity {
 
         initToolbar();
 
-        showFragment(getCorrectFragment());
+        showFragment(getCorrectFragment(this));
     }
 
-    private Fragment getCorrectFragment(){
-        if(Utils.getInstance().isMomentsFull()){
+    private Fragment getCorrectFragment(Context context){
+        if(Utils.getInstance().isMomentsFull(context)){
             return MomentMainFragment.getInstance();
         }else{
             return NoMomentMainFragment.getInstance();
@@ -72,7 +74,7 @@ public class MainActivity extends AbstractBaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.action_signIn:
-                goToNewScreen(!sessionManager.isLoggedIn() ? LoginActivity.class : ProfileScreen.class);
+                goToNewScreen(!sessionManager.isLoggedIn() ? LoginActivity.class : SavedWordsScreen.class);
                 return true;
             case R.id.action_settings:
                 startActivity(new Intent(this, Preferences.class));

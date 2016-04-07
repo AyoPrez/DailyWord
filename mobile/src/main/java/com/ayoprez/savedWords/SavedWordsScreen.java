@@ -21,10 +21,10 @@ import android.widget.Spinner;
 
 import com.ayoprez.deilylang.AbstractBaseActivity;
 import com.ayoprez.deilylang.DetectDeviceLanguage;
+import com.ayoprez.deilylang.MainActivity;
 import com.ayoprez.deilylang.R;
 import com.ayoprez.login.SessionManager;
 import com.ayoprez.restfulservice.GetSavedWords;
-import com.ayoprez.userProfile.ProfileScreen;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -169,7 +169,7 @@ private static final String LOG_TAG = SavedWordsScreen.class.getSimpleName();
     }
 
     private void backToProfileIntent(){
-        Intent intent = new Intent(this, ProfileScreen.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
     }

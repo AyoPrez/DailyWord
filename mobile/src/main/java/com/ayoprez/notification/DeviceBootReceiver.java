@@ -36,10 +36,8 @@ public class DeviceBootReceiver extends BroadcastReceiver {
         }
     }
 
-    //TODO It doesn't work well. Review in the future
-
     public void reSchedule(Context context){
-        List<UserMoments> dataFromDatabase = new UserMomentsRepository().getAllMoments();
+        List<UserMoments> dataFromDatabase = new UserMomentsRepository().getAllMoments(context);
 
         for(UserMoments userMoments : dataFromDatabase){
             try {

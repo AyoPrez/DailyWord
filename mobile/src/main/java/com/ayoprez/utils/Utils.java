@@ -109,17 +109,17 @@ public class Utils {
 		return Integer.valueOf(minute);
 	}
 
-	public List<UserMoments> getDataFromDatabaseToListView() {
-		return UserMomentsRepository.getAllMoments();
+	public List<UserMoments> getDataFromDatabaseToListView(Context context) {
+		return UserMomentsRepository.getAllMoments(context);
 	}
 
-	public boolean isMomentsFull(){
-		return getDataFromDatabaseToListView().size() > 0;
+	public boolean isMomentsFull(Context context){
+		return getDataFromDatabaseToListView(context).size() > 0;
 	}
 
 	public void showMoment(Context context, TextView level, TextView time, TextView language, ImageView iv_flag) throws Exception {
-		if(getDataFromDatabaseToListView().size() > 0) {
-			UserMoments userMoments = getDataFromDatabaseToListView().get(0);
+		if(getDataFromDatabaseToListView(context).size() > 0) {
+			UserMoments userMoments = getDataFromDatabaseToListView(context).get(0);
 			language.setText(userMoments.getLanguage());
 			level.setText(userMoments.getLevel());
 			iv_flag.setImageBitmap(DetectDeviceLanguage.getISO3FromString(userMoments.getLanguage().toLowerCase()).equals("eng") ?

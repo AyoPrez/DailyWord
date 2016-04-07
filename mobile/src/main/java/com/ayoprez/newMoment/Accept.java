@@ -29,12 +29,12 @@ public class Accept {
 		if(!Language.equals(context.getString(R.string.button_language)) && !Level.equals(context.getString(R.string.button_level))
 				&& !Time.equals(context.getString(R.string.button_time))){
             UserMoments userMoments = new UserMoments(
-                    userMomentsRepository.getLastId(),
+                    userMomentsRepository.getLastId(context),
                     Language,
                     Level,
                     Utils.getInstance().TakeOutTimeDots(Time));
 
-            UserMomentsRepository.insertOrUpdate(userMoments);
+            UserMomentsRepository.insertOrUpdate(context, userMoments);
 
 			if(new StartAndCancelAlarmManager(context, userMoments).startAlarmManager(Time)){
                 Utils.getInstance().Create_Dialog(context, context.getString(R.string.successSavingMoment),

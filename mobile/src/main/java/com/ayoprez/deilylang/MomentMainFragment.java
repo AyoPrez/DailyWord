@@ -81,8 +81,8 @@ public class MomentMainFragment extends Fragment {
         }
     }
 
-    private void checkMoments(){
-        if(Utils.getInstance().isMomentsFull()){
+    private void checkMoments(Context context){
+        if(Utils.getInstance().isMomentsFull(context)){
             fillFields();
         }else{
             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, NoMomentMainFragment.getInstance()).commit();
@@ -94,7 +94,7 @@ public class MomentMainFragment extends Fragment {
             public void onClick(DialogInterface dialog, int which) {
                 try {
                     deleteItemFromDatabase(getActivity(), 0);
-                    checkMoments();
+                    checkMoments(getContext());
                 } catch (Exception e) {
                     ErrorHandler.getInstance().Error(TAG, e.toString());
                     ErrorHandler.getInstance().informUser(getActivity(), getActivity().getString(R.string.errorDefault));
@@ -109,8 +109,8 @@ public class MomentMainFragment extends Fragment {
 
     private void deleteItemFromDatabase(Context context, int selectedItem) {
         try {
-            new StartAndCancelAlarmManager(context, Utils.getInstance().getDataFromDatabaseToListView().get(selectedItem)).cancelAlarmManager();
-            UserMomentsRepository.deleteMomentWithId(getIdToDelete(selectedItem));
+            new StartAndCancelAlarmManager(context, Utils.getInstance().getDataFromDatabaseToListView(context).get(selectedItem)).cancelAlarmManager();
+            UserMomentsRepository.deleteMomentWithId(context, getIdToDelete(selectedItem));
         }catch(Exception e){
             ErrorHandler.getInstance().Error(TAG, e.toString());
             ErrorHandler.getInstance().informUser(context, context.getString(R.string.errorDefault));
@@ -119,10 +119,10 @@ public class MomentMainFragment extends Fragment {
 
     private long getIdToDelete(int selectedItem){
         UserMoments userMoments = new UserMoments();
-        userMoments.setLanguage(Utils.getInstance().getDataFromDatabaseToListView().get(selectedItem).getLanguage());
-        userMoments.setTime(Utils.getInstance().getDataFromDatabaseToListView().get(selectedItem).getTime());
-        userMoments.setLevel(Utils.getInstance().getDataFromDatabaseToListView().get(selectedItem).getLevel());
+        userMoments.setLanguage(Utils.getInstance().getDataFromDatabaseToListView(getContext()).get(selectedItem).getLanguage());
+        userMoments.setTime(Utils.getInstance().getDataFromDatabaseToListView(getContext()).get(selectedItem).getTime());
+        userMoments.setLevel(Utils.getInstance().getDataFromDatabaseToListView(getContext()).get(selectedItem).getLevel());
 
-        return UserMomentsRepository.getIdFromData(userMoments);
+        return UserMomentsRepository.getIdFromData(getContext(), userMoments);
     }
 }
