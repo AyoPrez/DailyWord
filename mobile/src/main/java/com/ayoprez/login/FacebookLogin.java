@@ -62,7 +62,7 @@ public class FacebookLogin {
         //Add the icon in the desired position
         facebookButton.setCompoundDrawables(null, null, null, null);
         facebookButton.setCompoundDrawablePadding(0);
-        facebookButton.setPadding(10, 30, 10, 30);
+        facebookButton.setPadding(10, 20, 10, 20);
     }
 
     public void facebookLogin(){
@@ -91,6 +91,7 @@ public class FacebookLogin {
         });
     }
 
+    //Get Name for the app and the id for the database
     public void getUserData(){
         GraphRequest request = GraphRequest.newMeRequest(AccessToken.getCurrentAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
             @Override

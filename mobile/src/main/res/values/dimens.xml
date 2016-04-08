@@ -6,6 +6,10 @@
     <dimen name="savedWordSize">15sp</dimen>
     <dimen name="toolbar_spinner_textSize">20sp</dimen>
 
+    <dimen name="newmoment_button_height">100dp</dimen>
+    <dimen name="newmoment_button_width">100dp</dimen>
+    <dimen name="newmoment_button_marginTop">200dp</dimen>
+
     <!-- New moment Language Dialog-->
     <dimen name="image_flag_width">40dp</dimen>
     <dimen name="image_flag_height">40dp</dimen>

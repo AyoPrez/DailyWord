@@ -1,6 +1,7 @@
 package com.ayoprez.database;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.util.List;
 
@@ -9,17 +10,20 @@ import de.greenrobot.dao.query.WhereCondition;
 import deilyword.UserMoments;
 import deilyword.UserMomentsDao;
 
-
 /**
  * Created by Ayoze on 29/01/15.
  */
 public class UserMomentsRepository {
+    private static final String TAG = UserMomentsRepository.class.getSimpleName();
+
+    //TODO Dependencies
+    //new CreateDatabase
 
     public static void insertOrUpdate(Context context, UserMoments userMoments) {
         getUserMomentsDao(context).insertOrReplace(userMoments);
     }
 
-    public long getIdFromData(Context context, UserMoments userMoments){
+    public static long getIdFromData(Context context, UserMoments userMoments){
         QueryBuilder qb = getUserMomentsDao(context).queryBuilder();
         qb.where(new WhereCondition.StringCondition("Time = '"+ userMoments.getTime() +"' " +
                 "AND Level = '"+ userMoments.getLevel() +"' " +
@@ -41,8 +45,7 @@ public class UserMomentsRepository {
     }
 
     public int getRowsCount(Context context){
-        int totalSize = getUserMomentsDao(context).loadAll().size();
-        return totalSize;
+        return getUserMomentsDao(context).loadAll().size();
     }
 
     public static void clearMoments(Context context) {
@@ -53,7 +56,7 @@ public class UserMomentsRepository {
         getUserMomentsDao(context).delete(getMomentForId(context, id));
     }
 
-    public List<UserMoments> getAllMoments(Context context) {
+    public static List<UserMoments> getAllMoments(Context context) {
         return getUserMomentsDao(context).loadAll();
     }
 
@@ -61,7 +64,8 @@ public class UserMomentsRepository {
         return getUserMomentsDao(context).load(id);
     }
 
-    private static UserMomentsDao getUserMomentsDao(Context c) {
-        return new CreateDatabase(c).getDaoSession().getUserMomentsDao();
+    private static UserMomentsDao getUserMomentsDao(Context context) {
+        Log.i(TAG, "getDaoSession: " + CreateDatabase.getDaoSession());
+        return new CreateDatabase(context).getDaoSession().getUserMomentsDao();
     }
 }

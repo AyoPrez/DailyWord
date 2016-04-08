@@ -16,6 +16,9 @@ public class ShortTimeStartAndCancel extends TimeCalculator{
     private PendingIntent pendingIntent;
     private AlarmManager alarmManager;
 
+    //TODO Dependencies
+    //-new SessionManager
+
     public ShortTimeStartAndCancel(Context context, WordFromDatabase wordFromDatabase){
         Intent alarmIntent = startIntent(context, wordFromDatabase);
 
@@ -31,6 +34,7 @@ public class ShortTimeStartAndCancel extends TimeCalculator{
         alarmIntent.putExtra("level", wordFromDatabase.getLevel());
         alarmIntent.putExtra("languageLearning", wordFromDatabase.getLanguages()[0]);
         alarmIntent.putExtra("languageDevice", wordFromDatabase.getLanguages()[1]);
+        alarmIntent.putExtra("articles", wordFromDatabase.getArticles());
 
         if(new SessionManager(context).getUserDetails().get("id") != null){
             alarmIntent.putExtra("id", Integer.valueOf(new SessionManager(context).getUserDetails().get("id")));

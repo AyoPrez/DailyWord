@@ -53,14 +53,20 @@ public class SetWords {
 
             @Override
             public void failure(RetrofitError error) {
-                ErrorHandler.getInstance().Error(LOG_TAG, error.getMessage());
-                ErrorHandler.getInstance().informUser(context, context.getString(R.string.errorDefaultAndTry));
-                EventBus.getDefault().post(error);
+                //FIXME Temporal fix. In the future, replace retrofit for okhttp (or last retrofit version)
+                if(error.getCause().toString().equals("java.io.EOFException")){
+                    userAPI.postUserWord(id_u, id_word, languageMobile, languageNew, this);
+                }else{
+                    ErrorHandler.getInstance().Error(LOG_TAG, "Error: " + error.getMessage());
+                    ErrorHandler.getInstance().informUser(context, context.getString(R.string.errorDefaultAndTry));
+                    EventBus.getDefault().post(error);
+                }
             }
         });
     }
 
     public void getConfirmedDialog(){
-        Utils.Create_Dialog(context, context.getString(R.string.doneDialog), context.getString(R.string.buttonAcceptDialog), context.getString(R.string.doneDialogTitle));
+        //TODO Decide what to do with this. If I finish the activity I get a blank screen
+        Utils.getInstance().Create_Dialog_DoNotFinishActivity(context, context.getString(R.string.doneDialog), context.getString(R.string.buttonAcceptDialog), context.getString(R.string.doneDialogTitle), null);
     }
 }

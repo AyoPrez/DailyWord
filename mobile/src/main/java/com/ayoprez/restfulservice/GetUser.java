@@ -4,10 +4,14 @@ import android.content.Context;
 import android.util.Log;
 
 import com.ayoprez.deilylang.ErrorHandler;
+import com.ayoprez.deilylang.MainActivity;
+import com.ayoprez.deilylang.MainApplication;
 import com.ayoprez.deilylang.R;
 import com.ayoprez.login.LoginActivity;
 import com.ayoprez.login.User;
 import com.crashlytics.android.Crashlytics;
+
+import javax.inject.Inject;
 
 import de.greenrobot.event.EventBus;
 import retrofit.Callback;
@@ -24,6 +28,8 @@ public class GetUser {
 
     private UserAPI userAPI;
     private Context context;
+//    @Inject private RestAdapter restAdapter;
+
 
     public GetUser(Context context){
         this.context = context;

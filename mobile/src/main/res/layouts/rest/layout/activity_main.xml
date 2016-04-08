@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainActivityLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/b_main"
+        android:layout_width="@dimen/newmoment_button_width"
+        android:layout_height="@dimen/newmoment_button_height"
+        android:layout_gravity="center|bottom"
+        android:layout_marginTop="@dimen/newmoment_button_marginTop"
+        android:background="@drawable/newmoment_button"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:text="@string/new_moment" />
+
+</LinearLayout>

@@ -23,6 +23,7 @@ public class LanguageDialogAdapter extends BaseAdapter {
     private static LayoutInflater inflater = null;
     private ArrayList<String> languages;
 
+
     public LanguageDialogAdapter(Context context, ArrayList<String> languagesList){
         this.languages = languagesList;
         this.SPANISH = context.getString(R.string.Spanish);

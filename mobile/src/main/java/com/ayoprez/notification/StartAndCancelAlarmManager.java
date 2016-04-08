@@ -19,8 +19,11 @@ public class StartAndCancelAlarmManager extends TimeCalculator{
 
     private PendingIntent pendingIntent;
     private AlarmManager alarmManager;
-    private SessionManager sessionManager;
+    protected SessionManager sessionManager;
     private String id_U;
+
+    //TODO Dependencies
+    //-new SessionManager
 
     public StartAndCancelAlarmManager(Context context, UserMoments userMoments){
         this.sessionManager = new SessionManager(context);

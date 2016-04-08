@@ -16,6 +16,9 @@ public class AlarmReceiver extends BroadcastReceiver{
 
     public Context context;
 
+    //TODO Dependencies
+    //-new GetWords
+
     @Override
     public void onReceive(Context context, Intent intent) {
         this.context = context;
@@ -38,7 +41,7 @@ public class AlarmReceiver extends BroadcastReceiver{
         if(languageLearning.equals("eng")){
             new GetWords(context).sendEnglishWordRequest(level, id, languageDevice);
         }else if(languageLearning.equals("spa")){
-                new GetWords(context).sendSpanishWordRequest(level, id, languageDevice);
+            new GetWords(context).sendSpanishWordRequest(level, id, languageDevice);
         }
     }
 }

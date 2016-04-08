@@ -1,61 +1,62 @@
 package com.ayoprez.deilylang;
 
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.ayoprez.database.CreateDatabase;
+import com.ayoprez.database.UserMomentsRepository;
 import com.ayoprez.login.LoginActivity;
 import com.ayoprez.newMoment.NewMomentActivity;
 import com.ayoprez.preferences.Preferences;
-import com.ayoprez.userProfile.ProfileScreen;
+import com.ayoprez.savedWords.SavedWords;
+import com.ayoprez.savedWords.SavedWordsScreen;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnItemLongClick;
-import com.ayoprez.utils.Test;
+
+import com.ayoprez.utils.Utils;
 import com.crashlytics.android.Crashlytics;
-import com.crashlytics.android.answers.ContentViewEvent;
 import com.crashlytics.android.answers.CustomEvent;
 
 public class MainActivity extends AbstractBaseActivity {
-    @Bind(R.id.reviewList)
-    ListView reviewList;
 
-    @OnClick(R.id.b_main)
-    void momentsButton(){
-        startActivity(new Intent(this, NewMomentActivity.class));
-        finish();
-    }
-
-    @OnItemLongClick(R.id.reviewList)
-    boolean longItem(int position){
-        Crashlytics.getInstance().answers.logCustom(new CustomEvent("LongItemClick"));
-        new ReviewList(reviewList).showAlertDialogToDeleteItem(this, position);
-        return true;
-    }
-
-    //Tests
-//    @OnClick(R.id.buttonn) void newNotification(){
-//        Test.testNotification(this);
-//    }
+    //TODO Dependencies
+    //-new CreateDatabase
+    //-new ReviewList
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_container);
         ButterKnife.bind(this);
-
-        initToolbar();
 
         new CreateDatabase(this);
 
-        new ReviewList(reviewList).showReviewList(this);
+        initToolbar();
+
+        showFragment(getCorrectFragment(this));
+    }
+
+    private Fragment getCorrectFragment(Context context){
+        if(Utils.getInstance().isMomentsFull(context)){
+            return MomentMainFragment.getInstance();
+        }else{
+            return NoMomentMainFragment.getInstance();
+        }
+    }
+
+    private void showFragment(Fragment fragment){
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
     }
 
     @Override
@@ -73,7 +74,7 @@ public class MainActivity extends AbstractBaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.action_signIn:
-                goToNewScreen(!sessionManager.isLoggedIn() ? LoginActivity.class : ProfileScreen.class);
+                goToNewScreen(!sessionManager.isLoggedIn() ? LoginActivity.class : SavedWordsScreen.class);
                 return true;
             case R.id.action_settings:
                 startActivity(new Intent(this, Preferences.class));

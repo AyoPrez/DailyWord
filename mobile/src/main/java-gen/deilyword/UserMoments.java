@@ -20,12 +20,11 @@ public class UserMoments {
         this.id = id;
     }
 
-    public UserMoments(Long id, String language, String level, String time, String applanguage) {
+    public UserMoments(Long id, String language, String level, String time) {
         this.id = id;
         this.language = language;
         this.level = level;
         this.time = time;
-        this.applanguage = applanguage;
     }
 
     public Long getId() {
@@ -59,13 +58,4 @@ public class UserMoments {
     public void setTime(String time) {
         this.time = time;
     }
-
-    public String getApplanguage() {
-        return applanguage;
-    }
-
-    public void setApplanguage(String applanguage) {
-        this.applanguage = applanguage;
-    }
-
 }

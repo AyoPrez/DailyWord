@@ -13,6 +13,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewStub;
 import android.view.Window;
@@ -21,10 +24,11 @@ import android.widget.Spinner;
 
 import com.ayoprez.deilylang.AbstractBaseActivity;
 import com.ayoprez.deilylang.DetectDeviceLanguage;
+import com.ayoprez.deilylang.MainActivity;
 import com.ayoprez.deilylang.R;
 import com.ayoprez.login.SessionManager;
+import com.ayoprez.preferences.Preferences;
 import com.ayoprez.restfulservice.GetSavedWords;
-import com.ayoprez.userProfile.ProfileScreen;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -59,7 +63,11 @@ private static final String LOG_TAG = SavedWordsScreen.class.getSimpleName();
     private ArrayList<String> hardLevelWord = new ArrayList<String>();
 
     private String language;
-    private ArrayList<String> spinnerLanguages = new ArrayList<>();
+    protected ArrayList<String> spinnerLanguages = new ArrayList<>();
+
+    //TODO Dependencies
+    //-new MainViewPagerAdapter
+    //-new GetSavedWords
 
     @Bind(R.id.viewStub_no_internet)
     ViewStub viewStubNoInternet;
@@ -165,7 +173,7 @@ private static final String LOG_TAG = SavedWordsScreen.class.getSimpleName();
     }
 
     private void backToProfileIntent(){
-        Intent intent = new Intent(this, ProfileScreen.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
     }
@@ -275,5 +283,33 @@ private static final String LOG_TAG = SavedWordsScreen.class.getSimpleName();
             viewStubNoInternet.setVisibility(View.VISIBLE);
             cancelDialog();
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_word_screen, menu);
+
+        MenuItem loginItem = menu.findItem(R.id.action_signIn);
+        if(sessionManager.isLoggedIn()){
+            loginItem.setTitle(getString(R.string.action_logout));
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_signIn:
+                sessionManager.logoutUser();
+                finish();
+                return true;
+            case R.id.action_settings:
+                Intent i = new Intent(this, Preferences.class);
+                startActivity(i);
+                return true;
+        }
+        return true;
     }
 }

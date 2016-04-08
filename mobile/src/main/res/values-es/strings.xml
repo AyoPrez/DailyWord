@@ -25,6 +25,8 @@
     <string name="login_twitter">Iniciar sesión con Twitter</string>
     <string name="logout">Cerrar sesión</string>
     <string name="register">¡Regístrate!</string>
+    <string name="login_dialog_text">Si decides registrarte a través de las redes sociales podrás acceder a funcionalidades extras como guardar las palabras que quieras repasar el futuro</string>
+    <string name="login_dialog_title">Información</string>
 
     <!-- Languages -->
     <string name="Spanish">Español</string>
@@ -60,6 +62,7 @@
     <string name="doneDialog">Perfecto. Ya la tienes. Ahora conoces esta palabra.</string>
     <string name="laterDialog">Te recordaré esta palabra en un rato para que la memorices.</string>
     <string name="doneDialogTitle">Palabra guardada</string>
+    <string name="artc">Artc:</string>
 
     <!-- Report bad translation mail-->
     <string name="Subject">Reporte de traducción</string>
@@ -93,7 +96,7 @@
     <string name="info">Info</string>
     <string name="info_message">Aplicación realizada con cariño por AyoPrez. \n\n
                                 Para más información, acuda a la web: </string>
-    <string name="versionName">0.1</string>
+    <string name="versionName">0.3</string>
 
     <string name="legal_title">Legal y contacto</string>
     <string name="terms">Términos y condiciones</string>

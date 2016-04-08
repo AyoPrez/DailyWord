@@ -28,6 +28,8 @@
     <string name="login_twitter">Login with Twitter</string>
     <string name="logout">Logout</string>
     <string name="register">Sign up!</string>
+    <string name="login_dialog_text">If you decide to register through social networks you will have access to extra features like save all the words you want to review in the future</string>
+    <string name="login_dialog_title">Information</string>
 
     <!-- Levels -->
     <string name="basic">Basic</string>
@@ -58,6 +60,7 @@
     <string name="doneDialog">Perfect. You already got it. Now you know this word.</string>
     <string name="laterDialog">I will remind you this word in a while so that you memorize it.</string>
     <string name="doneDialogTitle">Word saved</string>
+    <string name="artc">Artc:</string>
 
 
     <!-- Report bad translation mail-->
@@ -113,6 +116,6 @@
     <string name="f_key">697126877059363</string>
     <string name="marketId">com.ayoprez.deilylang</string>
     <string name="title_activity_word_screen">WordScreen</string>
-    <string name="versionName">0.1</string>
+    <string name="versionName">0.3</string>
 
 </resources>

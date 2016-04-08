@@ -26,7 +26,7 @@ public class ErrorHandler {
 
     public void informUser(Context context, String message){
         try {
-            Utils.Create_Dialog_DoNotFinishActivity(context, message, context.getString(android.R.string.ok),
+            Utils.getInstance().Create_Dialog_DoNotFinishActivity(context, message, context.getString(android.R.string.ok),
                 context.getString(R.string.errorSavingDialogTitle), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -34,7 +34,7 @@ public class ErrorHandler {
                     }
                 });
         }catch (WindowManager.BadTokenException e){
-
+            e.getStackTrace();
         }
     }
 }
