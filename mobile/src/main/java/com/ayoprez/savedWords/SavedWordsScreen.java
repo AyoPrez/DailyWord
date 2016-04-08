@@ -13,6 +13,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewStub;
 import android.view.Window;
@@ -24,6 +27,7 @@ import com.ayoprez.deilylang.DetectDeviceLanguage;
 import com.ayoprez.deilylang.MainActivity;
 import com.ayoprez.deilylang.R;
 import com.ayoprez.login.SessionManager;
+import com.ayoprez.preferences.Preferences;
 import com.ayoprez.restfulservice.GetSavedWords;
 
 import java.util.ArrayList;
@@ -279,5 +283,33 @@ private static final String LOG_TAG = SavedWordsScreen.class.getSimpleName();
             viewStubNoInternet.setVisibility(View.VISIBLE);
             cancelDialog();
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_word_screen, menu);
+
+        MenuItem loginItem = menu.findItem(R.id.action_signIn);
+        if(sessionManager.isLoggedIn()){
+            loginItem.setTitle(getString(R.string.action_logout));
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_signIn:
+                sessionManager.logoutUser();
+                finish();
+                return true;
+            case R.id.action_settings:
+                Intent i = new Intent(this, Preferences.class);
+                startActivity(i);
+                return true;
+        }
+        return true;
     }
 }
